@@ -1,16 +1,32 @@
+import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import FilterSelect from "../components/FilterSelect";
 import SearchBar from "../components/SeachBar/SearchBar";
-import { Fragment, useState } from "react";
-import { products } from "../utils/products";
+import { Fragment } from "react";
+// import { products } from "../utils/products";
 import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+import axios from "axios";
 
 const Shop = () => {
-  const [filterList, setFilterList] = useState(
-    products.filter((item) => item.category === "sofa")
-  );
+  const [products, setProducts] = useState([]);
+  const getProducts=async()=>{
+    try{
+      const status=await axios.get(`${process.env.REACT_APP_API}api/getItems`);
+      if(status.status===200)
+        {
+          console.log(status);
+        }
+    }
+    catch(err)
+    {
+      console.log(err);
+    }
+  }
+  useEffect(()=>{
+    getProducts();
+  },[])
   useWindowScrollToTop();
 
   return (
@@ -18,17 +34,17 @@ const Shop = () => {
       <Banner title="product" />
       <section className="filter-bar">
         <Container className="filter-bar-contianer">
-          <Row className="justify-content-center">
+          {/* <Row className="justify-content-center">
             <Col md={4}>
-              <FilterSelect setFilterList={setFilterList} />
+              <FilterSelect setFilterList={products} />
             </Col>
             <Col md={8}>
-              <SearchBar setFilterList={setFilterList} />
+              <SearchBar setFilterList={products} />
             </Col>
-          </Row>
+          </Row> */}
         </Container>
         <Container>
-          <ShopList productItems={filterList} />
+          <ShopList productItems={products} />
         </Container>
       </section>
     </Fragment>
