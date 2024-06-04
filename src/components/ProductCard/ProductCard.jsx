@@ -23,20 +23,20 @@ const ProductCard = ({ title, productItem }) => {
       <img
         loading="lazy"
         onClick={() => handelClick()}
-        src={productItem.imgUrl}
+        src={productItem.photo}
         alt=""
       />
       {/* <div className="product-like">
         <ion-icon name="heart-outline"></ion-icon>
       </div> */}
       <div className="product-details">
-        <h3 onClick={() => handelClick()}>{productItem.productName}</h3>
+        <h3 onClick={() => handelClick()}>{productItem.name}</h3>
         <div className="rate">
-          <i className="fa fa-star"></i>
-          <i className="fa fa-star"></i>
-          <i className="fa fa-star"></i>
-          <i className="fa fa-star"></i>
-          <i className="fa fa-star"></i>
+          <div className="rate">
+            {Array.from({ length: productItem.rating }).map((_, index) => (
+              <i key={index} className="fa fa-star"></i>
+            ))}
+          </div>
         </div>
         <div className="price">
           <h4>${productItem.price}</h4>

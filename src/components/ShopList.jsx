@@ -7,13 +7,14 @@ const ShopList = ({ productItems }) => {
   if (productItems.length === 0) {
     return <h1 className="not-found">Product Not Found !!</h1>;
   }
+  console.log(productItems);
   return (
     <Row className="justify-content-center">
       {productItems.map((productItem) => {
         return (
           <ProductCard
-            key={productItem.id}
-            title={null}
+            key={productItem._id}
+            title={productItem.name}
             productItem={productItem}
           />
         );

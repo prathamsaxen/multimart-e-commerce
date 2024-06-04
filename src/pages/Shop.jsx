@@ -13,10 +13,11 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const getProducts=async()=>{
     try{
-      const status=await axios.get(`${process.env.REACT_APP_API}api/getItems`);
+      const status=await axios.get(`${process.env.REACT_APP_API}api/getItem`);
       if(status.status===200)
         {
-          console.log(status);
+          // console.log(status);
+          setProducts(status.data)
         }
     }
     catch(err)
