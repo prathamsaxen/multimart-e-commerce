@@ -3,6 +3,9 @@
   height: 100%;
   object-fit: contain;
 }
+.product-page{
+  border: 2px solid red;
+}
 
 @media (max-width: 767px) {
   .product-page .row {

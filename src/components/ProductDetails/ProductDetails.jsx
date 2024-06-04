@@ -34,7 +34,7 @@ const ProductDetails = ({ selectedProduct }) => {
                 <i className="fa fa-star"></i>
                 <i className="fa fa-star"></i>
               </div>
-              <span>{selectedProduct?.avgRating} ratings</span>
+              <span>{selectedProduct?.avgRating} Ratings</span>
             </div>
             <div className="info">
               <span className="price">${selectedProduct?.price}</span>
