@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addToCart } from "../../app/features/cart/cartSlice";
+import { useParams } from 'react-router-dom'; 
+import axios from "axios";
 import "./product-details.css";
 
 const ProductDetails = ({ selectedProduct }) => {
   const dispatch = useDispatch();
-
+  const [data, setData] = useState({});
   const [quantity, setQuantity] = useState(1);
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
@@ -16,7 +18,25 @@ const ProductDetails = ({ selectedProduct }) => {
     dispatch(addToCart({ product: selectedProduct, num: quantity }));
     toast.success("Product has been added to cart!");
   };
+  const { id } = useParams();
+  const fetchProductDetails=async()=>{
+    try{
+      const status=await axios.get(`${process.env.REACT_APP_API}api/getItem/${id}`)
+      if(status.status===200)
+        {
+          console.log(status);
+          setData(status);
+        }
+    }
+    catch(err)
+    {
+      console.log(err);
+    }
+  }
 
+  useEffect(()=>{
+      fetchProductDetails();
+  },[]);
   return (
     <section className="product-page">
       <Container>
