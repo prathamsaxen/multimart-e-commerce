@@ -1,6 +1,7 @@
 import Loader from "./components/Loader/Loader";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
+import Login from "./pages/Login";
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -31,6 +32,8 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+
         </Routes>
         <Footer />
       </Router>
