@@ -1,10 +1,10 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addToCart } from "../../app/features/cart/cartSlice";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "./product-details.css";
 
 const ProductDetails = () => {
