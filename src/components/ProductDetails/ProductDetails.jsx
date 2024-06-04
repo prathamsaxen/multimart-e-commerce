@@ -42,7 +42,7 @@ const ProductDetails = () => {
       <Container>
         <Row className="justify-content-center">
           <Col md={6}>
-            <img loading="lazy" src={data?.photo} alt="" />
+            <img loading="lazy" src={data?.photo} alt="Error in Loading" />
           </Col>
           <Col md={6}>
             <h2>{data?.productName}</h2>
