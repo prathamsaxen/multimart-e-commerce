@@ -26,9 +26,9 @@ const ProductCard = ({ title, productItem }) => {
         src={productItem.imgUrl}
         alt=""
       />
-      <div className="product-like">
+      {/* <div className="product-like">
         <ion-icon name="heart-outline"></ion-icon>
-      </div>
+      </div> */}
       <div className="product-details">
         <h3 onClick={() => handelClick()}>{productItem.productName}</h3>
         <div className="rate">
