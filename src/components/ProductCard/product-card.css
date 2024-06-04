@@ -45,15 +45,19 @@
     align-items:center;
     color: black;
 }
+.price{
+    /* border:2px solid green; */
+    align-items: center;
+}
 
 .price h4 {
-    margin: 20px 0 10px;
+    margin: 0;
 }
 
 .price button {
     background: none;
     color: #0f3460;
-    font-size: 20px;
+    font-size: 16px;
     transition: 0.5s;
     border: 1px solid rgb(3 0 71 / 9%);
     width: 35px;
@@ -68,11 +72,15 @@
 }
 
 button.add {
+    width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
-    border-radius: 50%;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* border-radius: 50%; */
+    /* border: 2px solid red; */
 }
 
 .product-like {
