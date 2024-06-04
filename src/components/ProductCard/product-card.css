@@ -33,6 +33,11 @@
     cursor: pointer;
 }
 
+.product-details h3{
+    /* border: 2px solid red;/ */
+    text-transform: capitalize;
+}
+
 .product .rate i {
     font-size: 15px;
     color: #ffcd4e;
