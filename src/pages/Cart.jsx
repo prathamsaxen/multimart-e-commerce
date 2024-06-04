@@ -33,15 +33,15 @@ const Cart = () => {
             {cartList.map((item) => {
               const productQty = item.price * item.qty;
               return (
-                <div className="cart-list" key={item.id}>
+                <div className="cart-list" key={item._id}>
                   <Row>
                     <Col className="image-holder" sm={4} md={3}>
-                      <img src={item.imgUrl} alt="" />
+                      <img src={item.photo} alt="" />
                     </Col>
                     <Col sm={8} md={9}>
                       <Row className="cart-content justify-content-center">
                         <Col xs={12} sm={9} className="cart-details">
-                          <h3>{item.productName}</h3>
+                          <h3>{item.name}</h3>
                           <h4>
                             ${item.price}.00 * {item.qty}
                             <span>${productQty}.00</span>
