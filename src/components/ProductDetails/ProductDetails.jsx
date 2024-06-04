@@ -38,7 +38,7 @@ const ProductDetails = ({ selectedProduct }) => {
             </div>
             <div className="info">
               <span className="price">${selectedProduct?.price}</span>
-              <span>category:{selectedProduct?.category}</span>
+              <span>Category:{selectedProduct?.category}</span>
             </div>
             <p>{selectedProduct?.shortDesc}</p>
             <input
