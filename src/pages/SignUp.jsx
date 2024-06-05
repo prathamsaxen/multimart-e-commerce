@@ -8,7 +8,7 @@ import axios from "axios";
 function SignUp() {
   const [user, setUser] = useState({
     name: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     password: "",
     confirmPassword: ""
@@ -23,7 +23,7 @@ function SignUp() {
       toast.error("Please enter your name!");
       setDisable(false);
       return;
-    } else if (!user.phone) {
+    } else if (!user.phoneNumber) {
       toast.error("Please enter your phone number!");
       setDisable(false);
       return;
@@ -42,7 +42,7 @@ function SignUp() {
     }
 
     try {
-      const status = await axios.post(`${process.env.REACT_APP_API}api/signup`, { user });
+      const status = await axios.post(`${process.env.REACT_APP_API}api/register`, { user });
       if (status.status === 200) {
         toast.success("Signed Up Successfully!");
         console.log(status);
@@ -75,10 +75,10 @@ function SignUp() {
           <Form.Control
             type="text"
             placeholder="Enter your phone number"
-            value={user.phone}
+            value={user.phoneNumber}
             disabled={disable}
             onChange={(e) => {
-              setUser({ ...user, phone: e.target.value });
+              setUser({ ...user, phoneNumber: e.target.value });
             }}
           />
         </Form.Group>
