@@ -1,9 +1,10 @@
-import {  useState } from "react";
+import {  useState,useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-const NavBar = ({login}) => {
+import AuthenticationContext from "../../context/AuthenticationContext";
+import "./navbar.css";
+const NavBar = () => {
   const { cartList } = useSelector((state) => state.cart);
   const [expand, setExpand] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -15,6 +16,7 @@ const NavBar = ({login}) => {
       setIsFixed(false);
     }
   }
+  const {login}=useContext(AuthenticationContext);
   window.addEventListener("scroll", scrollHandler);
   // useEffect(()=> {
   //   if(CartItem.length ===0) {

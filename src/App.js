@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
+import AuthenticationContext from "./context/AuthenticationContext";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -17,8 +18,10 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const User = lazy(() => import("./pages/User"));
 
 function App() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
+
   return (
+    <AuthenticationContext.Provider value={{login,setLogin}}>
     <Suspense fallback={<Loader />}>
       <Router>
         <ToastContainer
@@ -32,7 +35,7 @@ function App() {
           pauseOnHover
           theme="light"
         />
-        <NavBar login={login}/>
+        <NavBar/>
         <Routes>
           {login ? (
             <Fragment>
@@ -56,6 +59,7 @@ function App() {
         <Footer />
       </Router>
     </Suspense>
+    </AuthenticationContext.Provider>
   );
 }
 
