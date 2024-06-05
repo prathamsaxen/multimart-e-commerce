@@ -262,4 +262,6 @@ button.delete ion-icon {
 .Login button{
   padding-left: 40px;
   padding-right: 40px;
+  background: #103464;
+  border: none;
 }
