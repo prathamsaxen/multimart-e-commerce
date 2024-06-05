@@ -28,6 +28,7 @@ function Login() {
         if(status.status===200)
           {
             toast.success("Logged In Successfully!");
+            console.log(status);
           }
       }
       catch(error){
