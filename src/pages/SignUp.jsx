@@ -11,13 +11,17 @@ function SignUp() {
     phoneNumber: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [disable, setDisable] = useState(false);
 
   const signUpUser = async (event) => {
     event.preventDefault();
     setDisable(true);
+
+    const phonePattern = /^[0-9]{10}$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     if (!user.name) {
       toast.error("Please enter your name!");
@@ -27,12 +31,26 @@ function SignUp() {
       toast.error("Please enter your phone number!");
       setDisable(false);
       return;
+    } else if (!phonePattern.test(user.phoneNumber)) {
+      toast.error("Phone number is invalid!");
+      setDisable(false);
+      return;
     } else if (!user.email) {
       toast.error("Please enter your email!");
       setDisable(false);
       return;
+    } else if (!emailPattern.test(user.email)) {
+      toast.error("Email is invalid!");
+      setDisable(false);
+      return;
     } else if (!user.password) {
       toast.error("Please enter your password!");
+      setDisable(false);
+      return;
+    } else if (!passwordPattern.test(user.password)) {
+      toast.error(
+        "Password must be at least 8 characters long and contain at least one letter and one number!"
+      );
       setDisable(false);
       return;
     } else if (user.password !== user.confirmPassword) {
@@ -42,7 +60,10 @@ function SignUp() {
     }
 
     try {
-      const status = await axios.post(`${process.env.REACT_APP_API}api/register`, { user });
+      const status = await axios.post(
+        `${process.env.REACT_APP_API}api/register`,
+        { user }
+      );
       if (status.status === 200) {
         toast.success("Signed Up Successfully!");
         console.log(status);
@@ -130,9 +151,9 @@ function SignUp() {
         >
           Sign Up
         </Button>
-          <Form.Text className="text-muted">
-            We'll never share your details with anyone else.
-          </Form.Text>
+        <Form.Text className="text-muted">
+          We'll never share your details with anyone else.
+        </Form.Text>
       </Form>
     </div>
   );
