@@ -1,41 +1,45 @@
-import React,{useState} from "react";
+import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import "../index.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import AuthenticationContext from "../context/AuthenticationContext";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [disable, setDisable] = useState(false);
+  const { login, setLogin } = useContext(AuthenticationContext);
+  const navigate=useNavigate();
   const loginUser = async (event) => {
     event.preventDefault();
     setDisable(true);
-    if(!user.email)
-      {
-        toast.error("Please enter your email!");
-        setDisable(false);
-        return;
-      }
-    else if(!user.password)
-      {
-        toast.error("Please enter your password!");
-        setDisable(false);
-        return;
-      }
-      try{
-        const status=await axios.post(`${process.env.REACT_APP_API}api/login`,{user});
-        if(status.status===200)
-          {
-            toast.success("Logged In Successfully!");
-            console.log(status);
-          }
-      }
-      catch(error){
-        toast.error(error.response.data.message);
-        console.log(error);
-      }
+    if (!user.email) {
+      toast.error("Please enter your email!");
       setDisable(false);
+      return;
+    } else if (!user.password) {
+      toast.error("Please enter your password!");
+      setDisable(false);
+      return;
+    }
+    try {
+      const status = await axios.post(`${process.env.REACT_APP_API}api/login`, 
+        user,
+      );
+      if (status.status === 200) {
+        toast.success("Logged In Successfully!");
+        // console.log(status.data.token);
+        localStorage.setItem("token", status.data.token);
+        setLogin(true);
+        navigate("/me");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    }
+    setDisable(false);
   };
   return (
     <div className="Login">

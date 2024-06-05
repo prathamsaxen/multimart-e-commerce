@@ -18,7 +18,7 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const User = lazy(() => import("./pages/User"));
 
 function App() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
 
   return (
     <AuthenticationContext.Provider value={{login,setLogin}}>
