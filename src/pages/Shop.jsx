@@ -1,33 +1,30 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect, Fragment } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import FilterSelect from "../components/FilterSelect";
 import SearchBar from "../components/SeachBar/SearchBar";
-import { Fragment } from "react";
+// import { Fragment } from "react";
 // import { products } from "../utils/products";
 import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
-import axios from "axios";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  const getProducts=async()=>{
-    try{
-      const status=await axios.get(`${process.env.REACT_APP_API}api/getItem`);
-      if(status.status===200)
-        {
-          // console.log(status);
-          setProducts(status.data)
-        }
-    }
-    catch(err)
-    {
+  const getProducts = async () => {
+    try {
+      const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
+      if (status.status === 200) {
+        // console.log(status);
+        setProducts(status.data);
+      }
+    } catch (err) {
       console.log(err);
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getProducts();
-  },[])
+  }, []);
   useWindowScrollToTop();
 
   return (
