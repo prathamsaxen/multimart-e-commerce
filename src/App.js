@@ -3,7 +3,8 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
 // import Login from "./pages/Login";/
 // import SignUp from "./pages/SignUp";
-import { Fragment, lazy, Suspense, useState } from "react";
+import axios from "axios";
+import { Fragment, lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,7 +20,25 @@ const User = lazy(() => import("./pages/User"));
 
 function App() {
   const [login, setLogin] = useState(false);
-
+  const fetchUserByToken = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(`${process.env.REACT_APP_API}`, options);
+      if (response.status === 200) {
+        console.log(response.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(()=>{
+    fetchUserByToken();
+  },[]);
   return (
     <AuthenticationContext.Provider value={{login,setLogin}}>
     <Suspense fallback={<Loader />}>
