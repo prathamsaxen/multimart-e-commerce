@@ -3,7 +3,7 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
 // import Login from "./pages/Login";/
 // import SignUp from "./pages/SignUp";
-import { Fragment, lazy, Suspense } from "react";
+import { Fragment, lazy, Suspense, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,7 +32,7 @@ function App() {
           pauseOnHover
           theme="light"
         />
-        <NavBar />
+        <NavBar login={login}/>
         <Routes>
           {login ? (
             <Fragment>

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-const NavBar = () => {
+const NavBar = ({login}) => {
   const { cartList } = useSelector((state) => state.cart);
   const [expand, setExpand] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -113,7 +113,7 @@ const NavBar = () => {
               <Link
                 aria-label="Go to Cart Page"
                 className="navbar-link"
-                to="/login"
+                to={login?"/me":"login"}
                 onClick={() => setExpand(false)}
               >
                 <svg
