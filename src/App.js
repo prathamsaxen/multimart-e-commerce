@@ -1,8 +1,8 @@
 import Loader from "./components/Loader/Loader";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+// import Login from "./pages/Login";/
+// import SignUp from "./pages/SignUp";
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -12,6 +12,9 @@ const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Product = lazy(() => import("./pages/Product"));
+const Login = lazy(() => import("./pages/Login"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+
 function App() {
   return (
     <Suspense fallback={<Loader />}>
