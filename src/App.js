@@ -28,7 +28,7 @@ function App() {
           authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.get(`${process.env.REACT_APP_API}`, options);
+      const response = await axios.get(`${process.env.REACT_APP_API}api/authUser`, options);
       if (response.status === 200) {
         console.log(response.data);
       }
