@@ -246,7 +246,7 @@ button.delete ion-icon {
   }
 }
 
-.Login{
+.Login, .SignUp{
   /* border: 2px solid red; */
   display: flex;
   justify-content: center;
@@ -254,7 +254,7 @@ button.delete ion-icon {
   padding: 100px;
 }
 
-.Login form{
+.Login form,.SignUp form{
   border: .5px solid gray;
   padding: 40px;
   border-radius: 6px;

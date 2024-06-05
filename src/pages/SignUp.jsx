@@ -1,0 +1,141 @@
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { toast } from "react-toastify";
+import "../index.css";
+import axios from "axios";
+
+function SignUp() {
+  const [user, setUser] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+  const [disable, setDisable] = useState(false);
+
+  const signUpUser = async (event) => {
+    event.preventDefault();
+    setDisable(true);
+
+    if (!user.name) {
+      toast.error("Please enter your name!");
+      setDisable(false);
+      return;
+    } else if (!user.phone) {
+      toast.error("Please enter your phone number!");
+      setDisable(false);
+      return;
+    } else if (!user.email) {
+      toast.error("Please enter your email!");
+      setDisable(false);
+      return;
+    } else if (!user.password) {
+      toast.error("Please enter your password!");
+      setDisable(false);
+      return;
+    } else if (user.password !== user.confirmPassword) {
+      toast.error("Passwords do not match!");
+      setDisable(false);
+      return;
+    }
+
+    try {
+      const status = await axios.post(`${process.env.REACT_APP_API}api/signup`, { user });
+      if (status.status === 200) {
+        toast.success("Signed Up Successfully!");
+        console.log(status);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    }
+    setDisable(false);
+  };
+
+  return (
+    <div className="SignUp">
+      <Form className="form-signup" onSubmit={signUpUser}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your name"
+            value={user.name}
+            disabled={disable}
+            onChange={(e) => {
+              setUser({ ...user, name: e.target.value });
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPhone">
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your phone number"
+            value={user.phone}
+            disabled={disable}
+            onChange={(e) => {
+              setUser({ ...user, phone: e.target.value });
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={user.email}
+            disabled={disable}
+            onChange={(e) => {
+              setUser({ ...user, email: e.target.value });
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={user.password}
+            disabled={disable}
+            onChange={(e) => {
+              setUser({ ...user, password: e.target.value });
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Confirm Password"
+            value={user.confirmPassword}
+            disabled={disable}
+            onChange={(e) => {
+              setUser({ ...user, confirmPassword: e.target.value });
+            }}
+          />
+        </Form.Group>
+
+        <Button
+          variant="primary"
+          type="submit"
+          className="m-auto d-block mt-5 w-100"
+          disabled={disable}
+        >
+          Sign Up
+        </Button>
+          <Form.Text className="text-muted">
+            We'll never share your details with anyone else.
+          </Form.Text>
+      </Form>
+    </div>
+  );
+}
+
+export default SignUp;
