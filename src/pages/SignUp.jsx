@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 import axios from "axios";
 
@@ -14,6 +15,7 @@ function SignUp() {
     confirmPassword: "",
   });
   const [disable, setDisable] = useState(false);
+  const navigate=useNavigate();
 
   const signUpUser = async (event) => {
     event.preventDefault();
@@ -66,6 +68,7 @@ function SignUp() {
       );
       if (status.status === 200) {
         toast.success("Signed Up Successfully!");
+        navigate("/login");
         console.log(status);
       }
     } catch (error) {
