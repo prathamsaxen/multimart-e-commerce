@@ -1,6 +1,8 @@
 import React from "react"
 import "./style.css"
 import { Col, Container, Row } from "react-bootstrap"
+import { NavLink } from "react-router-dom"
+import { quickMenu,Policies,SocialMediaIcons } from "../../Configuration/Footer"
 
 const Footer = () => {
   return (
@@ -10,28 +12,29 @@ const Footer = () => {
             <Col md={3} sm={5} className='box'>
               <div className="logo">
                   <ion-icon name="bag"></ion-icon>
-                  <h1>Multimart</h1>
+                  <h1>Kraft Vision</h1>
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at amet.</p>
             </Col>
             <Col md={3} sm={5} className='box'>
-              <h2>About Us</h2>
+              <h2>Quick Menu</h2>
               <ul>
-                <li>Careers</li>
-                <li>Our Stores</li>
-                <li>Our Cares</li>
-                <li>Terms & Conditions</li>
-                <li>Privacy Policy</li>
+                {
+                  quickMenu.map((item,index)=>{
+                    return <li key={index}>
+                      <NavLink to={item.path}>{item.title}</NavLink>
+                    </li>
+                  })
+                }
               </ul>
             </Col>
             <Col md={3} sm={5} className='box'>
-              <h2>Customer Care</h2>
+              <h2>Policies</h2>
               <ul>
-                <li>Help Center </li>
-                <li>How to Buy </li>
-                <li>Track Your Order </li>
-                <li>Corporate & Bulk Purchasing </li>
-                <li>Returns & Refunds </li>
+                <li>Privacy Policy </li>
+                <li>Contact Information </li>
+                <li>Refund Policy </li>
+                <li>Shipping Policy</li>
               </ul>
             </Col>
             <Col md={3} sm={5} className='box'>

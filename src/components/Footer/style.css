@@ -48,3 +48,7 @@ footer li {
   margin-bottom: 10px;
   opacity: 0.5;
 }
+footer li a{
+  text-decoration: none;
+  color: white;
+}
