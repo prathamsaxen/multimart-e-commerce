@@ -38,21 +38,21 @@ const Policies=[
 
 const SocialMediaIcons=[
     {
+        title:"Twitter",
+        path:"https://twitter.com/pratham__saxena"
+    },
+    {
         title:"LinkedIn",
-        path:"/privacy-policy"
+        path:"https://www.linkedin.com/in/prathamsaxena/"
     },
     {
         title:"Instagram",
-        path:"/refund-policy"
+        path:"https://www.instagram.com/prathamsaxen/"
     },
     {
         title:"Facebook",
-        path:"/shipping-policy"
+        path:"https://www.facebook.com/er.prathamsaxena"
     },
-    {
-        title:"Twitter",
-        path:"/terms-of-service"
-    }
 ]
 
 // export default quickMenu;
