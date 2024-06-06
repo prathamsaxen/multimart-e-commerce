@@ -6,6 +6,7 @@ import {
   quickMenu,
   Policies,
   SocialMediaIcons,
+  paragraphaboutcompany
 } from "../../Configuration/Footer";
 
 const Footer = () => {
@@ -19,9 +20,7 @@ const Footer = () => {
               <h1>Kraft Vision</h1>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-              libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
-              et lectus vel ut sollicitudin elit at amet.
+              {paragraphaboutcompany}
             </p>
           </Col>
           <Col md={3} sm={5} className="box">
