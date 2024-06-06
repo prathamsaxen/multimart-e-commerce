@@ -1,7 +1,7 @@
 import React from "react"
 import "./style.css"
 import { Col, Container, Row } from "react-bootstrap"
-import { serviceData } from "../../utils/products"
+import { serviceData } from "../../Configuration/Home"
 
 const Wrapper = () => {
   return (
