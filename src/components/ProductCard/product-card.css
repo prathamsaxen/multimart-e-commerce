@@ -36,6 +36,13 @@
 .product-details h3{
     /* border: 2px solid red;/ */
     text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: 100%; /* Set the width of the container */
+    /* border: 1px solid #ccc; */
+    padding: 2px;
 }
 
 .product .rate i {
