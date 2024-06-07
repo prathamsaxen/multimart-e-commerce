@@ -32,7 +32,7 @@ const Policies = [
   },
   {
     title: "Terms of Service",
-    path: "/terms-of-service",
+    path: "/terms-of-services",
   },
 ];
 
