@@ -1,8 +1,6 @@
 import Loader from "./components/Loader/Loader";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
-// import Login from "./pages/Login";/
-// import SignUp from "./pages/SignUp";
 import axios from "axios";
 import { Fragment, lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
