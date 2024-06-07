@@ -24,7 +24,7 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#fdefe6" }}
+              style={{ backgroundColor: "#fdefe6",cursor: "pointer" }}
               className="feature"
             >
               <div className="icon">
@@ -41,7 +41,7 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#ceebe9" }}
+              style={{ backgroundColor: "#ceebe9" , cursor: "pointer" }}
               className="feature"
             >
               <div className="icon">
@@ -60,7 +60,7 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#e2f2b2" }}
+              style={{ backgroundColor: "#e2f2b2" , cursor: "pointer" }}
               className="feature"
             >
               <div className="icon">
@@ -77,7 +77,7 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#d6e5fb" }}
+              style={{ backgroundColor: "#d6e5fb", cursor: "pointer" }}
               className="feature"
             >
               <div className="icon">
