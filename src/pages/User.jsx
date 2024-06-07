@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { Container, Row, Col } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import { serviceData } from "../Configuration/Home";
@@ -26,6 +27,7 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#fdefe6",cursor: "pointer" }}
               className="feature"
+              onClick={()=>navigate("/me/orders")}
             >
               <div className="icon">
                 <ion-icon name="cart"></ion-icon>
@@ -43,6 +45,8 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#ceebe9" , cursor: "pointer" }}
               className="feature"
+              onClick={()=>navigate("/me/account")}
+
             >
               <div className="icon">
                 <ion-icon name="log-in"></ion-icon>
@@ -62,6 +66,8 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#e2f2b2" , cursor: "pointer" }}
               className="feature"
+              onClick={()=>navigate("/me/addresses")}
+
             >
               <div className="icon">
                 <ion-icon name="location-outline"></ion-icon>
@@ -79,6 +85,7 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#d6e5fb", cursor: "pointer" }}
               className="feature"
+              onClick={()=>navigate("/contact-us")}
             >
               <div className="icon">
                 <ion-icon name="call-outline"></ion-icon>
