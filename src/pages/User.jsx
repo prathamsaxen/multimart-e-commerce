@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { Container, Row, Col } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // import { serviceData } from "../Configuration/Home";
 import { useNavigate } from "react-router-dom";
 function User() {
@@ -24,7 +26,6 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#fdefe6" }}
               className="feature"
-              // style={{maxWidth:"1200px"}}
             >
               <div className="icon">
                 <ion-icon name="cart"></ion-icon>
@@ -91,6 +92,7 @@ function User() {
             </Col>
           </Row>
         </Container>
+        <button onClick={logoutUser}>Logout!</button>
       </section>
     </div>
   );

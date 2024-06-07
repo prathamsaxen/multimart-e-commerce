@@ -265,4 +265,15 @@ button.delete ion-icon {
   padding-right: 40px;
   background: #103464;
   border: none;
+} 
+.wrapper button{
+  /* border: 2px solid red; */
+  margin-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 12px;
+  padding-bottom: 15px;
+  border-radius: 4px;
+  background-color: #0f3460;
+  color: white;
 }
