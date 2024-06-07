@@ -17,6 +17,10 @@ const Product = lazy(() => import("./pages/Product"));
 const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const User = lazy(() => import("./pages/User"));
+const Orders = lazy(() => import("./pages/Orders"));
+const Account = lazy(() => import("./pages/Account"));
+const Addresses = lazy(() => import("./pages/Addresses"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -64,6 +68,10 @@ function App() {
               <Route path="/shop/:id" element={<Product />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/me" element={<User />} />
+              <Route path="/me/orders" element={<Orders />} />
+              <Route path="/me/account" element={<Account />} />
+              <Route path="/me/addresses" element={<Addresses />} />
+              <Route path="/contact-us" element={<Contact />} />
             </Fragment>
           ) : (
             <Fragment>
@@ -73,6 +81,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/contact-us" element={<Contact />} />
             </Fragment>
           )}
         </Routes>
