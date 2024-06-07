@@ -13,7 +13,7 @@ const quickMenu = [
   },
   {
     title: "Contact Us",
-    path: "/contact",
+    path: "/contact-us",
   },
 ];
 
