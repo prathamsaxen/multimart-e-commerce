@@ -103,7 +103,7 @@ button {
 
 .cart-items {
   background: #f6f9fc;
-  height: auto;
+  min-height: 60vh;
 }
 
 .cart-items .cart-total {
@@ -276,4 +276,14 @@ button.delete ion-icon {
   border-radius: 4px;
   background-color: #0f3460;
   color: white;
+}
+
+.Error404{
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.Error404 h2{
+  font-size: 10rem;
 }
