@@ -32,7 +32,8 @@ function Login() {
         toast.success("Logged In Successfully!");
         // console.log(status.data.token);
         localStorage.setItem("token", status.data.token);
-        setLogin(true);
+        // setLogin(true);
+        setLogin(status.data);
         navigate("/me");
       }
     } catch (error) {

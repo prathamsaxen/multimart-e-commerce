@@ -28,8 +28,10 @@ const Error404= lazy(() => import("./pages/Error404"));
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [loading,setLoading]=useState(true);
   const fetchUserByToken = async () => {
-    try {
+    setLoading(true);
+    try { 
       const token = localStorage.getItem("token");
       const options = {
         headers: {
@@ -47,12 +49,17 @@ function App() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
   useEffect(() => {
     fetchUserByToken();
   }, []);
   return (
-    <AuthenticationContext.Provider value={{ login, setLogin }}>
+    <Fragment>
+    {
+      loading?
+      <Loader/>
+      :<AuthenticationContext.Provider value={{ login, setLogin }}>
       <Suspense fallback={<Loader />}>
         <Router>
           <ToastContainer
@@ -108,6 +115,8 @@ function App() {
         </Router>
       </Suspense>
     </AuthenticationContext.Provider>
+    }
+    </Fragment>
   );
 }
 
