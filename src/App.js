@@ -1,7 +1,7 @@
 import Loader from "./components/Loader/Loader";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Fragment, lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
