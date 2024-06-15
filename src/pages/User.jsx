@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { Container, Row, Col } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../components/wrapper/wrapper.css";
+
 
 // import { serviceData } from "../Configuration/Home";
 import { useNavigate } from "react-router-dom";

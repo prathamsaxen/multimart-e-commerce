@@ -1,5 +1,5 @@
 import React from "react"
-import "./style.css"
+import "./wrapper.css"
 import { Col, Container, Row } from "react-bootstrap"
 import { serviceData } from "../../Configuration/Home"
 
