@@ -308,3 +308,310 @@ button.delete ion-icon {
   color: white;
   border-radius: 6px;
 }
+
+/* address css starting */
+.Addresses {
+  margin: auto;
+  padding: auto;
+  h2{
+    text-align: center;
+    padding: 20px;
+  }
+  .allCards{
+    padding: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .addressCard{
+    padding: 10px;
+    height: 250px;
+    width: 350px;
+    border: 2px solid rgba(0, 0, 0, 0.308);
+    border-radius: 10px;
+  }
+  .addressButton{
+    display: flex;
+    gap: 10px;
+  }
+  button{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f3460;
+    color: white;
+    width: 100px;
+    border-radius: 10px;
+  }
+  .formCard{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .addressFormButton{
+    width: 30%;
+    padding: 10px;
+  }
+  form{
+    padding: 10px;
+  }
+  .addAddressCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 250px;
+    width: 350px;
+    border: 2px solid rgba(0, 0, 0, 0.308);
+    border-radius: 10px;
+    border-style: dashed;
+  }
+  @media (max-width: 820px) {
+    .addressCard{
+      padding: 5px;
+    }
+    .allCards{
+      padding: 50px;
+    }
+  }
+  @media (max-width: 768px) {
+    .allCards{
+      flex-direction: column;
+    }
+    .addressFormButton{
+      width: 60%;
+    }
+    .formCard{
+      width: 70%;
+    }
+  }
+  @media (max-width: 425px) {
+    .addAddressCard{
+      width: 250px;
+    }
+    .addressCard{
+      width: 250px;
+      height: 300px;
+    }
+    .addressFormButton{
+      width: 70%;
+    }
+    .formCard{
+      width: 90%;
+    }
+  }
+}
+
+.Account{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2{
+    text-align: center;
+  }
+  .detailsForm{
+    width: 60%;
+  }
+  form{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .detailsFormButton{
+    width: 30%;
+    background-color: #0f3460;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    .detailsForm{
+      width: 80%;
+    }
+    .detailsFormButton{
+      width: 50%;
+    }
+    form{
+      padding: 20px;
+    }
+  }
+  @media (max-width: 425px) {
+    .detailsForm{
+      width: 90%;
+    }
+    .detailsFormButton{
+      width: 50%;
+    }
+    form{
+      padding: 5px;
+    }
+  }
+}
+
+.Orders{
+  h2{
+    text-align: center;
+    padding: 20px;
+  }
+  .allOrderCards{
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+  }
+  .orderCard{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .upper{
+    display: flex;
+    gap: -30px;
+    background-color: #F0F2F2;
+    border-radius: 10px;
+    .left{
+      display: flex;
+      width: 70%;
+      padding: 10px;
+    }
+    .first{
+      width: 25%;
+    }
+    .second{
+      width: 20%;
+    }
+    .third{
+      width: 65%;
+    }
+    .right{
+      width: 30%;
+    }
+    .order{
+      color: #103464;
+      display: flex;
+      gap: 30px;
+    }
+  }
+  
+  .bottom{
+    display: flex;
+    padding: 20px;
+  }
+  .left{
+    width: 70%;
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    width: 30%;
+    button{
+      padding:5px;
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: white;
+    }
+    .package{
+      background-color: #F7CA00;
+    }
+  }
+  .orderImage{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    img{
+      width: 110px;
+    }
+  }
+}
+
+.privacy{
+  .heading{
+    font-weight: 700;
+    font-size: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  ul li{
+    list-style-type: circle;
+  }
+  .yellow{
+    color: #008000;
+    background-color: #fff2a8;
+    font-weight: bold;
+  }
+}
+
+.refund{
+  .heading{
+    font-weight: 700;
+    font-size: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  ul li{
+    list-style-type: circle;
+  }
+}
+.heading{
+  font-weight: 700;
+  font-size: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Contact{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2{
+    text-align: center;
+  }
+  .contactForm{
+    width: 50%;
+    padding: 10px;
+  }
+  .contactButton{
+    width: 30%;
+    background-color: #0f3460;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+  }
+  form{
+    padding: 20px;
+  }
+  @media (max-width: 768px) {
+    .contactForm{
+      width: 80%;
+    }
+    .contactButton{
+      width: 50%;
+    }
+    form{
+      padding: 20px;
+    }
+  }
+  @media (max-width: 425px) {
+    .contactForm{
+      width: 90%;
+    }
+    .contactButton{
+      width: 50%;
+    }
+    form{
+      padding: 5px;
+    }
+  }
+}
