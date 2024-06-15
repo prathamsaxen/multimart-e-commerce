@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import AuthenticationContext from "../context/AuthenticationContext";
 
 function Account() {
+  const [edit, setEdit] = useState(true);
+  const { login } = useContext(AuthenticationContext);
+  // console.log(login);
+  const [data, setData] = useState({ name: login.name, email: login.email, phoneNumber: login.phoneNumber });
   return (
     <div className="container Account">
       <h2 className="py-4">Login & Security</h2>
@@ -15,6 +20,8 @@ function Account() {
               class="form-control"
               id="validationCustom01"
               required
+              disabled={edit}
+              value={data.name}
             />
             <div class="valid-feedback">Looks good!</div>
           </div>
@@ -32,6 +39,8 @@ function Account() {
                 id="validationCustomUsername"
                 aria-describedby="inputGroupPrepend"
                 required
+                disabled={edit}
+                value={data.phoneNumber}
               />
               <div class="invalid-feedback">Please choose a mobile Number</div>
             </div>
@@ -45,6 +54,8 @@ function Account() {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="name@gmail.com"
+              disabled={edit}
+              value={data.email}
             />
           </div>
           <div class="col-12">
