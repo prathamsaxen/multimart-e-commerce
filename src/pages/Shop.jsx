@@ -15,7 +15,7 @@ const Shop = () => {
       if (status.status === 200) {
         // console.log(status);
         setProducts(status.data);
-        setFilteredProducts(products);
+        setFilteredProducts(status.data);
       }
     } catch (err) {
       console.log(err);
