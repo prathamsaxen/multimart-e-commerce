@@ -11,6 +11,7 @@ const ProductCard = ({ title, productItem }) => {
   const handelClick = () => {
     router(`/shop/${productItem._id}`);
   };
+  // console.log(productItem);
   const handelAdd = (productItem) => {
     dispatch(addToCart({ product: productItem, num: 1 }));
     toast.success("Product has been added to cart!");

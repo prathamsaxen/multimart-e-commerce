@@ -17,11 +17,11 @@ export const cartSlice = createSlice({
       const productToAdd = action.payload.product;
       const quantity = action.payload.num;
       const productExit = state.cartList.find(
-        (item) => item.id === productToAdd.id
+        (item) => item._id === productToAdd._id
       );
       if (productExit) {
         state.cartList = state.cartList.map((item) =>
-          item.id === action.payload.product.id
+          item._id === action.payload.product._id
             ? { ...productExit, qty: productExit.qty + action.payload.num }
             : item
         );
@@ -32,15 +32,15 @@ export const cartSlice = createSlice({
     decreaseQty: (state, action) => {
       const productTodecreaseQnty = action.payload;
       const productExit = state.cartList.find(
-        (item) => item.id === productTodecreaseQnty.id
+        (item) => item._id === productTodecreaseQnty._id
       );
       if (productExit.qty === 1) {
         state.cartList = state.cartList.filter(
-          (item) => item.id !== productExit.id
+          (item) => item._id !== productExit._id
         );
       } else {
         state.cartList = state.cartList.map((item) =>
-          item.id === productExit.id
+          item._id === productExit._id
             ? { ...productExit, qty: productExit.qty - 1 }
             : item
         );
@@ -49,7 +49,7 @@ export const cartSlice = createSlice({
     deleteProduct: (state, action) => {
       const productToDelete = action.payload;
       state.cartList = state.cartList.filter(
-        (item) => item.id !== productToDelete.id
+        (item) => item._id !== productToDelete._id
       );
     },
   },
