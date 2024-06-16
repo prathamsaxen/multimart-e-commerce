@@ -78,7 +78,7 @@ function App() {
               <Fragment>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/shop/:id" element={<Product />} />
+                <Route path="/shop/:name/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/me" element={<User />} />
                 <Route path="/me/orders" element={<Orders />} />

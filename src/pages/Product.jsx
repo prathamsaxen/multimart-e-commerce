@@ -10,7 +10,7 @@ import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import axios from "axios";
 
 const Product = () => {
-  const { id } = useParams();
+  const { name,id } = useParams();
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const [allproducts, setAllProducts] = useState([]);
@@ -28,6 +28,7 @@ const Product = () => {
       console.log(err);
     }
   };
+  // console.log(name,id);
   const fetchAllProducts = async () => {
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);

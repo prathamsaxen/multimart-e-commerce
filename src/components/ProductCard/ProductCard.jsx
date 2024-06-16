@@ -9,7 +9,7 @@ const ProductCard = ({ title, productItem }) => {
   const dispatch = useDispatch();
   const router = useNavigate();
   const handelClick = () => {
-    router(`/shop/${productItem._id}`);
+    router(`/shop/${productItem.name.replace(/\s+/g, '-')}/${productItem._id}`);
   };
   // console.log(productItem);
   const handelAdd = (productItem) => {
