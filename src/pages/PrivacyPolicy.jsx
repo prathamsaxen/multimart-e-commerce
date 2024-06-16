@@ -39,7 +39,7 @@ function PrivacyPolicy() {
         Last updated: <span>[Date]</span>
       </p>
       <p>
-        This Privacy Policy describes how Kraft Vision (the "
+        This Privacy Policy describes how Metallo (the "
         <strong>Site</strong>", "<strong>we</strong>", "<strong>us</strong>", or
         "<strong>our</strong>") collects, uses, and discloses your personal
         information when you visit, use our services, or make a purchase from

@@ -6,14 +6,14 @@ function ForgetPasswordModal({show,handleClose}) {
   return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Forget Password?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Modal body text goes here.</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant="primary">
             Save changes

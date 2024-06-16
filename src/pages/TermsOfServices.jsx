@@ -6,8 +6,8 @@ function TermsOfServices() {
       <h2 className="heading">Terms of Services</h2>
       <strong>OVERVIEW</strong>
       <p>
-        This website is operated by Kraft Vision. Throughout the site, the terms
-        “we”, “us” and “our” refer to Kraft Vision. Kraft Vision offers this
+        This website is operated by Metallo. Throughout the site, the terms
+        “we”, “us” and “our” refer to Metallo. Metallo offers this
         website, including all information, tools and Services available from
         this site to you, the user, conditioned upon your acceptance of all
         terms, conditions, policies and notices stated here.
@@ -303,7 +303,7 @@ function TermsOfServices() {
         durability, title, and non-infringement.
       </p>
       <p>
-        In no case shall Kraft Vision, our directors, officers, employees,
+        In no case shall Metallo, our directors, officers, employees,
         affiliates, agents, contractors, interns, suppliers, Service providers
         or licensors be liable for any injury, loss, claim, or any direct,
         indirect, incidental, punitive, special, or consequential damages of any
@@ -323,7 +323,7 @@ function TermsOfServices() {
         permitted by law.
       </p>
       <strong>SECTION 14 - INDEMNIFICATION</strong>
-      <p>You agree to indemnify, defend and hold harmless Kraft Vision and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, Service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys’ fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.</p>
+      <p>You agree to indemnify, defend and hold harmless Metallo and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, Service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys’ fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.</p>
       <strong>SECTION 15 - SEVERABILITY</strong>
       <p>In the event that any provision of these Terms of Service is determined to be unlawful, void or unenforceable, such provision shall nonetheless be enforceable to the fullest extent permitted by applicable law, and the unenforceable portion shall be deemed to be severed from these Terms of Service, such determination shall not affect the validity and enforceability of any other remaining provisions.</p>
       <strong>SECTION 16 - TERMINATION</strong>

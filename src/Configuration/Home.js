@@ -2,7 +2,7 @@ export const serviceData = [
     {
       icon: <ion-icon name="car"></ion-icon>,
       title: "Free Shipping",
-      subtitle: "Kraft Vision offers free delivery on all products, ensuring the safety and security of each item.",
+      subtitle: "Metallo offers free delivery on all products, ensuring the safety and security of each item.",
       bg: "#fdefe6",
     },
     {
@@ -14,7 +14,7 @@ export const serviceData = [
     {
       icon: <ion-icon name="trophy"></ion-icon>,
       title: "High Quality",
-      subtitle: "Kraft Vision provides high-quality products to our clients; we never compromise on quality.",
+      subtitle: "Metallo provides high-quality products to our clients; we never compromise on quality.",
       bg: "#e2f2b2",
     },
     {

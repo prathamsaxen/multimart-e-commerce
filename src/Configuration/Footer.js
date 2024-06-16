@@ -56,6 +56,6 @@ const SocialMediaIcons = [
 ];
 
 const paragraphaboutcompany =
-  "Kraft Vision offers a direct-to-doorstep delivery service for home decor items, ensuring that customers receive their purchases without the involvement of any intermediaries.";
+  "Metallo offers a direct-to-doorstep delivery service for home decor items, ensuring that customers receive their purchases without the involvement of any intermediaries.";
   
 export { Policies, quickMenu, SocialMediaIcons,paragraphaboutcompany };
