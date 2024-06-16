@@ -39,9 +39,9 @@ const Shop = () => {
         <section className="filter-bar">
           <Container className="filter-bar-contianer">
             <Row className="justify-content-center">
-              <Col md={4}>
-                {/* <FilterSelect setFilterList={products} /> */}
-              </Col>
+              {/* <Col md={4}>
+                <FilterSelect setFilterList={products} />
+              </Col> */}
               <Col md={8}>
                 <SearchBar
                   setProducts={setFilteredProducts}
