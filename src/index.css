@@ -266,6 +266,12 @@ button.delete ion-icon {
   background: #103464;
   border: none;
 } 
+.forget-password-text:hover
+{
+  text-decoration: underline !important;
+  cursor: pointer;
+  color: #103464 !important;
+}
 .wrapper button{
   /* border: 2px solid red; */
   margin-top: 20px;

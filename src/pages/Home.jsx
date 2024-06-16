@@ -1,7 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import Wrapper from "../components/wrapper/Wrapper";
 import Section from "../components/Section";
-// import { products, discoutProducts } from "../utils/products";
 import axios from "axios";
 import SliderHome from "../components/Slider";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
@@ -21,10 +20,6 @@ const Home = () => {
   useEffect(() => {
     getProducts();
   }, []);
-  // const newArrivalData = products.filter(
-  // (item) => item.category === "mobile" || item.category === "wireless"
-  // );
-  // const bestSales = products.filter((item) => item.category === "sofa");
   useWindowScrollToTop();
   return (
     <Fragment>

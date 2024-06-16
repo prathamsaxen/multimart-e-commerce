@@ -6,10 +6,12 @@ import "../index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthenticationContext from "../context/AuthenticationContext";
+import CenteredModalExample from "../components/ForgetPassword/ForgetPasswordModal";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [disable, setDisable] = useState(false);
+  const [show,setShow]=useState(false);
   const { login, setLogin } = useContext(AuthenticationContext);
   const navigate=useNavigate();
   const loginUser = async (event) => {
@@ -30,9 +32,7 @@ function Login() {
       );
       if (status.status === 200) {
         toast.success("Logged In Successfully!");
-        // console.log(status.data.token);
         localStorage.setItem("token", status.data.token);
-        // setLogin(true);
         setLogin(status.data);
         navigate("/me");
       }
@@ -42,8 +42,12 @@ function Login() {
     }
     setDisable(false);
   };
+  const handleOpen=()=>{setShow(true)}
+  const handleClose=()=>{setShow(false)}
+
   return (
     <div className="Login">
+      <CenteredModalExample show={show} handleClose={handleClose}/>
       <Form className="form-login" onSubmit={loginUser}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -61,7 +65,7 @@ function Login() {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-1" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -72,11 +76,14 @@ function Login() {
               setUser({ ...user, password: e.target.value });
             }}
           />
+          <Form.Text className="text-muted forget-password-text" onClick={handleOpen}>
+            Forget your password?
+          </Form.Text>
         </Form.Group>
         <Button
           variant="primary"
           type="submit"
-          className="m-auto d-block mt-5 w-100"
+          className="m-auto d-block mt-4 w-100"
           disabled={disable}
         >
           Login
