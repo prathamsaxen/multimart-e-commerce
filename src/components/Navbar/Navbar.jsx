@@ -9,15 +9,15 @@ const NavBar = () => {
   const [expand, setExpand] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   // fixed Header
-  // function scrollHandler() {
-  //   if (window.scrollY >= 100) {
-  //     setIsFixed(true);
-  //   } else if (window.scrollY <= 50) {
-  //     setIsFixed(false);
-  //   }
-  // }
+  function scrollHandler() {
+    if (window.scrollY >= 100) {
+      setIsFixed(true);
+    } else if (window.scrollY <= 50) {
+      setIsFixed(false);
+    }
+  }
   const {login}=useContext(AuthenticationContext);
-  // window.addEventListener("scroll", scrollHandler);
+  window.addEventListener("scroll", scrollHandler);
   // useEffect(()=> {
   //   if(CartItem.length ===0) {
   //     const storedCart = localStorage.getItem("cartItem");

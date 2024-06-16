@@ -7,13 +7,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CenteredModalExample from "../components/ForgetPassword/ForgetPasswordModal";
+import { useLocation } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [disable, setDisable] = useState(false);
-  const [show,setShow]=useState(false);
+  const [show, setShow] = useState(false);
   const { login, setLogin } = useContext(AuthenticationContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  const query = useQuery();
+  const paramValue = query.get("callbackurl");
   const loginUser = async (event) => {
     event.preventDefault();
     setDisable(true);
@@ -27,14 +33,19 @@ function Login() {
       return;
     }
     try {
-      const status = await axios.post(`${process.env.REACT_APP_API}api/login`, 
-        user,
+      const status = await axios.post(
+        `${process.env.REACT_APP_API}api/login`,
+        user
       );
       if (status.status === 200) {
         toast.success("Logged In Successfully!");
         localStorage.setItem("token", status.data.token);
         setLogin(status.data);
-        navigate("/me");
+        if (paramValue) {
+          navigate(`/${paramValue}`);
+        } else {
+          navigate("/me");
+        }
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -42,12 +53,16 @@ function Login() {
     }
     setDisable(false);
   };
-  const handleOpen=()=>{setShow(true)}
-  const handleClose=()=>{setShow(false)}
+  const handleOpen = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
 
   return (
     <div className="Login">
-      <CenteredModalExample show={show} handleClose={handleClose}/>
+      <CenteredModalExample show={show} handleClose={handleClose} />
       <Form className="form-login" onSubmit={loginUser}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -76,7 +91,10 @@ function Login() {
               setUser({ ...user, password: e.target.value });
             }}
           />
-          <Form.Text className="text-muted forget-password-text" onClick={handleOpen}>
+          <Form.Text
+            className="text-muted forget-password-text"
+            onClick={handleOpen}
+          >
             Forget your password?
           </Form.Text>
         </Form.Group>
