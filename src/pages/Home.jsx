@@ -4,9 +4,11 @@ import Section from "../components/Section";
 import axios from "axios";
 import SliderHome from "../components/Slider";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+import Loader from "../components/Loader/Loader";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const getProducts = async () => {
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
@@ -23,11 +25,29 @@ const Home = () => {
   useWindowScrollToTop();
   return (
     <Fragment>
-      <SliderHome />
-      <Wrapper />
-      <Section title="Big Discount" bgColor="#f6f9fc" productItems={products} />
-      <Section title="New Arrivals" bgColor="white" productItems={products} />
-      <Section title="Best Sales" bgColor="#f6f9fc" productItems={products} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <SliderHome />
+          <Wrapper />
+          <Section
+            title="Big Discount"
+            bgColor="#f6f9fc"
+            productItems={products}
+          />
+          <Section
+            title="New Arrivals"
+            bgColor="white"
+            productItems={products}
+          />
+          <Section
+            title="Best Sales"
+            bgColor="#f6f9fc"
+            productItems={products}
+          />
+        </Fragment>
+      )}
     </Fragment>
   );
 };
