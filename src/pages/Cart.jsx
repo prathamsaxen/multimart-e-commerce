@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,11 +6,13 @@ import {
   decreaseQty,
   deleteProduct,
 } from "../app/features/cart/cartSlice";
+import AuthenticationContext from "../context/AuthenticationContext";
+import { NavLink } from "react-router-dom";
 
 const Cart = () => {
   const { cartList } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // middlware to localStorage
+  const {login}=useContext(AuthenticationContext);
   const totalPrice = cartList.reduce(
     (price, item) => price + item.qty * item.price,
     0
@@ -79,6 +81,7 @@ const Cart = () => {
                 <h4>Total Price :</h4>
                 <h3>${totalPrice}.00</h3>
               </div>
+              <NavLink to={login?"/checkout":"/login"} className="checkout-btn">Checkout</NavLink>
             </div>
           </Col>
         </Row>

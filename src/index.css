@@ -109,7 +109,7 @@ button {
 .cart-items .cart-total {
   background-color: white;
   padding: 20px;
-  height: 150px;
+  /* height: 150px; */
   margin-bottom: 30px;
 }
 
@@ -315,6 +315,17 @@ button.delete ion-icon {
   border-radius: 6px;
 }
 
+.checkout-btn{
+  /* border:2px solid red; */
+  padding: 10px 20px 10px 20px;
+  background-color: #0f3460;
+  color: white;
+  margin: auto;
+  /* width: 150px; */
+  width: max-content;
+  display: block;
+  border-radius: 6px;
+}
 /* address css starting */
 .Addresses {
   margin: auto;
