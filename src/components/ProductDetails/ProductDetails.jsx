@@ -26,7 +26,7 @@ const ProductDetails = ({data}) => {
             <h2>{data?.name}</h2>
             <div className="rate">
               <div className="stars">
-                {Array.from({ length: data.rating }).map((_, index) => (
+                {Array.from({ length: data?.rating }).map((_, index) => (
                   <i key={index} className="fa fa-star"></i>
                 ))}
               </div>
