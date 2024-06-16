@@ -3,44 +3,47 @@ import Banner from "../components/Banner/Banner";
 import { Container } from "react-bootstrap";
 import ShopList from "../components/ShopList";
 import { products } from "../utils/products";
+import Loader from "../components/Loader/Loader";
 import { useParams } from "react-router-dom";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import ProductReviews from "../components/ProductReviews/ProductReviews";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+import axios from "axios";
 
 const Product = () => {
   const { id } = useParams();
-  const [selectedProduct, setSelectedProduct] = useState(
-    products.filter((item) => parseInt(item.id) === parseInt(id))[0]
-  );
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setSelectedProduct(
-      products.filter((item) => parseInt(item.id) === parseInt(id))[0]
-    );
-    setRelatedProducts(
-      products.filter(
-        (item) =>
-          item.category === selectedProduct?.category &&
-          item.id !== selectedProduct?.id
-      )
-    );
-  }, [selectedProduct, id]);
-
+  const [loading, setLoading] = useState(false);
+  const [product, setProduct] = useState(null);
+  const fetchProductDetails = async () => {
+    try {
+      const status = await axios.get(
+        `${process.env.REACT_APP_API}api/getItems/${id}`
+      );
+      if (status.status === 200) {
+        console.log(status);
+        setProduct(status.data.item);
+        console.log(product);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(()=>{
+    fetchProductDetails();
+  },[id]);
   useWindowScrollToTop();
 
   return (
     <Fragment>
-      <Banner title={selectedProduct?.productName} />
-      <ProductDetails selectedProduct={selectedProduct} />
-      <ProductReviews selectedProduct={selectedProduct} />
-      <section className="related-products">
-        <Container>
-          <h3>You might also like</h3>
-        </Container>
-        <ShopList productItems={relatedProducts} />
-      </section>
+      <Banner title={product?.name} />
+      <ProductDetails data={product} />
+      {/* <ProductReviews selectedProduct={selectedProduct} /> */}
+      {/* <section className="related-products"> */}
+        {/* <Container> */}
+          {/* <h3>You might also like</h3> */}
+        {/* </Container> */}
+        {/* <ShopList productItems={relatedProducts} /> */}
+      {/* </section> */}
     </Fragment>
   );
 };

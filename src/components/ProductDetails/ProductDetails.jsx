@@ -1,15 +1,12 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addToCart } from "../../app/features/cart/cartSlice";
-import { useParams } from "react-router-dom";
 import "./product-details.css";
 
-const ProductDetails = () => {
+const ProductDetails = ({data}) => {
   const dispatch = useDispatch();
-  const [data, setData] = useState({});
   const [quantity, setQuantity] = useState(1);
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
@@ -18,25 +15,6 @@ const ProductDetails = () => {
     dispatch(addToCart({ product: data, num: quantity }));
     toast.success("Product has been added to cart!");
   };
-  const { id } = useParams();
-  const fetchProductDetails = async () => {
-    try {
-      const status = await axios.get(
-        `${process.env.REACT_APP_API}api/getItems/${id}`
-      );
-      if (status.status === 200) {
-        console.log(status);
-        setData(status.data.item);
-        console.log(data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchProductDetails();
-  }, []);
   return (
     <section className="product-page">
       <Container>
@@ -45,7 +23,7 @@ const ProductDetails = () => {
             <img loading="lazy" src={data?.photo} alt="Error in Loading" />
           </Col>
           <Col md={6}>
-            <h2>{data?.productName}</h2>
+            <h2>{data?.name}</h2>
             <div className="rate">
               <div className="stars">
                 {Array.from({ length: data.rating }).map((_, index) => (
@@ -56,7 +34,7 @@ const ProductDetails = () => {
             </div>
             <div className="info">
               <span className="price">${data?.price}</span>
-              <span>Category:{data?.category}</span>
+              <span>Category : {data?.category}</span>
             </div>
             <p>{data?.description}</p>
             <input
