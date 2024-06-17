@@ -96,7 +96,7 @@ function App() {
               <Fragment>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/shop/:id" element={<Product />} />
+                <Route path="/shop/:name/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
