@@ -4,7 +4,6 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import { toast } from "react-toastify";
 import "../index.css";
 import AuthenticationContext from "../context/AuthenticationContext";
@@ -109,7 +108,7 @@ function Login() {
           Login
         </Button>
       </Form>
-      <Form className="d-flex justify-content-center align-items-center mt-2 pt-3 pb-3 form-login">
+      <Form className="d-flex justify-content-center align-items-center mt-4 pt-3 pb-3 form-login">
         <Button className="w-100" variant="primary" onClick={() => navigate("/signup")}>
           Create Account!
         </Button>
