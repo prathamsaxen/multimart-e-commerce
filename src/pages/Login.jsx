@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { toast } from "react-toastify";
 import "../index.css";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CenteredModalExample from "../components/ForgetPassword/ForgetPasswordModal";
-import { useLocation } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -63,6 +64,7 @@ function Login() {
   return (
     <div className="Login">
       <CenteredModalExample show={show} handleClose={handleClose} />
+      <Container style={{width:"28%"}}>
       <Form className="form-login" onSubmit={loginUser}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -107,6 +109,12 @@ function Login() {
           Login
         </Button>
       </Form>
+      <Form className="d-flex justify-content-center align-items-center mt-2 pt-3 pb-3 form-login">
+        <Button className="w-100" variant="primary" onClick={() => navigate("/signup")}>
+          Create Account!
+        </Button>
+      </Form>
+      </Container>
     </div>
   );
 }
