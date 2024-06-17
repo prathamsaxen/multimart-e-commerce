@@ -3,16 +3,18 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
 import "../index.css";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CenteredModalExample from "../components/ForgetPassword/ForgetPasswordModal";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [disable, setDisable] = useState(false);
   const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { login, setLogin } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const useQuery = () => {
@@ -63,56 +65,74 @@ function Login() {
   return (
     <div className="Login">
       <CenteredModalExample show={show} handleClose={handleClose} />
-      <Container style={{width:"28%"}}>
-      <Form className="form-login" onSubmit={loginUser}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={user.email}
-            disabled={disable}
-            onChange={(e) => {
-              setUser({ ...user, email: e.target.value });
-            }}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      <Container style={{ width: "28%" }}>
+        <Form className="form-login" onSubmit={loginUser}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              value={user.email}
+              disabled={disable}
+              onChange={(e) => {
+                setUser({ ...user, email: e.target.value });
+              }}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+          <div style={{ position: 'relative' }}>
 
-        <Form.Group className="mb-1" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            value={user.password}
+          <Form.Group className="mb-1" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={user.password}
+              disabled={disable}
+              onChange={(e) => {
+                setUser({ ...user, password: e.target.value });
+              }}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+            <Form.Text
+              className="text-muted forget-password-text"
+              onClick={handleOpen}
+            >
+              Forget your password?
+            </Form.Text>
+          </Form.Group>
+            </div>
+          <Button
+            variant="primary"
+            type="submit"
+            className="m-auto d-block mt-4 w-100"
             disabled={disable}
-            onChange={(e) => {
-              setUser({ ...user, password: e.target.value });
-            }}
-          />
-          <Form.Text
-            className="text-muted forget-password-text"
-            onClick={handleOpen}
           >
-            Forget your password?
-          </Form.Text>
-        </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-          className="m-auto d-block mt-4 w-100"
-          disabled={disable}
-        >
-          Login
-        </Button>
-      </Form>
-      <Form className="d-flex justify-content-center align-items-center mt-4 pt-3 pb-3 form-login">
-        <Button className="w-100" variant="primary" onClick={() => navigate("/signup")}>
-          Create Account!
-        </Button>
-      </Form>
+            Login
+          </Button>
+        </Form>
+        <Form className="d-flex justify-content-center align-items-center mt-4 pt-3 pb-3 form-login">
+          <Button
+            className="w-100"
+            variant="primary"
+            onClick={() => navigate("/signup")}
+          >
+            Create Account!
+          </Button>
+        </Form>
       </Container>
     </div>
   );

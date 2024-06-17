@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import "../index.css";
 import axios from "axios";
 
@@ -15,6 +16,8 @@ function SignUp() {
     confirmPassword: "",
   });
   const [disable, setDisable] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate=useNavigate();
 
   const signUpUser = async (event) => {
@@ -120,10 +123,11 @@ function SignUp() {
           />
         </Form.Group>
 
+        <div style={{ position: 'relative' }}>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
+             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             value={user.password}
             disabled={disable}
@@ -131,7 +135,20 @@ function SignUp() {
               setUser({ ...user, password: e.target.value });
             }}
           />
+           <span
+          onClick={()=>setShowPassword(!showPassword)}
+          style={{
+            position: 'absolute',
+            right: '10px',
+            top: '70%',
+            transform: 'translateY(-50%)',
+            cursor: 'pointer',
+          }}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
         </Form.Group>
+        </div>
 
         <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
           <Form.Label>Confirm Password</Form.Label>
