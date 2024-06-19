@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import AuthenticationContext from "./context/AuthenticationContext";
+// import Checkout from "./pages/Checkout";
 // import RefundPolicy from "./pages/RefundPolicy";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
@@ -16,6 +17,7 @@ const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const User = lazy(() => import("./pages/User"));
 const Orders = lazy(() => import("./pages/Orders"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 const Account = lazy(() => import("./pages/Account"));
 const Addresses = lazy(() => import("./pages/Addresses"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -82,6 +84,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/me" element={<User />} />
                 <Route path="/me/orders" element={<Orders />} />
+                <Route path="/me/checkout" element={<Checkout />} />
                 <Route path="/me/account" element={<Account />} />
                 <Route path="/me/addresses" element={<Addresses />} />
                 <Route path="/contact-us" element={<Contact />} />

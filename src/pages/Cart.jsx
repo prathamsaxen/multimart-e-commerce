@@ -81,7 +81,7 @@ const Cart = () => {
                 <h4>Total Price :</h4>
                 <h3>${totalPrice}.00</h3>
               </div>
-              <NavLink to={login?"/checkout":"/login?callbackurl=cart"} className="checkout-btn">Checkout</NavLink>
+              <NavLink to={login?"/me/checkout":"/login?callbackurl=cart"} className="checkout-btn">Checkout</NavLink>
             </div>
           </Col>
         </Row>
