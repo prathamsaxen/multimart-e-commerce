@@ -100,7 +100,7 @@ function Login() {
               style={{
                 position: "absolute",
                 right: "10px",
-                top: "50%",
+                top: "53%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
               }}
