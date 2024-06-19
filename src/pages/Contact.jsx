@@ -1,31 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import "../index.css";
 function Contact() {
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const submitUserEntry=(e)=>{
+    e.preventDefault();
+    console.log(contactData);
+  }
   return (
     <div className="contact-page">
       <div className="contact-us-page-section">
         <div className="contact-us-form">
-          <form action="">
-          <h2>Contact Us</h2>
+          <form action="" onSubmit={submitUserEntry}>
+            <h2>Contact Us</h2>
             <div className="contact-us-form-group">
               <div className="label-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" />
+                <input
+                  type="text"
+                  id="name"
+                  value={contactData.name}
+                  onChange={(e) =>
+                    setContactData({ ...contactData, name: e.target.value })
+                  }
+                />
               </div>
               <div className="label-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" />
+                <input
+                  type="email"
+                  id="email"
+                  value={contactData.email}
+                  onChange={(e) =>
+                    setContactData({ ...contactData, email: e.target.value })
+                  }
+                />
               </div>
             </div>
             <div className="label-group">
               <label for="subject">Subject:</label>
-              <input type="text" id="subject" />
+              <input
+                type="text"
+                id="subject"
+                value={contactData.subject}
+                onChange={(e) =>
+                  setContactData({ ...contactData, subject: e.target.value })
+                }
+              />
             </div>
             <div className="label-group">
               <label for="message">Message:</label>
-              <textarea name="" id="message"></textarea>
+              <textarea
+                name=""
+                id="message"
+                value={contactData.message}
+                onChange={(e) =>
+                  setContactData({ ...contactData, message: e.target.value })
+                }
+              ></textarea>
             </div>
-            <input type="submit" value={"Send"}/>
+            <input type="submit" value={"Send"} />
           </form>
         </div>
         <div className="contact-us-map">
