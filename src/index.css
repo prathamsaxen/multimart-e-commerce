@@ -839,6 +839,9 @@ input[type='submit']
   background-color: #0f3460;
   color: white;
 }
+input[type='submit']:disabled{
+  background-color: gray;
+}
 @keyframes zoomIn {
   0% {
     transform: scale(3);

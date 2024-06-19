@@ -10,7 +10,7 @@ function Contact() {
     subject: "",
     message: "",
   });
-  const [disable,setDisable]=useState(false);
+  const [disable, setDisable] = useState(false);
 
   const submitUserEntry = async (e) => {
     e.preventDefault();
@@ -31,9 +31,10 @@ function Contact() {
           `${process.env.REACT_APP_API}api/contact`,
           contactData
         );
-         console.log(response);
+        console.log(response);
         if (response.status === 200) {
           toast.success("Query Submitted Successfully");
+          setContactData({ name: "", email: "", subject: "", message: "" });
         }
       } catch (err) {
         toast.error("Error in submitting your query!");
@@ -57,6 +58,7 @@ function Contact() {
                   onChange={(e) =>
                     setContactData({ ...contactData, name: e.target.value })
                   }
+                  disabled={disable}
                 />
               </div>
               <div className="label-group">
@@ -68,6 +70,7 @@ function Contact() {
                   onChange={(e) =>
                     setContactData({ ...contactData, email: e.target.value })
                   }
+                  disabled={disable}
                 />
               </div>
             </div>
@@ -80,6 +83,7 @@ function Contact() {
                 onChange={(e) =>
                   setContactData({ ...contactData, subject: e.target.value })
                 }
+                disabled={disable}
               />
             </div>
             <div className="label-group">
@@ -91,9 +95,10 @@ function Contact() {
                 onChange={(e) =>
                   setContactData({ ...contactData, message: e.target.value })
                 }
+                disabled={disable}
               ></textarea>
             </div>
-            <input type="submit" value={"Send"} />
+            <input type="submit" value={"Send"} disabled={disable} />
           </form>
         </div>
         <div className="contact-us-map">
