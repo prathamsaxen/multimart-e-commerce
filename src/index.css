@@ -430,6 +430,7 @@ button.delete ion-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   background-color: rgb(246, 249, 252);
   min-height: 500px;
@@ -442,6 +443,7 @@ button.delete ion-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .Account{

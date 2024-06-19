@@ -2,21 +2,21 @@ import React from "react";
 import "./AddressCard.css";
 import plus from "../../Images/plus.png";
 
-function AddressCard() {
+function AddressCard({data}) {
   return (
     <div className="addressCard">
-      <h2>Sujal Varshney</h2>
-      <p>1/305</p>
-      <p> Naurangabad Chhawani, Aligarh naurangabad</p>
-      <p>ALIGARH, UTTAR PRADESH 202001</p>
-      <p> India</p>
+      <h2>{data.name}</h2>
+      <p>{data.flat}</p>
+      <p> {data.landmark}, {data.area}</p>
+      <p>{data.city}, {data.state} {data.pincode}</p>
+      <p> {data.country}</p>
       <p>
-        <b>Phone Number:</b> +91 790635963
+        <b>Phone Number:</b> +91 {data.mobileNumber}
       </p>
       <div className="addressButton">
         <button>Edit</button>
         <button>Delete</button>
-        <button>Set as Default</button>
+        {data.default?null:<button>Set as Default</button>}
       </div>
     </div>
   );
