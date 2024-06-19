@@ -11,6 +11,7 @@ function AddressCard() {
         <div className="addressButton">
             <button>Edit</button>
             <button>Delete</button>
+            <button>Set as Default</button>
         </div>
       </div>
   );
