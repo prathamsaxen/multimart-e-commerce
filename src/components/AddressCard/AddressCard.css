@@ -6,3 +6,20 @@
     background: #fff;
     border-radius: 8px;
 }
+.addressCard h2{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.addressCard button{
+    background: transparent;
+    color: black;
+    padding: 0px 15px 0px 15px;
+    color: #0f3460;
+    /* margin-right: 10px; */
+}
+.addressCard  button:hover{
+    text-decoration: underline;
+}
+.addressCard button:first-of-type{
+    border-right: 2px solid black;
+}

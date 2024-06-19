@@ -432,6 +432,9 @@ button.delete ion-icon {
   flex-direction: column;
   background-color: rgb(246, 249, 252);
 }
+.background-color-whole-app{
+  background-color: rgb(246, 249, 252);
+}
 
 .Account{
   display: flex;

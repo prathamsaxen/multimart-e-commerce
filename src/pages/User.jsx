@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { Container, Row, Col } from "react-bootstrap";
 import "../components/wrapper/wrapper.css";
-
+import "../index.css";
 
 // import { serviceData } from "../Configuration/Home";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +17,8 @@ function User() {
   };
 
   return (
-    <div>
-      <section className="wrapper background">
+    <div className="background-color-whole-app">
+      <section className="wrapper background" style={{backgroundColor:"rgb(246, 249, 252)"}}>
         <Container>
           <Row>
             <Col
