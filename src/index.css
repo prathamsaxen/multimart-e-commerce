@@ -632,3 +632,93 @@ button.delete ion-icon {
     }
   }
 }
+
+.checkout{
+  padding : 50px;
+  min-height: 50vh;
+  display: flex;
+  .left{
+    padding: 20px;
+    width: 60%;
+    .upper{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    .checkoutContact{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .checkoutShip{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    button{
+      padding: 10px;
+      border-radius: 10px;
+      color: #1f579b;
+      background-color: transparent;
+    }
+    .firstWidth{
+      width: 20%;
+    }
+    p{
+      padding: 10px;
+    }
+    h3{
+      padding: 10px;
+    }
+    .returnPayButton{
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .paymentButton{
+      background-color: black;
+      color: white;
+      padding: 30px;
+    }
+  }
+  .right{
+    width: 40%;
+    padding: 20px;
+    .cartProduct{
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    img{
+      width: 60px;
+      height: 60px;
+    }
+    .payment{
+      display: flex;
+      justify-content: space-between;
+    }
+    .totalPayment{
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: larger;
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+  .checkout{
+    display: block;
+    font-size: small;
+    .left{
+      width: 100%;
+      padding: 0px;
+    }
+    .right{
+      width: 100%;
+    }
+  }
+}
