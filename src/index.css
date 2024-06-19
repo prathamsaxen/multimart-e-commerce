@@ -436,7 +436,12 @@ button.delete ion-icon {
 .background-color-whole-app{
   background-color: rgb(246, 249, 252);
 }
-
+.address-cards-display{
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .Account{
   display: flex;

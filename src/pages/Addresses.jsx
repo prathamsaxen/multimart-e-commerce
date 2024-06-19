@@ -6,8 +6,10 @@ function Addresses() {
   return (
     <div className="Addresses">
       <h2>Addresses</h2>
-      <AddressCard />
-      <AddAddressCard /> {/* Use it as a component */}
+      <div className="address-cards-display">
+        <AddressCard />
+        <AddAddressCard />
+      </div>
     </div>
   );
 }
