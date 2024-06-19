@@ -27,3 +27,6 @@
     border-right: 2px solid black;
 
 }
+.addressCard p{
+    margin: 0;
+}
