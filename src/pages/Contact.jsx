@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../index.css";
+import { toast } from "react-toastify";
 function Contact() {
   const [contactData, setContactData] = useState({
     name: "",
@@ -8,10 +9,20 @@ function Contact() {
     message: "",
   });
 
-  const submitUserEntry=(e)=>{
+  const submitUserEntry = (e) => {
     e.preventDefault();
-    console.log(contactData);
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!contactData.name) {
+      toast.error("Name is required!");
+      return;
+    } else if (!contactData.email) {
+      toast.error("Email is required");
+      return;
+    } else if (!emailRegex.test(contactData.email)) {
+      toast.error("Email is invalid");
+      return;
+    }
+  };
   return (
     <div className="contact-page">
       <div className="contact-us-page-section">
