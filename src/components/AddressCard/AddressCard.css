@@ -10,6 +10,9 @@
     font-size: 1.4rem;
     font-weight: bold;
 }
+.addressButton{
+    margin-top: 20px;
+}
 .addressCard button{
     background: transparent;
     color: black;
@@ -29,4 +32,16 @@
 }
 .addressCard p{
     margin: 0;
+}
+.addaddressCard{
+    border: 1px dotted black;
+    min-width: 320px;
+    width: 335.89px;
+    height: 238.88px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
 }
