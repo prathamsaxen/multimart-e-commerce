@@ -2,7 +2,7 @@ import React from "react";
 import "./AddressCard.css";
 import plus from "../../Images/plus.png";
 
-function AddressCard({data}) {
+function AddressCard({data,changeAddressFunction}) {
   return (
     <div className="addressCard">
       <h2>{data.name}</h2>
@@ -16,7 +16,7 @@ function AddressCard({data}) {
       <div className="addressButton">
         <button>Edit</button>
         <button>Delete</button>
-        {data.default?null:<button>Set as Default</button>}
+        {data.default?null:<button onClick={()=>changeAddressFunction(data._id)}>Set as Default</button>}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import AddressCard from "../components/AddressCard/AddressCard";
 import { AddAddressCard } from "../components/AddressCard/AddressCard"; // Assuming it's a named export and a component
 
@@ -23,19 +24,41 @@ function Addresses() {
       }
     } catch (error) {
       console.error(error);
-    } 
+    }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllAddresses();
-  },[])
+  }, []);
+
+  const ChangeDefaultAddress = async (ID) => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const status = await axios.put(
+        `${process.env.REACT_APP_API}api/address/${ID}`,
+        { default: true },
+        options
+      );
+      if (status.status == 200) {
+        toast.success("Changed Default Address!");
+        getAllAddresses();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="Addresses">
       <h2>Addresses</h2>
       <div className="address-cards-display">
         <AddAddressCard />
-        {address.map((item)=>{
-          return <AddressCard key={item._id} data={item}/>
+        {address.map((item) => {
+          return <AddressCard key={item._id} data={item} changeAddressFunction={ChangeDefaultAddress}/>;
         })}
       </div>
     </div>
