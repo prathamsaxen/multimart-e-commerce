@@ -327,7 +327,7 @@ button.delete ion-icon {
   border-radius: 6px;
 }
 /* address css starting */
-.Addresses {
+/* .Addresses {
   margin: auto;
   padding: auto;
   h2{
@@ -422,6 +422,15 @@ button.delete ion-icon {
       width: 90%;
     }
   }
+} */
+
+.Addresses{
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(246, 249, 252);
 }
 
 .Account{
