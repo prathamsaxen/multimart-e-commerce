@@ -52,13 +52,41 @@ function Addresses() {
       console.error(error);
     }
   };
+
+  const DeleteParticularAddress = async (ID) => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const status = await axios.delete(
+        `${process.env.REACT_APP_API}api/address/${ID}`,
+        options
+      );
+      if (status.status == 200) {
+        toast.success("Address Deleted Successfully!");
+        getAllAddresses();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="Addresses">
       <h2>Addresses</h2>
       <div className="address-cards-display">
         <AddAddressCard />
         {address.map((item) => {
-          return <AddressCard key={item._id} data={item} changeAddressFunction={ChangeDefaultAddress}/>;
+          return (
+            <AddressCard
+              key={item._id}
+              data={item}
+              changeAddressFunction={ChangeDefaultAddress}
+              deleteParticularAddress={DeleteParticularAddress}
+            />
+          );
         })}
       </div>
     </div>
