@@ -432,6 +432,7 @@ button.delete ion-icon {
   align-items: center;
   flex-direction: column;
   background-color: rgb(246, 249, 252);
+  min-height: 500px;
 }
 .background-color-whole-app{
   background-color: rgb(246, 249, 252);

@@ -11,7 +11,7 @@ function AddressCard() {
       <p>ALIGARH, UTTAR PRADESH 202001</p>
       <p> India</p>
       <p>
-        <b>Phone Number:</b> 790635963
+        <b>Phone Number:</b> +91 790635963
       </p>
       <div className="addressButton">
         <button>Edit</button>

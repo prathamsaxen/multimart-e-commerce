@@ -7,8 +7,8 @@ function Addresses() {
     <div className="Addresses">
       <h2>Addresses</h2>
       <div className="address-cards-display">
-        <AddressCard />
         <AddAddressCard />
+        <AddressCard />
       </div>
     </div>
   );
