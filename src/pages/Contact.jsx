@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../index.css";
 import { toast } from "react-toastify";
+import axios from "axios";
+
 function Contact() {
   const [contactData, setContactData] = useState({
     name: "",
@@ -8,8 +10,9 @@ function Contact() {
     subject: "",
     message: "",
   });
+  const [disable,setDisable]=useState(false);
 
-  const submitUserEntry = (e) => {
+  const submitUserEntry = async (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!contactData.name) {
@@ -21,6 +24,21 @@ function Contact() {
     } else if (!emailRegex.test(contactData.email)) {
       toast.error("Email is invalid");
       return;
+    } else {
+      setDisable(true);
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API}api/contact`,
+          contactData
+        );
+         console.log(response);
+        if (response.status === 200) {
+          toast.success("Query Submitted Successfully");
+        }
+      } catch (err) {
+        toast.error("Error in submitting your query!");
+      }
+      setDisable(false);
     }
   };
   return (
