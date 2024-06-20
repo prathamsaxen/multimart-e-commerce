@@ -59,6 +59,7 @@ function Contact() {
                     setContactData({ ...contactData, name: e.target.value })
                   }
                   disabled={disable}
+                  placeholder="John Doe"
                 />
               </div>
               <div className="label-group">
@@ -71,6 +72,7 @@ function Contact() {
                     setContactData({ ...contactData, email: e.target.value })
                   }
                   disabled={disable}
+                  placeholder="prathamsaxena@gmail.com"
                 />
               </div>
             </div>
@@ -84,6 +86,7 @@ function Contact() {
                   setContactData({ ...contactData, subject: e.target.value })
                 }
                 disabled={disable}
+                
               />
             </div>
             <div className="label-group">
