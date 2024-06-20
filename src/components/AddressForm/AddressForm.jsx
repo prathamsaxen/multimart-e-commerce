@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Modal, Button } from "react-bootstrap";
 
 function AddressForm({ show, handleClose }) {
@@ -170,7 +170,38 @@ function AddressForm({ show, handleClose }) {
 export default AddressForm;
 
 function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
-  console.log(selectedAddress);
+  const [editAddress, setEditAddress] = useState({
+    user: selectedAddress?.user || '',
+    country: selectedAddress?.country || '',
+    name: selectedAddress?.name || '',
+    mobileNumber: selectedAddress?.mobileNumber || '',
+    pincode: selectedAddress?.pincode || '',
+    flat: selectedAddress?.flat || '',
+    area: selectedAddress?.area || '',
+    landmark: selectedAddress?.landmark || '',
+    city: selectedAddress?.city || '',
+    state: selectedAddress?.state || '',
+    default: selectedAddress?.default || false,
+  });
+
+  useEffect(() => {
+    if (selectedAddress) {
+      setEditAddress({
+        user: selectedAddress.user || '',
+        country: selectedAddress.country || '',
+        name: selectedAddress.name || '',
+        mobileNumber: selectedAddress.mobileNumber || '',
+        pincode: selectedAddress.pincode || '',
+        flat: selectedAddress.flat || '',
+        area: selectedAddress.area || '',
+        landmark: selectedAddress.landmark || '',
+        city: selectedAddress.city || '',
+        state: selectedAddress.state || '',
+        default: selectedAddress.default || false,
+      });
+    }
+  }, [selectedAddress]);
+  console.log(editAddress);
   return (
     <>
       <Modal show={showEdit} onHide={handleCloseEdit} centered>
@@ -189,6 +220,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom01"
                   required
+                  value={editAddress.name}
                 />
                 <div class="valid-feedback">Looks good!</div>
               </div>
@@ -206,6 +238,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
+                    value={editAddress.mobileNumber}
                   />
                   <div class="invalid-feedback">
                     Please choose a mobile Number
@@ -221,6 +254,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={editAddress.country}
                 />
                 <div class="invalid-feedback">
                   Please provide a valid Country
@@ -235,6 +269,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom03"
                   required
+                  value={editAddress.flat}
                 />
                 <div class="invalid-feedback">
                   Please provide a Flat / House Number
@@ -249,6 +284,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={editAddress.area}
                 />
                 <div class="invalid-feedback">Please provide a valid Area</div>
               </div>
@@ -261,6 +297,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={editAddress.landmark}
                 />
                 <div class="invalid-feedback">
                   Please provide a valid Landmark
@@ -275,6 +312,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom03"
                   required
+                  value={editAddress.city}
                 />
                 <div class="invalid-feedback">Please provide a valid city</div>
               </div>
@@ -287,6 +325,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={editAddress.state}
                 />
                 <div class="invalid-feedback">Please provide a valid State</div>
               </div>
@@ -299,6 +338,7 @@ function EditAddressForm({ showEdit, handleCloseEdit, selectedAddress }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={editAddress.pincode}
                 />
                 <div class="invalid-feedback">Please provide a valid zip</div>
               </div>
