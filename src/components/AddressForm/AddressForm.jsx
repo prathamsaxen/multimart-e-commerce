@@ -11,6 +11,7 @@ const validationCheckFunction = (inputAddress) => {
     !inputAddress.mobileNumber ||
     !/^\d{10}$/.test(inputAddress.mobileNumber)
   ) {
+    console.log(inputAddress.mobileNumber);
     toast.error("Valid 10-digit mobile number is required");
     return false;
   } else if (!inputAddress.country) {
@@ -42,7 +43,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
   const [addaddress, setaddaddress] = useState({
     country: "",
     name: "",
-    mobileNumber: "",
+    mobileNumber: 0,
     pincode: "",
     flat: "",
     area: "",
@@ -53,9 +54,10 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
   });
   const [disabled, setDisabled] = useState(false);
 
-  const addAddress = async (event) => {
+  const addAddressFunction = async (event) => {
     event.preventDefault();
-    if (validationCheckFunction(addAddress)) {
+    // console.log(addAddress);
+    if (validationCheckFunction(addaddress)) {
       setDisabled(true);
       try {
         const token = localStorage.getItem("token");
@@ -66,7 +68,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
         };
         const status = await axios.post(
           `${process.env.REACT_APP_API}api/address/`,
-          addAddress,
+          addaddress,
           options
         );
         if (status.status === 200) {
@@ -259,7 +261,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={addAddress} disabled={disabled}>
+          <Button variant="primary" onClick={addAddressFunction} disabled={disabled}>
             Add Address
           </Button>
         </Modal.Footer>
