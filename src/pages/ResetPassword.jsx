@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 function ResetPassword() {
@@ -10,6 +11,7 @@ function ResetPassword() {
     pasword: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
 
   const passwordValidator = () => {
     if (passwordData.pasword.length < 8) {
@@ -33,6 +35,9 @@ function ResetPassword() {
         console.log(status);
         if (status.status === 200) {
           toast.success("Password Changed Successfully!");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
         }
       } catch (error) {
         toast.error("Error in changing password!");
