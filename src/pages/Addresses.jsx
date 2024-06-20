@@ -4,12 +4,24 @@ import { toast } from "react-toastify";
 import AddressCard from "../components/AddressCard/AddressCard";
 import { AddAddressCard } from "../components/AddressCard/AddressCard";
 import AddressForm from "../components/AddressForm/AddressForm"; // Assuming it's a named export and a component
-
+import { EditAddressForm } from "../components/AddressForm/AddressForm";
 function Addresses() {
   const [address, setAddress] = useState([]);
-  const [show,setShow]=useState(false);
+  const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleCloseEdit = () => {
+    setSelectedAddress(null);
+    setShowEdit(false);
+  };
+  const handleShowEdit = (data) => {
+    setSelectedAddress(data);
+    setShowEdit(true);
+  };
 
   const getAllAddresses = async () => {
     try {
@@ -80,23 +92,29 @@ function Addresses() {
   };
   return (
     <>
-    <div className="Addresses">
-      <h2>Addresses</h2>
-      <div className="address-cards-display">
-        <AddAddressCard show={handleShow}/>
-        {address.map((item) => {
-          return (
-            <AddressCard
-              key={item._id}
-              data={item}
-              changeAddressFunction={ChangeDefaultAddress}
-              deleteParticularAddress={DeleteParticularAddress}
-            />
-          );
-        })}
+      <div className="Addresses">
+        <h2>Addresses</h2>
+        <div className="address-cards-display">
+          <AddAddressCard show={handleShow} />
+          {address.map((item) => {
+            return (
+              <AddressCard
+                key={item._id}
+                data={item}
+                changeAddressFunction={ChangeDefaultAddress}
+                deleteParticularAddress={DeleteParticularAddress}
+                handleShowEdit={handleShowEdit}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-    <AddressForm handleClose={handleClose} show={show}/>
+      <AddressForm handleClose={handleClose} show={show} />
+      <EditAddressForm
+        handleCloseEdit={handleCloseEdit}
+        showEdit={showEdit}
+        selectedAddress={selectedAddress}
+      />
     </>
   );
 }

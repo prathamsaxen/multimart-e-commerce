@@ -2,7 +2,7 @@ import React from "react";
 import "./AddressCard.css";
 import plus from "../../Images/plus.png";
 
-function AddressCard({ data, changeAddressFunction, deleteParticularAddress }) {
+function AddressCard({ data, changeAddressFunction, deleteParticularAddress,handleShowEdit }) {
   return (
     <div className="addressCard">
       <h2>{data.name}</h2>
@@ -19,7 +19,7 @@ function AddressCard({ data, changeAddressFunction, deleteParticularAddress }) {
         <b>Phone Number:</b> +91 {data.mobileNumber}
       </p>
       <div className="addressButton">
-        <button>Edit</button>
+        <button onClick={()=>handleShowEdit(data)}>Edit</button>
         {data.default ? null : (
           <button onClick={() => deleteParticularAddress(data._id)}>
             Delete
