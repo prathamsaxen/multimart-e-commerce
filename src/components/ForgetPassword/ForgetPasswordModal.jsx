@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 function ForgetPasswordModal({ show, handleClose }) {
   const [mail, setMail] = useState("");
@@ -10,13 +11,21 @@ function ForgetPasswordModal({ show, handleClose }) {
   const resetPassword = async (event) => {
     event.preventDefault();
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!otpInput) {
-      if (!emailPattern.test(mail)) {
-        toast.error("Email is invalid!");
-        return;
+    if (!emailPattern.test(mail)) {
+      toast.error("Email is invalid!");
+      return;
+    }
+    try {
+      const status = await axios.post(
+        `${process.env.REACT_APP_API}api/forget-password`,
+        mail
+      );
+      if (status.status === 200) {
+        setOTPInput(true);
       }
-
-      setOTPInput(true);
+    } catch (e) {
+      console.log(e);
+      toast.error(e.response.message);
     }
   };
   return (
