@@ -56,7 +56,6 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
 
   const addAddressFunction = async (event) => {
     event.preventDefault();
-    // console.log(addAddress);
     if (validationCheckFunction(addaddress)) {
       setDisabled(true);
       try {
@@ -71,6 +70,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
           addaddress,
           options
         );
+        console.log(status);
         if (status.status === 200) {
           toast.success("Address added successfully");
           getAllAddresses();

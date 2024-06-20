@@ -25,7 +25,7 @@ function AddressCard({ data, changeAddressFunction, deleteParticularAddress,hand
             Delete
           </button>
         )}
-        {data.default ? null : (
+        {data.default ? <button>Default Address</button> : (
           <button onClick={() => changeAddressFunction(data._id)}>
             Set as Default
           </button>

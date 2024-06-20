@@ -109,7 +109,11 @@ function Addresses() {
           })}
         </div>
       </div>
-      <AddressForm handleClose={handleClose} show={show} />
+      <AddressForm
+        handleClose={handleClose}
+        show={show}
+        getAllAddresses={getAllAddresses}
+      />
       <EditAddressForm
         handleCloseEdit={handleCloseEdit}
         showEdit={showEdit}
