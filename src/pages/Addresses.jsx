@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import AddressCard from "../components/AddressCard/AddressCard";
-import { AddAddressCard } from "../components/AddressCard/AddressCard"; // Assuming it's a named export and a component
+import { AddAddressCard } from "../components/AddressCard/AddressCard";
+import AddressForm from "../components/AddressForm/AddressForm"; // Assuming it's a named export and a component
 
 function Addresses() {
   const [address, setAddress] = useState([]);
+  const [show,setShow]=useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const getAllAddresses = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -74,10 +79,11 @@ function Addresses() {
     }
   };
   return (
+    <>
     <div className="Addresses">
       <h2>Addresses</h2>
       <div className="address-cards-display">
-        <AddAddressCard />
+        <AddAddressCard show={handleShow}/>
         {address.map((item) => {
           return (
             <AddressCard
@@ -90,6 +96,8 @@ function Addresses() {
         })}
       </div>
     </div>
+    <AddressForm handleClose={handleClose} show={show}/>
+    </>
   );
 }
 

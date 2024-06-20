@@ -35,9 +35,9 @@ function AddressCard({ data, changeAddressFunction, deleteParticularAddress }) {
   );
 }
 
-function AddAddressCard() {
+function AddAddressCard({show}) {
   return (
-    <div className="addaddressCard">
+    <div className="addaddressCard" onClick={()=>show()}>
       <img src={plus} alt="Error in Loading" />
     </div>
   );
