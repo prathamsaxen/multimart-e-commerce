@@ -114,6 +114,7 @@ function Addresses() {
         handleCloseEdit={handleCloseEdit}
         showEdit={showEdit}
         selectedAddress={selectedAddress}
+        getAllAddresses={getAllAddresses}
       />
     </>
   );
