@@ -15,6 +15,7 @@ function ForgetPasswordModal({ show, handleClose }) {
       toast.error("Email is invalid!");
       return;
     }
+    
     try {
       const status = await axios.post(
         `${process.env.REACT_APP_API}api/forget-password`,
