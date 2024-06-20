@@ -47,7 +47,7 @@ function AddressForm({ show, handleClose }) {
         </Modal.Header>
         <Modal.Body>
           <div className="container formCard">
-            <form class="row g-3 needs-validation" novalidate>
+            <form class="row g-3 needs-validation" >
               <div class="col-md-12">
                 <label for="validationCustom01" class="form-label">
                   Full Name (First and Last name)
@@ -243,6 +243,7 @@ function EditAddressForm({
       });
     }
   }, [selectedAddress]);
+
   const UpdateAddress = async (event) => {
     event.preventDefault();
     if (validationCheckFunction(editAddress)) {
@@ -279,7 +280,7 @@ function EditAddressForm({
         </Modal.Header>
         <Modal.Body>
           <div className="container formCard">
-            <form class="row g-3 needs-validation" novalidate>
+            <form class="row g-3 needs-validation" >
               <div class="col-md-12">
                 <label for="validationCustom01" class="form-label">
                   Full Name (First and Last name)
@@ -293,6 +294,7 @@ function EditAddressForm({
                   onChange={(event) =>
                     setEditAddress({ ...editAddress, name: event.target.value })
                   }
+                  disabled={disabled}
                 />
               </div>
               <div class="col-md-12">
@@ -316,6 +318,8 @@ function EditAddressForm({
                         mobileNumber: event.target.value,
                       })
                     }
+                  disabled={disabled}
+
                   />
                 </div>
               </div>
@@ -335,6 +339,8 @@ function EditAddressForm({
                       country: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-3">
@@ -353,6 +359,8 @@ function EditAddressForm({
                       flat: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-6">
@@ -371,6 +379,8 @@ function EditAddressForm({
                       area: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-3">
@@ -389,6 +399,8 @@ function EditAddressForm({
                       landmark: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-6">
@@ -407,6 +419,8 @@ function EditAddressForm({
                       city: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-3">
@@ -425,6 +439,8 @@ function EditAddressForm({
                       state: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
               <div class="col-md-3">
@@ -443,6 +459,8 @@ function EditAddressForm({
                       pincode: event.target.value,
                     })
                   }
+                  disabled={disabled}
+
                 />
               </div>
             </form>
@@ -452,7 +470,7 @@ function EditAddressForm({
           <Button variant="secondary" onClick={handleCloseEdit}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={UpdateAddress}>
+          <Button variant="primary" onClick={UpdateAddress} disabled={disabled}>
             Update
           </Button>
         </Modal.Footer>
