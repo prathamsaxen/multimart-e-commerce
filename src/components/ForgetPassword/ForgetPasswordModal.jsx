@@ -7,7 +7,7 @@ import axios from "axios";
 
 function ForgetPasswordModal({ show, handleClose }) {
   const [mail, setMail] = useState("");
-  const [otpInput, setOTPInput] = useState(true);
+  const [otpInput, setOTPInput] = useState(false);
   const resetPassword = async (event) => {
     event.preventDefault();
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
