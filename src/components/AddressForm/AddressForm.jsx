@@ -38,7 +38,49 @@ const validationCheckFunction = (inputAddress) => {
   return true;
 };
 
-function AddressForm({ show, handleClose }) {
+function AddressForm({ show, handleClose, getAllAddresses }) {
+  const [addaddress, setaddaddress] = useState({
+    country: "",
+    name: "",
+    mobileNumber: "",
+    pincode: "",
+    flat: "",
+    area: "",
+    landmark: "",
+    city: "",
+    state: "",
+    default: false,
+  });
+  const [disabled, setDisabled] = useState(false);
+
+  const addAddress = async (event) => {
+    event.preventDefault();
+    if (validationCheckFunction(addAddress)) {
+      setDisabled(true);
+      try {
+        const token = localStorage.getItem("token");
+        const options = {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        };
+        const status = await axios.post(
+          `${process.env.REACT_APP_API}api/address/`,
+          addAddress,
+          options
+        );
+        if (status.status === 200) {
+          toast.success("Address added successfully");
+          getAllAddresses();
+          handleClose();
+        }
+      } catch (error) {
+        toast.error("Error in adding Address!");
+        console.error(error);
+      }
+      setDisabled(false);
+    }
+  };
   return (
     <>
       <Modal show={show} onHide={handleClose} centered>
@@ -47,7 +89,7 @@ function AddressForm({ show, handleClose }) {
         </Modal.Header>
         <Modal.Body>
           <div className="container formCard">
-            <form class="row g-3 needs-validation" >
+            <form class="row g-3 needs-validation">
               <div class="col-md-12">
                 <label for="validationCustom01" class="form-label">
                   Full Name (First and Last name)
@@ -57,8 +99,12 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom01"
                   required
+                  value={addaddress.name}
+                  onChange={(event) => {
+                    setaddaddress({ ...addaddress, name: event.target.value });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="valid-feedback">Looks good!</div>
               </div>
               <div class="col-md-12">
                 <label for="validationCustomUsername" class="form-label">
@@ -69,15 +115,20 @@ function AddressForm({ show, handleClose }) {
                     +91
                   </span>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
+                    value={addaddress.mobileNumber}
+                    onChange={(event) => {
+                      setaddaddress({
+                        ...addaddress,
+                        mobileNumber: event.target.value,
+                      });
+                    }}
+                    disabled={disabled}
                   />
-                  <div class="invalid-feedback">
-                    Please choose a mobile Number
-                  </div>
                 </div>
               </div>
               <div class="col-md-12">
@@ -89,10 +140,15 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={addaddress.country}
+                  onChange={(event) => {
+                    setaddaddress({
+                      ...addaddress,
+                      country: event.target.value,
+                    });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">
-                  Please provide a valid Country
-                </div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom03" class="form-label">
@@ -103,10 +159,12 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom03"
                   required
+                  value={addaddress.flat}
+                  onChange={(event) => {
+                    setaddaddress({ ...addaddress, flat: event.target.value });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">
-                  Please provide a Flat / House Number
-                </div>
               </div>
               <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">
@@ -117,8 +175,12 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={addaddress.area}
+                  onChange={(event) => {
+                    setaddaddress({ ...addaddress, area: event.target.value });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">Please provide a valid Area</div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom05" class="form-label">
@@ -129,10 +191,15 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={addaddress.landmark}
+                  onChange={(event) => {
+                    setaddaddress({
+                      ...addaddress,
+                      landmark: event.target.value,
+                    });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">
-                  Please provide a valid Landmark
-                </div>
               </div>
               <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">
@@ -143,8 +210,12 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom03"
                   required
+                  value={addaddress.city}
+                  onChange={(event) => {
+                    setaddaddress({ ...addaddress, city: event.target.value });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">Please provide a valid city</div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom05" class="form-label">
@@ -155,8 +226,12 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={addaddress.state}
+                  onChange={(event) => {
+                    setaddaddress({ ...addaddress, state: event.target.value });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">Please provide a valid State</div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom05" class="form-label">
@@ -167,26 +242,15 @@ function AddressForm({ show, handleClose }) {
                   class="form-control"
                   id="validationCustom05"
                   required
+                  value={addaddress.pincode}
+                  onChange={(event) => {
+                    setaddaddress({
+                      ...addaddress,
+                      pincode: event.target.value,
+                    });
+                  }}
+                  disabled={disabled}
                 />
-                <div class="invalid-feedback">Please provide a valid zip</div>
-              </div>
-              <div className="cols-12">
-                <div class="form-check cols-12">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Make this my default address
-                  </label>
-                </div>
-              </div>
-              <div class="col-12">
-                {/* <Button class="addressFormButton" type="submit">
-                  add Address
-                </Button> */}
               </div>
             </form>
           </div>
@@ -195,7 +259,7 @@ function AddressForm({ show, handleClose }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={addAddress} disabled={disabled}>
             Add Address
           </Button>
         </Modal.Footer>
@@ -280,7 +344,7 @@ function EditAddressForm({
         </Modal.Header>
         <Modal.Body>
           <div className="container formCard">
-            <form class="row g-3 needs-validation" >
+            <form class="row g-3 needs-validation">
               <div class="col-md-12">
                 <label for="validationCustom01" class="form-label">
                   Full Name (First and Last name)
@@ -318,8 +382,7 @@ function EditAddressForm({
                         mobileNumber: event.target.value,
                       })
                     }
-                  disabled={disabled}
-
+                    disabled={disabled}
                   />
                 </div>
               </div>
@@ -340,7 +403,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-3">
@@ -360,7 +422,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-6">
@@ -380,7 +441,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-3">
@@ -400,7 +460,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-6">
@@ -420,7 +479,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-3">
@@ -440,7 +498,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
               <div class="col-md-3">
@@ -460,7 +517,6 @@ function EditAddressForm({
                     })
                   }
                   disabled={disabled}
-
                 />
               </div>
             </form>
