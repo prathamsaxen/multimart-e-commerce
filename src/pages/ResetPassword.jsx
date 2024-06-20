@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 import "../index.css";
 
 function ResetPassword() {
@@ -23,10 +24,21 @@ function ResetPassword() {
 
   const resetPasswordFunction = async (event) => {
     event.preventDefault();
-    if(passwordValidator())
-      {
-        console.log("Password has been reset");
+    if (passwordValidator()) {
+      try {
+        const status = await axios.post(
+          `${process.env.REACT_APP_API}api/reset-password/`,
+          { token: token, password: passwordData.pasword }
+        );
+        console.log(status);
+        if (status.status === 200) {
+          toast.success("Password Changed Successfully!");
+        }
+      } catch (error) {
+        toast.error("Error in changing password!");
+        console.error(error);
       }
+    }
   };
 
   return (

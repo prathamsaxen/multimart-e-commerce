@@ -890,9 +890,9 @@ input[type='submit']:disabled{
   margin-top: 20px;
   
 }
-.reset-password-container form{
+/* .reset-password-container form{ */
   /* border: 2px solid red; */
-}
+/* } */
 .reset-password-form-group input{
   padding: 5px;
   background-color: rgb(246, 249, 252);
@@ -906,11 +906,16 @@ input[type='submit']:disabled{
   background-color: #0f3460 ;
   color: white;
   /* margin: 20px; */
-  padding: 5px;
+  padding: 10px;
   display: block;
   margin: auto;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 25px;
   cursor: pointer;
   border-radius: 4px;
+}
+
+
+.modal-open, .modal{
+  padding-right: 0!important;
 }
