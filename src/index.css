@@ -253,6 +253,7 @@ button.delete ion-icon {
   justify-content: center;
   align-items: center;
   padding: 100px;
+  background-color: rgb(246, 249, 252);
 }
 
 .Login form,.SignUp form{

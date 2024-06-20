@@ -36,12 +36,12 @@ function ForgetPasswordModal({ show, handleClose }) {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Enter email..."
                 value={mail}
                 onChange={(e) => setMail(e.target.value)}
               />
               <Form.Text className="text-muted">
-                We'll send an OTP on your email.
+                We'll send an password reset link on your mail.
               </Form.Text>
             </Form.Group>
             {/* {otpInput ? (
