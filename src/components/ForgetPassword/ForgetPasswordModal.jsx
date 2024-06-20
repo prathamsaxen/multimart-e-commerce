@@ -18,14 +18,15 @@ function ForgetPasswordModal({ show, handleClose }) {
     try {
       const status = await axios.post(
         `${process.env.REACT_APP_API}api/forget-password`,
-        mail
+        {email:mail}
       );
       if (status.status === 200) {
         setOTPInput(true);
+        setMail("");
       }
     } catch (e) {
       console.log(e);
-      toast.error(e.response.message);
+      toast.error(e.response.data.error);
     }
   };
   return (
