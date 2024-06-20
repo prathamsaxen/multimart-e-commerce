@@ -23,7 +23,7 @@ function Addresses() {
         `${process.env.REACT_APP_API}api/address`,
         options
       );
-      if (status.status == 200) {
+      if (status.status === 200) {
         // console.log(status);
         setAddress(status.data);
       }
@@ -49,7 +49,7 @@ function Addresses() {
         { default: true },
         options
       );
-      if (status.status == 200) {
+      if (status.status === 200) {
         toast.success("Changed Default Address!");
         getAllAddresses();
       }
@@ -70,7 +70,7 @@ function Addresses() {
         `${process.env.REACT_APP_API}api/address/${ID}`,
         options
       );
-      if (status.status == 200) {
+      if (status.status === 200) {
         toast.success("Address Deleted Successfully!");
         getAllAddresses();
       }
