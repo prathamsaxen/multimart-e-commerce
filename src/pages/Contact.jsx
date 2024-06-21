@@ -15,7 +15,8 @@ function Contact() {
   const submitUserEntry = async (e) => {
     e.preventDefault();
     const namePattern = /^[A-Za-z ]+$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex =
+      /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
     if (!contactData.name) {
       toast.error("Name is required!");
