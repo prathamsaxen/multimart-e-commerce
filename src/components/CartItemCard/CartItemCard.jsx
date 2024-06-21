@@ -75,18 +75,18 @@ function CartItemCard({ item, getCartProducts }) {
       <div className="action-cart">
         <div className="display-quantity">
           <button onClick={() => AddCartItem(item.items)}>
-            <i class="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus"></i>
           </button>
           <input
             type="number"
             name=""
             id=""
             value={item.quantity}
-            inputmode="numeric"
+            inputMode="numeric"
             className="no-arrows"
           />
           <button onClick={() => RemoveCartItem(item._id)}>
-            <i class="fa-solid fa-minus"></i>
+            <i className="fa-solid fa-minus"></i>
           </button>
         </div>
       </div>
