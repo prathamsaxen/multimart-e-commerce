@@ -180,6 +180,7 @@ function SignUp() {
           type="submit"
           className="m-auto d-block mt-5 w-100"
           disabled={disable}
+          style={{backgroundColor: '#0f3460',border:"none"}}
         >
           Sign Up
         </Button>
