@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 // import { addToCart } from "../../app/features/cart/cartSlice";
 import { toast } from "react-toastify";
 import "./product-details.css";
+import axios from "axios";
 
 const ProductDetails = ({ data }) => {
   // const dispatch = useDispatch();
@@ -11,8 +12,26 @@ const ProductDetails = ({ data }) => {
   // const handleQuantityChange = (e) => {
   //   setQuantity(e.target.value);
   // };
-  const handelAdd = (data) => {
-    
+  const handelAdd = async (productItem) => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}api/cart`,
+        { product: productItem },
+        options
+      );
+      if (response.status === 200) {
+        toast.success("Product has been added to cart!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Error in adding product to cart");
+    }
   };
   return (
     <section className="product-page">
