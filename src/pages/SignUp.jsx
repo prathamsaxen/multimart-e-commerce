@@ -24,14 +24,19 @@ function SignUp() {
     event.preventDefault();
     setDisable(true);
 
+    const namePattern = /^[A-Za-z ]+$/;
     const phonePattern = /^[0-9]{10}$/;
-    const emailPattern = /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
+    const emailPattern =
+      /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     const passwordPattern =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!user.name) {
       toast.error("Please enter your name!");
+      setDisable(false);
+      return;
+    } else if (!namePattern.test(user.name)) {
+      toast.error("Please enter a valid name!");
       setDisable(false);
       return;
     } else if (!user.phoneNumber) {
