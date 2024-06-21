@@ -84,6 +84,7 @@ function CartItemCard({ item, getCartProducts }) {
             id=""
             value={item.quantity}
             inputmode="numeric"
+            className="no-arrows"
           />
           <button onClick={() => RemoveCartItem(item._id)}>
             <i class="fa-solid fa-minus"></i>

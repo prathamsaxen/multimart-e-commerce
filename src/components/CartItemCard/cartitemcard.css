@@ -64,7 +64,7 @@
 }
 .display-quantity input{
     width: 20%;
-    background-color: rgb(246, 249, 252);
+    /* background-color: rgb(246, 249, 252); */
     text-align: center;
     padding: 5px;
 
@@ -74,4 +74,12 @@
     padding: 6px 8px 6px 8px;
     border-radius: 50%;
     background-color: rgb(246, 249, 252);
+}
+.no-arrows::-webkit-outer-spin-button,
+.no-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-arrows{
+    caret-color: transparent;
 }
