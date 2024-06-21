@@ -6,6 +6,10 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    margin: 10px;
+}
+.cart-item-cart:first-of-type{
+    margin-top: 0;
 }
 .image-cart-item,.content-cart-item,.action-cart{
     height: 100%;

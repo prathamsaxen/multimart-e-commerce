@@ -52,7 +52,7 @@ const NavBar = () => {
             </svg>
             <Link
               aria-label="Go to Cart Page"
-              to="/cart"
+              to={login?"/cart":"/login?callbackurl=cart"}
               className="cart"
               data-num={login.cartItems}
 
@@ -116,7 +116,8 @@ const NavBar = () => {
               
               <Link
                 aria-label="Go to Cart Page"
-                to="/cart"
+                to={login?"/cart":"/login?callbackurl=cart"}
+
                 className="cart"
                 data-num={login.cartItems}
               >

@@ -48,7 +48,7 @@ const Cart = () => {
     <section className="cart-items">
       <Container>
         <Row className="justify-content-center">
-          <Col md={8} className="py-2">
+          <Col md={8} className="py-2 pt-0">
             {cartProducts.length === 0 && (
               <h1 className="no-items product">No Items are add in Cart</h1>
             )}
