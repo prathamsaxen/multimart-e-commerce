@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 // import { Col, Container, Row } from "react-bootstrap";
 
 function CartItemCard({ item, getCartProducts }) {
-  // console.log(item);
+  console.log(item);
 
   const AddCartItem = async (product) => {
     try {
@@ -22,6 +22,32 @@ function CartItemCard({ item, getCartProducts }) {
       );
       if (response.status === 200) {
         toast.success("Quantity Increased!");
+        getCartProducts();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const RemoveCartItem = async (data) => {
+    // console.log(_id);
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        data: {
+          _id: data,
+        },
+      };
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API}api/cart`,
+        // `${'localhost:3000'}api/cart`,
+        options
+      );
+      if (response.status === 200) {
+        toast.success("Quantity Decreased!");
         getCartProducts();
       }
     } catch (err) {
@@ -49,7 +75,7 @@ function CartItemCard({ item, getCartProducts }) {
       </div>
       <div className="action-cart">
         <div className="display-quantity">
-          <button onClick={()=>AddCartItem(item.items)}>
+          <button onClick={() => AddCartItem(item.items)}>
             <i class="fa-solid fa-plus"></i>
           </button>
           <input
@@ -59,7 +85,7 @@ function CartItemCard({ item, getCartProducts }) {
             value={item.quantity}
             inputmode="numeric"
           />
-          <button>
+          <button onClick={() => RemoveCartItem(item._id)}>
             <i class="fa-solid fa-minus"></i>
           </button>
         </div>
