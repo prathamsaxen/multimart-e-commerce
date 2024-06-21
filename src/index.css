@@ -781,7 +781,7 @@ button.delete ion-icon {
   margin: auto;
   /* margin-top: 80px; */
   /* margin-bottom: 80px; */
-  height: 550px;
+  height: max-content;
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -797,7 +797,6 @@ button.delete ion-icon {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
   /* .contact-page h2{
     width: 80%;
@@ -810,13 +809,22 @@ button.delete ion-icon {
   margin: auto;
 }
 .contact-us-map{
-  /* border: 2px solid pink; */
+  width: 45%; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow the div to grow to fill remaining space */
+  overflow: hidden; /* Ensure iframe doesn't overflow its container */
+  position: relative; /* Ensure proper positioning of iframe */
+  border: 2px solid pink; /* Optional border for visualization */
+
+  /* Set height to 0 to allow iframe to expand */
   height: 100%;
-  width: 45%;
-  overflow: hidden; /* Ensures the iframe doesn't overflow its container */
+  /* padding-bottom: 56.25%;  */
 
 }
 .contact-us-map iframe{
+  position: block;
   width: 100%;
   height: 100%;
   animation: zoomIn 1s ease-in-out;
@@ -827,11 +835,17 @@ button.delete ion-icon {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
+  /* margin-top: 10px; */
 
 }
+.label-group{
+  /* border: 2px solid red; */
+  margin-top: 15px;
+}
 .contact-us-form form{
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .label-group{
   display: flex;
@@ -858,7 +872,7 @@ button.delete ion-icon {
 .contact-us-form input[type='submit']
 {
   /* border:2px solid red; */
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 10px 35px 10px 35px;
   background-color: #0f3460;
   color: white;
