@@ -27,7 +27,8 @@ function SignUp() {
     const phonePattern = /^[0-9]{10}$/;
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!user.name) {
       toast.error("Please enter your name!");
@@ -55,7 +56,7 @@ function SignUp() {
       return;
     } else if (!passwordPattern.test(user.password)) {
       toast.error(
-        "Password must be at least 8 characters long and contain at least one letter and one number!"
+        "Password must be at least 8 characters long and include at least one letter, one number, and one special character"
       );
       setDisable(false);
       return;
