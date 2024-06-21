@@ -1,9 +1,34 @@
 import React from "react";
 import "./cartitemcard.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 // import { Col, Container, Row } from "react-bootstrap";
 
-function CartItemCard({ item }) {
-  console.log(item);
+function CartItemCard({ item, getCartProducts }) {
+  // console.log(item);
+
+  const AddCartItem = async (product) => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}api/cart`,
+        { product: product },
+        options
+      );
+      if (response.status === 200) {
+        toast.success("Quantity Increased!");
+        getCartProducts();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="cart-item-cart" key={item._id}>
       <div className="image-cart-item">
@@ -24,10 +49,16 @@ function CartItemCard({ item }) {
       </div>
       <div className="action-cart">
         <div className="display-quantity">
-          <button>
+          <button onClick={()=>AddCartItem(item.items)}>
             <i class="fa-solid fa-plus"></i>
           </button>
-          <input type="number" name="" id="" value={item.quantity} inputmode="numeric"/>
+          <input
+            type="number"
+            name=""
+            id=""
+            value={item.quantity}
+            inputmode="numeric"
+          />
           <button>
             <i class="fa-solid fa-minus"></i>
           </button>

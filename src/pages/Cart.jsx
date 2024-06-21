@@ -53,7 +53,7 @@ const Cart = () => {
               <h1 className="no-items product">No Items are add in Cart</h1>
             )}
             {cartProducts.map((item) => {
-              return <CartItemCard item={item} key={item._id} />;
+              return <CartItemCard item={item} key={item._id} getCartProducts={getCartProducts}/>;
             })}
           </Col>
           <Col md={4}>
