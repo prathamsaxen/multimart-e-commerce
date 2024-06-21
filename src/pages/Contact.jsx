@@ -14,9 +14,14 @@ function Contact() {
 
   const submitUserEntry = async (e) => {
     e.preventDefault();
+    const namePattern = /^[A-Za-z ]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!contactData.name) {
       toast.error("Name is required!");
+      return;
+    } else if (!namePattern.test(contactData.name)) {
+      toast.error("Name is not valid!");
       return;
     } else if (!contactData.email) {
       toast.error("Email is required");
@@ -86,7 +91,6 @@ function Contact() {
                   setContactData({ ...contactData, subject: e.target.value })
                 }
                 disabled={disable}
-                
               />
             </div>
             <div className="label-group">
