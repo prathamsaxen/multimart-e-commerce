@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-r edux";
+// import { addToCart } from "../../app/features/cart/cartSlice";
 import { toast } from "react-toastify";
-import { addToCart } from "../../app/features/cart/cartSlice";
 import "./product-details.css";
 
-const ProductDetails = ({data}) => {
-  const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-  };
-  const handelAdd = (data, quantity) => {
-    dispatch(addToCart({ product: data, num: quantity }));
-    toast.success("Product has been added to cart!");
+const ProductDetails = ({ data }) => {
+  // const dispatch = useDispatch();
+  // const [quantity, setQuantity] = useState(1);
+  // const handleQuantityChange = (e) => {
+  //   setQuantity(e.target.value);
+  // };
+  const handelAdd = (data) => {
+    
   };
   return (
     <section className="product-page">
@@ -37,18 +36,18 @@ const ProductDetails = ({data}) => {
               <span>Category : {data?.category}</span>
             </div>
             <p>{data?.description}</p>
-            <input
+            {/* <input
               className="qty-input"
               type="number"
               placeholder="Qty"
               value={quantity}
               onChange={handleQuantityChange}
-            />
+            /> */}
             <button
               aria-label="Add"
               type="submit"
               className="add"
-              onClick={() => handelAdd(data, quantity)}
+              onClick={() => handelAdd(data)}
             >
               Add To Cart
             </button>

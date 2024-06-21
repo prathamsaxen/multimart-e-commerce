@@ -1,26 +1,27 @@
 import { useEffect, useState, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+// import { useDispatch, useSelector } from "react-redux";
 // import {
-//   addToCart,
-//   decreaseQty,
-//   deleteProduct,
-// } from "../app/features/cart/cartSlice";
-import AuthenticationContext from "../context/AuthenticationContext";
+  //   addToCart,
+  //   decreaseQty,
+  //   deleteProduct,
+  // } from "../app/features/cart/cartSlice";
+  import axios from "axios";
 import { NavLink } from "react-router-dom";
+import AuthenticationContext from "../context/AuthenticationContext";
 import CartItemCard from "../components/CartItemCard/CartItemCard";
 
 const Cart = () => {
-  const { cartList } = useSelector((state) => state.cart);
+  // const { cartList } = useSelector((state) => state.cart);
   // const dispatch = useDispatch();
+  // const totalPrice = cartList.reduce(
+  //   (price, item) => price + item.qty * item.price,
+  //   0
+  // );
+
   const { login } = useContext(AuthenticationContext);
-  const totalPrice = cartList.reduce(
-    (price, item) => price + item.qty * item.price,
-    0
-  );
   const [cartProducts, setProducts] = useState([]);
-  const [price,setPrice]=useState();
+  const [price, setPrice] = useState();
   const getCartProducts = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -56,7 +57,13 @@ const Cart = () => {
               <h1 className="no-items product">No Items are add in Cart</h1>
             )}
             {cartProducts.map((item) => {
-              return <CartItemCard item={item} key={item._id} getCartProducts={getCartProducts}/>;
+              return (
+                <CartItemCard
+                  item={item}
+                  key={item._id}
+                  getCartProducts={getCartProducts}
+                />
+              );
             })}
           </Col>
           <Col md={4}>
