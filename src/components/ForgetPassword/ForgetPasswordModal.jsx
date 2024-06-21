@@ -10,7 +10,8 @@ function ForgetPasswordModal({ show, handleClose }) {
   const [otpInput, setOTPInput] = useState(false);
   const resetPassword = async (event) => {
     event.preventDefault();
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const emailPattern =
+      /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(mail)) {
       toast.error("Email is invalid!");
       return;
