@@ -8,7 +8,6 @@
     background-color: #fff;
 }
 .image-cart-item,.content-cart-item,.action-cart{
-    /* border: 2px solid green; */
     height: 100%;
 
 }
@@ -68,7 +67,7 @@
 }
 .display-quantity button {
     /* border: 2px solid red; */
-    padding: 15px;
+    padding: 6px 8px 6px 8px;
     border-radius: 50%;
     background-color: rgb(246, 249, 252);
 }

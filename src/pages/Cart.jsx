@@ -1,39 +1,59 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  decreaseQty,
-  deleteProduct,
-} from "../app/features/cart/cartSlice";
+import axios from "axios";
+// import {
+//   addToCart,
+//   decreaseQty,
+//   deleteProduct,
+// } from "../app/features/cart/cartSlice";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { NavLink } from "react-router-dom";
 import CartItemCard from "../components/CartItemCard/CartItemCard";
 
 const Cart = () => {
   const { cartList } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { login } = useContext(AuthenticationContext);
   const totalPrice = cartList.reduce(
     (price, item) => price + item.qty * item.price,
     0
   );
+  const [cartProducts, setProducts] = useState([]);
+  const getCartProducts = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}api/cart`,
+        options
+      );
+      if (response.status === 200) {
+        console.log(response);
+        setProducts(response.data.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
   useEffect(() => {
-    window.scrollTo(0, 0);
+    getCartProducts();
   }, []);
+
   return (
     <section className="cart-items">
       <Container>
         <Row className="justify-content-center">
           <Col md={8} className="py-2">
-            {cartList.length === 0 && (
+            {cartProducts.length === 0 && (
               <h1 className="no-items product">No Items are add in Cart</h1>
             )}
-            {cartList.map((item) => {
-              const productQty = item.price * item.qty;
-              return (
-                <CartItemCard item={item} key={item._id}/>
-              );
+            {cartProducts.map((item) => {
+              return <CartItemCard item={item} key={item._id} />;
             })}
           </Col>
           <Col md={4}>
