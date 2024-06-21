@@ -20,6 +20,7 @@ const Cart = () => {
     0
   );
   const [cartProducts, setProducts] = useState([]);
+  const [price,setPrice]=useState();
   const getCartProducts = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -35,6 +36,8 @@ const Cart = () => {
       if (response.status === 200) {
         console.log(response);
         setProducts(response.data.data);
+        setPrice(response.data?.price);
+        console.log(price);
       }
     } catch (err) {
       console.error(err);
@@ -61,20 +64,20 @@ const Cart = () => {
               <h2>Cart Summary</h2>
               <div className="cart-price-item">
                 <h4>Price :</h4>
-                <h3>₹{totalPrice}.00</h3>
+                <h3>₹{price?.amount}.00</h3>
               </div>
               <div className=" cart-price-item">
                 <h4>Goods Service Tax :</h4>
-                <h3>₹{totalPrice}.00</h3>
+                <h3>₹{price?.gstAmount}.00</h3>
               </div>
               <div className=" cart-price-item">
                 <h4>Delivery Charge :</h4>
-                <h3>₹{totalPrice}.00</h3>
+                <h3>₹{price?.deliveryCharges}.00</h3>
               </div>
               <div className="border-line-cart-price"></div>
               <div className=" cart-price-item">
                 <h4>Total Price :</h4>
-                <h3>₹{totalPrice}.00</h3>
+                <h3>₹{price?.total}.00</h3>
               </div>
               <NavLink
                 to={login ? "/me/checkout" : "/login?callbackurl=cart"}
