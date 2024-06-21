@@ -1,24 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-  //   addToCart,
-  //   decreaseQty,
-  //   deleteProduct,
-  // } from "../app/features/cart/cartSlice";
-  import axios from "axios";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CartItemCard from "../components/CartItemCard/CartItemCard";
 
 const Cart = () => {
-  // const { cartList } = useSelector((state) => state.cart);
-  // const dispatch = useDispatch();
-  // const totalPrice = cartList.reduce(
-  //   (price, item) => price + item.qty * item.price,
-  //   0
-  // );
-
   const { login } = useContext(AuthenticationContext);
   const [cartProducts, setProducts] = useState([]);
   const [price, setPrice] = useState();
@@ -35,10 +22,10 @@ const Cart = () => {
         options
       );
       if (response.status === 200) {
-        console.log(response);
+        // console.log(response);
         setProducts(response.data.data);
         setPrice(response.data?.price);
-        console.log(price);
+        // console.log(price);
       }
     } catch (err) {
       console.error(err);

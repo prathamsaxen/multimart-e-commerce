@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 // import { Col, Container, Row } from "react-bootstrap";
 
 function CartItemCard({ item, getCartProducts }) {
-  // console.log(item);
 
   const AddCartItem = async (product) => {
     try {

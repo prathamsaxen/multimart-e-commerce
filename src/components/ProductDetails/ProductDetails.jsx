@@ -1,17 +1,9 @@
-import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-// import { useDispatch } from "react-r edux";
-// import { addToCart } from "../../app/features/cart/cartSlice";
 import { toast } from "react-toastify";
 import "./product-details.css";
 import axios from "axios";
 
 const ProductDetails = ({ data }) => {
-  // const dispatch = useDispatch();
-  // const [quantity, setQuantity] = useState(1);
-  // const handleQuantityChange = (e) => {
-  //   setQuantity(e.target.value);
-  // };
   const handelAdd = async (productItem) => {
     try {
       const token = localStorage.getItem("token");
@@ -55,13 +47,6 @@ const ProductDetails = ({ data }) => {
               <span>Category : {data?.category}</span>
             </div>
             <p>{data?.description}</p>
-            {/* <input
-              className="qty-input"
-              type="number"
-              placeholder="Qty"
-              value={quantity}
-              onChange={handleQuantityChange}
-            /> */}
             <button
               aria-label="Add"
               type="submit"

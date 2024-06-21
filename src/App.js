@@ -45,7 +45,7 @@ function App() {
         options
       );
       if (response.status === 200) {
-        console.log(response.data);
+        // console.log(response.data);
         setLogin(response.data);
       }
     } catch (err) {
