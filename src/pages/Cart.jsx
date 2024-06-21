@@ -8,7 +8,12 @@ import CartItemCard from "../components/CartItemCard/CartItemCard";
 const Cart = () => {
   const { login } = useContext(AuthenticationContext);
   const [cartProducts, setProducts] = useState([]);
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState({
+    amount: 0,
+    gstAmount: 0,
+    deliveryCharges: 0,
+    total: 0,
+  });
   const getCartProducts = async () => {
     try {
       const token = localStorage.getItem("token");

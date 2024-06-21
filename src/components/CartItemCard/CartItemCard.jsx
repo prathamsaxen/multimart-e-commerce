@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 // import { Col, Container, Row } from "react-bootstrap";
 
 function CartItemCard({ item, getCartProducts }) {
-
   const AddCartItem = async (product) => {
     try {
       const token = localStorage.getItem("token");
@@ -81,7 +80,9 @@ function CartItemCard({ item, getCartProducts }) {
             type="number"
             name=""
             id=""
+            // value={item.quantity}
             value={item.quantity}
+            readOnly
             inputMode="numeric"
             className="no-arrows"
           />
