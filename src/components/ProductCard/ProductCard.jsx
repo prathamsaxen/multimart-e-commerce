@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../app/features/cart/cartSlice";
-import  AuthenticationContext  from "../../context/AuthenticationContext";
+import AuthenticationContext from "../../context/AuthenticationContext";
 import { useContext } from "react";
+import axios from "axios";
 
 const ProductCard = ({ title, productItem }) => {
   const dispatch = useDispatch();
@@ -15,9 +16,27 @@ const ProductCard = ({ title, productItem }) => {
   };
   const { login } = useContext(AuthenticationContext);
   // console.log(productItem);
-  const handelAdd = (productItem) => {
+  const handelAdd = async (productItem) => {
     dispatch(addToCart({ product: productItem, num: 1 }));
-    toast.success("Product has been added to cart!");
+    // try {
+    //   const token = localStorage.getItem("token");
+    //   const options = {
+    //     headers: {
+    //       authorization: `Bearer ${token}`,
+    //     },
+    //   };
+    //   const response = await axios.post(
+    //     `${process.env.REACT_APP_API}api/cart`,
+    //     productItem,
+    //     options
+    //   );
+    //   if (response.status === 200) {
+    //     toast.success("Product has been added to cart!");
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    //   toast.error("Error in adding product to cart");
+    // }
   };
   return (
     <Col md={3} sm={5} xs={10} className="product mtop">
