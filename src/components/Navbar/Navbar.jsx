@@ -117,7 +117,6 @@ const NavBar = () => {
               <Link
                 aria-label="Go to Cart Page"
                 to={login?"/cart":"/login?callbackurl=cart"}
-
                 className="cart"
                 data-num={login.cartItems}
               >
