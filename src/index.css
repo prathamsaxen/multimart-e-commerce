@@ -785,7 +785,7 @@ button.delete ion-icon {
   background-color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .contact-us-form{
   /* border: 2px solid red; */
@@ -816,10 +816,10 @@ button.delete ion-icon {
   flex-grow: 1; /* Allow the div to grow to fill remaining space */
   overflow: hidden; /* Ensure iframe doesn't overflow its container */
   position: relative; /* Ensure proper positioning of iframe */
-  border: 2px solid pink; /* Optional border for visualization */
+  /* border: 2px solid pink; Optional border for visualization */
 
   /* Set height to 0 to allow iframe to expand */
-  height: 100%;
+  /* height: 100%; */
   /* padding-bottom: 56.25%;  */
 
 }
