@@ -2,19 +2,41 @@ import { Col } from "react-bootstrap";
 import "./product-card.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../app/features/cart/cartSlice";
+// import { useDispatch } from "react-redux";
+// import { addToCart } from "../../app/features/cart/cartSlice";
+import AuthenticationContext from "../../context/AuthenticationContext";
+import { useContext } from "react";
+import axios from "axios";
 
 const ProductCard = ({ title, productItem }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useNavigate();
   const handelClick = () => {
-    router(`/shop/${productItem.name.replace(/\s+/g, '-')}/${productItem._id}`);
+    router(`/shop/${productItem.name.replace(/\s+/g, "-")}/${productItem._id}`);
   };
+  const { login } = useContext(AuthenticationContext);
   // console.log(productItem);
-  const handelAdd = (productItem) => {
-    dispatch(addToCart({ product: productItem, num: 1 }));
-    toast.success("Product has been added to cart!");
+  const handelAdd = async (productItem) => {
+    // dispatch(addToCart({ product: productItem, num: 1 }));
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}api/cart`,
+        { product: productItem },
+        options
+      );
+      if (response.status === 200) {
+        toast.success("Product has been added to cart!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Error in adding product to cart");
+    }
   };
   return (
     <Col md={3} sm={5} xs={10} className="product mtop">
@@ -41,15 +63,27 @@ const ProductCard = ({ title, productItem }) => {
         </div>
         <div className="price">
           <h4>${productItem.price}</h4>
-          <button
-            aria-label="Add"
-            type="submit"
-            className="add"
-            onClick={() => handelAdd(productItem)}
-          >
-            <ion-icon name="add"></ion-icon>
-            Add to Cart
-          </button>
+          {login ? (
+            <button
+              aria-label="Add"
+              type="submit"
+              className="add"
+              onClick={() => handelAdd(productItem)}
+            >
+              <ion-icon name="add"></ion-icon>
+              Add to Cart
+            </button>
+          ) : (
+            <button
+              aria-label="Add"
+              type="submit"
+              className="add"
+              onClick={() => router("/login?callbackurl=shop")}
+            >
+              <ion-icon name="add"></ion-icon>
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </Col>

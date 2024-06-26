@@ -1,11 +1,11 @@
 import {  useState,useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import AuthenticationContext from "../../context/AuthenticationContext";
 import "./navbar.css";
 const NavBar = () => {
-  const { cartList } = useSelector((state) => state.cart);
+  // const { cartList } = useSelector((state) => state.cart);
   const [expand, setExpand] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   // fixed Header
@@ -52,10 +52,11 @@ const NavBar = () => {
             </svg>
             <Link
               aria-label="Go to Cart Page"
-              to="/cart"
+              to={login?"/cart":"/login?callbackurl=cart"}
               className="cart"
-              data-num={cartList.length}
-            >
+              data-num={login.cartItems}
+
+            > 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -115,9 +116,9 @@ const NavBar = () => {
               
               <Link
                 aria-label="Go to Cart Page"
-                to="/cart"
+                to={login?"/cart":"/login?callbackurl=cart"}
                 className="cart"
-                data-num={cartList.length}
+                data-num={login.cartItems}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

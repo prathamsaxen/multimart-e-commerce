@@ -1,87 +1,84 @@
-import { useEffect,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  decreaseQty,
-  deleteProduct,
-} from "../app/features/cart/cartSlice";
-import AuthenticationContext from "../context/AuthenticationContext";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
+import AuthenticationContext from "../context/AuthenticationContext";
+import CartItemCard from "../components/CartItemCard/CartItemCard";
 
 const Cart = () => {
-  const { cartList } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  const {login}=useContext(AuthenticationContext);
-  const totalPrice = cartList.reduce(
-    (price, item) => price + item.qty * item.price,
-    0
-  );
+  const { login } = useContext(AuthenticationContext);
+  const [cartProducts, setProducts] = useState([]);
+  const [price, setPrice] = useState({
+    amount: 0,
+    gstAmount: 0,
+    deliveryCharges: 0,
+    total: 0,
+  });
+  const getCartProducts = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}api/cart`,
+        options
+      );
+      if (response.status === 200) {
+        // console.log(response);
+        setProducts(response.data.data);
+        setPrice(response.data?.price);
+        // console.log(price);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
   useEffect(() => {
-    window.scrollTo(0, 0);
+    getCartProducts();
   }, []);
+
   return (
     <section className="cart-items">
       <Container>
         <Row className="justify-content-center">
-          <Col md={8}>
-            {cartList.length === 0 && (
+          <Col md={8} className="py-2 pt-0">
+            {cartProducts.length === 0 && (
               <h1 className="no-items product">No Items are add in Cart</h1>
             )}
-            {cartList.map((item) => {
-              const productQty = item.price * item.qty;
+            {cartProducts.map((item) => {
               return (
-                <div className="cart-list" key={item._id}>
-                  <Row>
-                    <Col className="image-holder" sm={4} md={3}>
-                      <img src={item.photo} alt="" />
-                    </Col>
-                    <Col sm={8} md={9}>
-                      <Row className="cart-content justify-content-center">
-                        <Col xs={12} sm={9} className="cart-details">
-                          <h3>{item.name}</h3>
-                          <h4>
-                            ${item.price}.00 * {item.qty}
-                            <span>${productQty}.00</span>
-                          </h4>
-                        </Col>
-                        <Col xs={12} sm={3} className="cartControl">
-                          <button
-                            className="incCart"
-                            onClick={() =>
-                              dispatch(addToCart({ product: item, num: 1 }))
-                            }
-                          >
-                            <i className="fa-solid fa-plus"></i>
-                          </button>
-                          <button
-                            className="desCart"
-                            onClick={() => dispatch(decreaseQty(item))}
-                          >
-                            <i className="fa-solid fa-minus"></i>
-                          </button>
-                        </Col>
-                      </Row>
-                    </Col>
-                    <button
-                      className="delete"
-                      onClick={() => dispatch(deleteProduct(item))}
-                    >
-                      <ion-icon name="close"></ion-icon>
-                    </button>
-                  </Row>
-                </div>
+                <CartItemCard
+                  item={item}
+                  key={item._id}
+                  getCartProducts={getCartProducts}
+                />
               );
             })}
           </Col>
           <Col md={4}>
             <div className="cart-total">
               <h2>Cart Summary</h2>
-              <div className=" d_flex">
-                <h4>Total Price :</h4>
-                <h3>${totalPrice}.00</h3>
+              <div className="cart-price-item">
+                <h4>Price :</h4>
+                <h3>₹{price?.amount}.00</h3>
               </div>
-              <NavLink to={login?"/me/checkout":"/login?callbackurl=cart"} disabled={true} className="checkout-btn">Checkout</NavLink>
+              <div className=" cart-price-item">
+                <h4>Goods Service Tax :</h4>
+                <h3>₹{price?.gstAmount}.00</h3>
+              </div>
+              <div className=" cart-price-item">
+                <h4>Delivery Charge :</h4>
+                <h3>₹{price?.deliveryCharges}.00</h3>
+              </div>
+              <div className="border-line-cart-price"></div>
+              <div className=" cart-price-item">
+                <h4>Total Price :</h4>
+                <h3>₹{price?.total}.00</h3>
+              </div>
+              <NavLink to={login?"/me/checkout":"/login?callbackurl=cart"} className="checkout-btn">Checkout</NavLink>
             </div>
           </Col>
         </Row>

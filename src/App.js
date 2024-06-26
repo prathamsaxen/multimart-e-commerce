@@ -14,6 +14,7 @@ const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Product = lazy(() => import("./pages/Product"));
 const Login = lazy(() => import("./pages/Login"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const User = lazy(() => import("./pages/User"));
 const Orders = lazy(() => import("./pages/Orders"));
@@ -44,7 +45,7 @@ function App() {
         options
       );
       if (response.status === 200) {
-        console.log(response.data);
+        // console.log(response.data);
         setLogin(response.data);
       }
     } catch (err) {
@@ -102,6 +103,7 @@ function App() {
                 <Route path="/shop/:name/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/forget-password/reset-password/:token" element={<ResetPassword />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />

@@ -125,13 +125,44 @@ button {
   justify-content: center;
   align-items: center;
 }
+.cart-price-item{
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+.cart-price-item h4,h3{
+  margin: 0;
+}
 
-.cart-items img {
+.border-line-cart-price{
+  border-bottom:1px solid rgb(3 0 71 / 9%);
+  margin-bottom: 15px;
+}
+.checkout-btn{
+  padding: 10px 20px 10px 20px;
+  background-color: #0f3460;
+  color: white;
+  margin: auto;
+  /* width: 150px; */
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  border-radius: 6px;
+}
+.checkout-btn:hover{
+  color:white;
+}
+
+/* .cart-items img {
   width: 100%;
   height: 100%;
   max-width: 300px;
   object-fit: contain;
-}
+} */
 
 @media (max-width: 767px) {
   .cart-items .container > .row {
@@ -253,6 +284,7 @@ button.delete ion-icon {
   justify-content: center;
   align-items: center;
   padding: 100px;
+  background-color: rgb(246, 249, 252);
 }
 
 .Login form,.SignUp form{
@@ -315,17 +347,7 @@ button.delete ion-icon {
   border-radius: 6px;
 }
 
-.checkout-btn{
-  /* border:2px solid red; */
-  padding: 10px 20px 10px 20px;
-  background-color: #0f3460;
-  color: white;
-  margin: auto;
-  /* width: 150px; */
-  width: max-content;
-  display: block;
-  border-radius: 6px;
-}
+
 /* address css starting */
 /* .Addresses {
   margin: auto;
@@ -855,11 +877,11 @@ ion-icon{
   margin: auto;
   /* margin-top: 80px; */
   /* margin-bottom: 80px; */
-  height: 550px;
+  height: max-content;
   background-color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .contact-us-form{
   /* border: 2px solid red; */
@@ -871,7 +893,6 @@ ion-icon{
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
   /* .contact-page h2{
     width: 80%;
@@ -884,13 +905,22 @@ ion-icon{
   margin: auto;
 }
 .contact-us-map{
-  /* border: 2px solid pink; */
-  height: 100%;
-  width: 45%;
-  overflow: hidden; /* Ensures the iframe doesn't overflow its container */
+  width: 45%; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow the div to grow to fill remaining space */
+  overflow: hidden; /* Ensure iframe doesn't overflow its container */
+  position: relative; /* Ensure proper positioning of iframe */
+  /* border: 2px solid pink; Optional border for visualization */
+
+  /* Set height to 0 to allow iframe to expand */
+  /* height: 100%; */
+  /* padding-bottom: 56.25%;  */
 
 }
 .contact-us-map iframe{
+  position: block;
   width: 100%;
   height: 100%;
   animation: zoomIn 1s ease-in-out;
@@ -901,11 +931,17 @@ ion-icon{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
+  /* margin-top: 10px; */
 
 }
+.label-group{
+  /* border: 2px solid red; */
+  margin-top: 15px;
+}
 .contact-us-form form{
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .label-group{
   display: flex;
@@ -929,10 +965,10 @@ ion-icon{
   padding: 5px;
 
 }
-input[type='submit']
+.contact-us-form input[type='submit']
 {
   /* border:2px solid red; */
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 10px 35px 10px 35px;
   background-color: #0f3460;
   color: white;
@@ -949,4 +985,68 @@ input[type='submit']:disabled{
     transform: scale(1);
     opacity: 1;
   }
+}
+
+
+
+
+
+/* Reset Password */
+.reset-password{
+  /* border: 2px s  olid red; */
+  min-height: 600px;
+  background-color: rgb(246, 249, 252);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reset-password-container{
+  width: 350px;
+  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+  border-radius: 8px;
+  background-color: #fff;
+  /* height: 300px; */
+  padding: 30px;
+}
+.reset-password-container h2{
+  font-size: 1.4rem;
+  text-align: center;
+}
+.reset-password-form-group{
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* margin: 20px; */
+  margin-top: 20px;
+  
+}
+/* .reset-password-container form{ */
+  /* border: 2px solid red; */
+/* } */
+.reset-password-form-group input{
+  padding: 5px;
+  background-color: rgb(246, 249, 252);
+  background-color: whitesmoke;
+  border-radius: 4px;
+}
+
+.reset-password-form-group-submit
+{
+  /* background-color: rgb(246, 249, 252) !important; */
+  background-color: #0f3460 ;
+  color: white;
+  /* margin: 20px; */
+  padding: 10px;
+  display: block;
+  margin: auto;
+  width: 100%;
+  margin-top: 25px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+.modal-open, .modal{
+  padding-right: 0!important;
 }

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../index.css";
 import axios from "axios";
 
@@ -18,18 +18,25 @@ function SignUp() {
   const [disable, setDisable] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const signUpUser = async (event) => {
     event.preventDefault();
     setDisable(true);
 
+    const namePattern = /^[A-Za-z ]+$/;
     const phonePattern = /^[0-9]{10}$/;
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
+    const emailPattern =
+      /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!user.name) {
       toast.error("Please enter your name!");
+      setDisable(false);
+      return;
+    } else if (!namePattern.test(user.name)) {
+      toast.error("Please enter a valid name!");
       setDisable(false);
       return;
     } else if (!user.phoneNumber) {
@@ -54,7 +61,7 @@ function SignUp() {
       return;
     } else if (!passwordPattern.test(user.password)) {
       toast.error(
-        "Password must be at least 8 characters long and contain at least one letter and one number!"
+        "Password must be at least 8 characters long and include at least one letter, one number, and one special character"
       );
       setDisable(false);
       return;
@@ -83,7 +90,11 @@ function SignUp() {
 
   return (
     <div className="SignUp">
-      <Form className="form-signup" style={{width:"30%"}} onSubmit={signUpUser}>
+      <Form
+        className="form-signup"
+        style={{ width: "30%" }}
+        onSubmit={signUpUser}
+      >
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -107,6 +118,7 @@ function SignUp() {
             onChange={(e) => {
               setUser({ ...user, phoneNumber: e.target.value });
             }}
+            maxLength={10}
           />
         </Form.Group>
 
@@ -123,31 +135,31 @@ function SignUp() {
           />
         </Form.Group>
 
-        <div style={{ position: 'relative' }}>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-             type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            value={user.password}
-            disabled={disable}
-            onChange={(e) => {
-              setUser({ ...user, password: e.target.value });
-            }}
-          />
-           <span
-          onClick={()=>setShowPassword(!showPassword)}
-          style={{
-            position: 'absolute',
-            right: '10px',
-            top: '70%',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer',
-          }}
-        >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </span>
-        </Form.Group>
+        <div style={{ position: "relative" }}>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={user.password}
+              disabled={disable}
+              onChange={(e) => {
+                setUser({ ...user, password: e.target.value });
+              }}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "70%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </Form.Group>
         </div>
 
         <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
@@ -168,6 +180,7 @@ function SignUp() {
           type="submit"
           className="m-auto d-block mt-5 w-100"
           disabled={disable}
+          style={{ backgroundColor: "#0f3460", border: "none" }}
         >
           Sign Up
         </Button>

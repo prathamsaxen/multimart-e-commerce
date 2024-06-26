@@ -1,19 +1,29 @@
-import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { addToCart } from "../../app/features/cart/cartSlice";
 import "./product-details.css";
+import axios from "axios";
 
-const ProductDetails = ({data}) => {
-  const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-  };
-  const handelAdd = (data, quantity) => {
-    dispatch(addToCart({ product: data, num: quantity }));
-    toast.success("Product has been added to cart!");
+const ProductDetails = ({ data }) => {
+  const handelAdd = async (productItem) => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}api/cart`,
+        { product: productItem },
+        options
+      );
+      if (response.status === 200) {
+        toast.success("Product has been added to cart!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Error in adding product to cart");
+    }
   };
   return (
     <section className="product-page">
@@ -37,18 +47,11 @@ const ProductDetails = ({data}) => {
               <span>Category : {data?.category}</span>
             </div>
             <p>{data?.description}</p>
-            <input
-              className="qty-input"
-              type="number"
-              placeholder="Qty"
-              value={quantity}
-              onChange={handleQuantityChange}
-            />
             <button
               aria-label="Add"
               type="submit"
               className="add"
-              onClick={() => handelAdd(data, quantity)}
+              onClick={() => handelAdd(data)}
             >
               Add To Cart
             </button>

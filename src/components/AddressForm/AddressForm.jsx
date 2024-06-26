@@ -85,7 +85,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
   };
   return (
     <>
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide={handleClose} centered style={{paddingRight:"0"}}>
         <Modal.Header closeButton>
           <Modal.Title>Add Address</Modal.Title>
         </Modal.Header>
