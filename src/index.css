@@ -787,7 +787,7 @@ button.delete ion-icon {
 }
 .payment-modes{
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   gap: 30px;
   color: #8C8C8C;
 }
