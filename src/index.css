@@ -802,7 +802,7 @@ button.delete ion-icon {
   font-size: small;
 }
 .mode-of-payment:hover{
-  background-color: #538FBA;
+  background-color: #0f3460;
   cursor: pointer;
   color: white;
 }
@@ -837,7 +837,7 @@ ion-icon{
   letter-spacing: 3px;
   color: #538FBA;
   margin-top: 30px;
-  border: 5px solid #538FBA
+  border: 5px solid #0f3460;
 }
 @media only screen and (max-width: 992px) {
   .checkout{
