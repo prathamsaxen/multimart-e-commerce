@@ -3,9 +3,31 @@ import "../index.css";
 // import AddressCard from "../components/AddressCard/AddressCard";
 import axios from "axios";
 
-
 function Checkout() {
   const [data, setData] = useState(undefined);
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ]; 
+  function formatDate(date) {
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric',
+        hour12: true 
+    };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    return formattedDate.replace('at', ' |');
+}
 
   const getCheckoutData = async () => {
     try {
@@ -100,14 +122,14 @@ function Checkout() {
           </p>
         </div>
         <div className="checkout-date text-center">
-          <p className="fw-bold">WEDNESDAY</p>
+          <p className="fw-bold">{days[dayOfWeek]}</p>
           <div className="d-flex justify-content-center fw-bold">
-            <p>January 18, 2017 | </p>
-            <p className="px-1">11:00 AM</p>
+            <p>{formatDate(today)}</p>
+            {/* <p className="px-1">11:00 AM</p> */}
           </div>
         </div>
         <div>
-          <button  className="payment-button">PURCHASE NOW</button>
+          <button className="payment-button">PURCHASE NOW</button>
         </div>
       </div>
     </div>
