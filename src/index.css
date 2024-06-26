@@ -824,7 +824,8 @@ ion-icon{
   background-color: #F1F5F8;
   padding: 15px;
 }
-.product{
+.checkout-product-items{
+  /* border: 2px solid rebeccapurple; */
   display: flex;
   justify-content: space-between;
 }

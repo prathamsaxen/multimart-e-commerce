@@ -33,7 +33,6 @@ function Checkout() {
     // console.log(data);
   }, []);
   return (
-<<<<<<< HEAD
     <div className="checkout container">
       <div className="checkout-payment">
         <p className="fw-bold">SELECT PAYMENT METHOD</p>
@@ -91,7 +90,7 @@ function Checkout() {
       <div className="checkout-details">
         <div className="checkout-product">
           <p className="fw-bold">ORDER SUMMARY</p>
-          <div className="product">
+          <div className="checkout-product-items">
             <p>Samsung FE 23</p>
             <p>129999</p>
           </div>
@@ -109,72 +108,6 @@ function Checkout() {
         </div>
         <div>
           <button  className="payment-button">PURCHASE NOW</button>
-=======
-    <div className="container checkout">
-      <div className="left">
-        <div className="upper">
-          {/* {data &&
-            data.address &&
-            data.address.map((item, index) => {
-              return <AddressCard key={index} data={item} />;
-            })} */}
-        </div>
-        <div className="lower">
-          <h3>Payment Method</h3>
-          <div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-              />
-              <label className="form-check-label" for="flexRadioDefault1">
-                Cash On Delivery
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-              />
-              <label className="form-check-label" for="flexRadioDefault1">
-                Online
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="returnPayButton">
-          <button>Return to Cart</button>
-          <button className="paymentButton">Continue to payment</button>
-        </div>
-      </div>
-      <div className="right">
-        <div className="cartProduct">
-          <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-madebymath-90946.jpg&fm=jpg"></img>
-          <p>Brain Blend</p>
-          <p>852</p>
-        </div>
-        <div className="pt-5">
-          <div className="payment">
-            <p>Subtotal</p>
-            <p>464.00</p>
-          </div>
-          <div className="payment">
-            <p>Shipping</p>
-            <p>5.00</p>
-          </div>
-          <div className="payment">
-            <p>Estimated taxes</p>
-            <p>28.14</p>
-          </div>
-          <div className="totalPayment">
-            <p>Total</p>
-            <p>497.14</p>
-          </div>
->>>>>>> c714049a1245ff6a20a78b6b6616560337816d23
         </div>
       </div>
     </div>
