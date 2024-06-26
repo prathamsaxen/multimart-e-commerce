@@ -776,6 +776,7 @@ button.delete ion-icon {
   display: flex;
   gap: 20px;
   padding: 50px;
+  /* background-color: red; */
 }
 .checkout-payment{
   width: 65%;
@@ -828,6 +829,7 @@ ion-icon{
   /* border: 2px solid rebeccapurple; */
   display: flex;
   justify-content: space-between;
+  
 }
 .payment-button{
   width: 100%;

@@ -114,7 +114,7 @@ function Checkout() {
           <p className="fw-bold">ORDER SUMMARY</p>
           <div className="checkout-product-items">
             <p>Samsung FE 23</p>
-            <p>129999</p>
+            <p>₹ 129999/-</p>
           </div>
           <p className="fs-6">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
