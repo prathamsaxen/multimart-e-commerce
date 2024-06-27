@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../index.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import "../styles/Contact.css";
 
 function Contact() {
   const [contactData, setContactData] = useState({
