@@ -6,6 +6,7 @@ import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import Loader from "../components/Loader/Loader";
+import "../styles/Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
