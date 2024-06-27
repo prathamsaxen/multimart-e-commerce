@@ -1,0 +1,76 @@
+.Orders{
+    h2{
+      text-align: center;
+      padding: 20px;
+    }
+    .allOrderCards{
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+    .orderCard{
+      border: 1px solid black;
+      border-radius: 10px;
+      width: 100%;
+    }
+    .upper{
+      display: flex;
+      gap: -30px;
+      background-color: #F0F2F2;
+      border-radius: 10px;
+      .left{
+        display: flex;
+        width: 70%;
+        padding: 10px;
+      }
+      .first{
+        width: 25%;
+      }
+      .second{
+        width: 20%;
+      }
+      .third{
+        width: 65%;
+      }
+      .right{
+        width: 30%;
+      }
+      .order{
+        color: #103464;
+        display: flex;
+        gap: 30px;
+      }
+    }
+    
+    .bottom{
+      display: flex;
+      padding: 20px;
+    }
+    .left{
+      width: 70%;
+    }
+    .right{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 10px;
+      width: 30%;
+      button{
+        padding:5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: white;
+      }
+      .package{
+        background-color: #F7CA00;
+      }
+    }
+    .orderImage{
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      img{
+        width: 110px;
+      }
+    }
+  }

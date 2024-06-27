@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../Images/404.png";
 import { useNavigate } from "react-router-dom";
+import "../styles/Error404.css";
 
 function Error404() {
     const navigate=useNavigate();

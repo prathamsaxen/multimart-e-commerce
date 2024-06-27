@@ -1,0 +1,15 @@
+
+.SignUp{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    background-color: rgb(246, 249, 252);
+  }
+  
+.SignUp form{
+    border: .5px solid gray;
+    padding: 40px;
+    border-radius: 6px;
+  }

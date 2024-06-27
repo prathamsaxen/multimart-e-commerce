@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import "../styles/Account.css";
 
 function Account() {
   const [edit, setEdit] = useState(true);

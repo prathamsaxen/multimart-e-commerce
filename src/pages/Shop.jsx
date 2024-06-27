@@ -6,6 +6,7 @@ import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import Loader from "../components/Loader/Loader";
+import "../styles/Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +17,6 @@ const Shop = () => {
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
       if (status.status === 200) {
-        // console.log(status);
         setProducts(status.data);
         setFilteredProducts(status.data);
       }
