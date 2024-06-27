@@ -40,7 +40,7 @@ const ProductCard = ({ title, productItem }) => {
   return (
     <Col md={3} sm={5} xs={10} className="product mtop">
       {title === "Big Discount" ? (
-        <span className="discount">{productItem.discount}% Off</span>
+        <span className="discount">{productItem.discount}10 % Off</span>
       ) : null}
       <img
         loading="lazy"

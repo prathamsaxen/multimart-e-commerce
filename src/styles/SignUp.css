@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 70px;
     background-color: rgb(246, 249, 252);
   }
   
@@ -13,3 +13,23 @@
     padding: 40px;
     border-radius: 6px;
   }
+
+  @media screen and (max-width:480px){
+    .SignUp{
+      padding: 20px;
+    }
+    .form-signup{
+      /* border: 2px solid red !important; */
+      width: 100% !important;
+    }
+  }
+  @media screen and (max-width:768px){
+    .SignUp{
+      padding: 40px;
+    }
+    /* .form-signup{ */
+      /* border: 2px solid red !important; */
+      /* width: 100% !important; */
+    /* } */
+  }
+  

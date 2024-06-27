@@ -92,7 +92,7 @@ function SignUp() {
     <div className="SignUp">
       <Form
         className="form-signup"
-        style={{ width: "30%" }}
+        // style={{ width: "30%" }}
         onSubmit={signUpUser}
       >
         <Form.Group className="mb-3" controlId="formBasicName">
@@ -178,7 +178,7 @@ function SignUp() {
         <Button
           variant="primary"
           type="submit"
-          className="m-auto d-block mt-5 w-100"
+          className="m-auto d-block mt-3 w-100"
           disabled={disable}
           style={{ backgroundColor: "#0f3460", border: "none" }}
         >

@@ -83,6 +83,9 @@
 .no-arrows{
     caret-color: transparent;
 }
+.content-based-buttons{
+    display: none;
+}
 
 @media screen and (min-width:320px) and (max-width: 480px) {
     .cart-item-cart{
