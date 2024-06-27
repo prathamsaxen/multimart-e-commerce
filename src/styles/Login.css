@@ -1,10 +1,14 @@
 
+.container-login{
+  /* border:2px solid black; */
+  width: 28%;
+}
 .Login{
     /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 50px;
     background-color: rgb(246, 249, 252);
   }
   
@@ -24,4 +28,38 @@
     text-decoration: underline !important;
     cursor: pointer;
     color: #103464 !important;
+  }
+
+  @media screen and (max-width:480px){
+    .container-login{
+      width: 100%;
+    }
+    .form-login{
+      padding: 20px !important;
+    }
+    .Login{
+      padding: 50px 20px 50px 20px;
+    }
+  }
+  @media screen and (max-width:768px){
+    .container-login{
+      width: 80%;
+    }
+    .form-login{
+      padding: 40px !important;
+    }
+    .Login{
+      padding: 50px 20px 50px 20px;
+    }
+  }
+  @media screen and (max-width:1024px){
+    .container-login{
+      width: 50%;
+    }
+    .form-login{
+      padding: 60px !important;
+    }
+    .Login{
+      padding: 20px 10px 20px 10px;
+    }
   }

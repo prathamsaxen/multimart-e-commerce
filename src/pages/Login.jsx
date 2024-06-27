@@ -65,7 +65,7 @@ function Login() {
   return (
     <div className="Login">
       <CenteredModalExample show={show} handleClose={handleClose} />
-      <Container style={{ width: "28%" }}>
+      <Container className="container-login">
         <Form className="form-login" onSubmit={loginUser}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

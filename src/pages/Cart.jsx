@@ -73,20 +73,20 @@ const Cart = () => {
                   <h2>Cart Summary</h2>
                   <div className="cart-price-item">
                     <h4>Price :</h4>
-                    <h3>₹{price?.amount}.00</h3>
+                    <h3>₹{price?.amount || 0.00}</h3>
                   </div>
                   <div className=" cart-price-item">
                     <h4>Goods Service Tax :</h4>
-                    <h3>₹{price?.gstAmount}.00</h3>
+                    <h3>₹{price?.gstAmount || 0.00}</h3>
                   </div>
                   <div className=" cart-price-item">
                     <h4>Delivery Charge :</h4>
-                    <h3>₹{price?.deliveryCharges}.00</h3>
+                    <h3>₹{price?.deliveryCharges || 0.00}</h3>
                   </div>
                   <div className="border-line-cart-price"></div>
                   <div className=" cart-price-item">
                     <h4>Total Price :</h4>
-                    <h3>₹{price?.total}.00</h3>
+                    <h3>₹{price?.total || 0.00}</h3>
                   </div>
                   {login.cartItems === 0 ? null : (
                     <NavLink
