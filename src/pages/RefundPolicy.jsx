@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/RefundPolicy.css";
 
 function RefundPolicy() {
   return (

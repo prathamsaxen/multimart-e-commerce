@@ -124,18 +124,6 @@ button {
 
 
 
-.refund{
-  .heading{
-    font-weight: 700;
-    font-size: 40px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  ul li{
-    list-style-type: circle;
-  }
-}
 .heading{
   font-weight: 700;
   font-size: 40px;
