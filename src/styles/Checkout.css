@@ -56,6 +56,21 @@
     /* border: 2px solid rebeccapurple; */
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    p:nth-of-type(1){
+        /* border: 2px solid red;/ */
+        text-transform: capitalize;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        width: 70%; /* Set the width of the container */
+        padding: 2px;
+    }
+    p:nth-of-type(2){
+      /* border: 2px solid red; */
+      text-align: right;
+    }
     
   }
   .payment-button{
@@ -94,3 +109,8 @@
   }
   }
   
+  .price-data p{
+    /* border: 2px solid red; */
+    margin: 0 !important;
+    
+  }

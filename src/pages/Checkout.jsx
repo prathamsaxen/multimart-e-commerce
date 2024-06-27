@@ -48,7 +48,7 @@ function Checkout() {
       );
       if (response.status === 200) {
         setData(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       }
     } catch (err) {
       console.error(err);
@@ -57,7 +57,6 @@ function Checkout() {
 
   useEffect(() => {
     getCheckoutData();
-    // console.log(data);
   }, []);
   return (
     <div className="checkout container">
@@ -108,21 +107,25 @@ function Checkout() {
       <div className="checkout-details">
         <div className="checkout-product">
           <p className="fw-bold">ORDER SUMMARY</p>
-          <div className="checkout-product-items">
-            <p>Samsung FE 23</p>
-            <p>₹ 129999/-</p>
-          </div>
-          <p className="fs-6">
+          {data?.data.map((item) => {
+            console.log(item);
+            return (
+              <div className="checkout-product-items" key={item._id}>
+                <p>{item.quantity} * {item.items.name}</p>
+                <p>₹ {item.items.price * item.quantity}/-</p>
+              </div>
+            );
+          })}
+          
+          {/* <p className="fs-6">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatibus, itaque?
-          </p>
+          </p> */}
         </div>
-        <div className="checkout-date text-center">
-          <p className="fw-bold">{days[dayOfWeek]}</p>
-          <div className="d-flex justify-content-center fw-bold">
-            <p>{formatDate(today)}</p>
-            {/* <p className="px-1">11:00 AM</p> */}
-          </div>
+        <div className="checkout-date text-center price-data">
+          {/* <p className="fw-bold">{days[dayOfWeek]}</p> */}
+          <p>Grand Total : ₹ {data?.price.total} /-</p>
+          {/* <p>Inclusive all taxes</p> */}
         </div>
         <div>
           <button className="payment-button">PURCHASE NOW</button>
