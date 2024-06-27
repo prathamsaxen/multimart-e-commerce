@@ -75,10 +75,16 @@ button {
 }
 
 input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
+input[type='number']  ::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type='number']{
+input[type='number']  {
     caret-color: transparent;
+}
+.homeSlide {
+  display: flex;
+  justify-content: center;
+  background-color: #f6f9fc;
+  padding-bottom: 0 !important;
 }

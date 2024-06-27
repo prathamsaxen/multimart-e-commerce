@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/Checkout.css";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import AuthenticationContext from "../context/AuthenticationContext";
 
 function Checkout() {
   const [data, setData] = useState(undefined);
@@ -30,6 +31,8 @@ function Checkout() {
     );
     return formattedDate.replace("at", " |");
   }
+
+  const { login } = useContext(AuthenticationContext);
 
   const getCheckoutData = async () => {
     try {
@@ -77,7 +80,12 @@ function Checkout() {
               <label for="inputName" class="form-label fw-bold">
                 Full Name
               </label>
-              <input type="text" class="form-control" id="inputName" />
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                value={login.name}
+              />
             </div>
             <div class="col-12">
               <label for="inputCard" class="form-label fw-bold">
@@ -88,29 +96,12 @@ function Checkout() {
                 class="form-control card-input"
                 id="inputCard"
                 placeholder="Enter your card number"
+                value={login.phoneNumber}
               />
             </div>
             <NavLink to={"/me/addresses/?callbackurl=me/checkout"}>
               Change Your Default Address?
             </NavLink>
-            {/* <div class="col-4">
-              <label for="inputMonth" class="form-label fw-bold">
-                Month
-              </label>
-              <input type="text" class="form-control" id="inputMonth" />
-            </div>
-            <div class="col-4">
-              <label for="inputYear" class="form-label fw-bold">
-                Year
-              </label>
-              <input type="Number" class="form-control" id="inputYear" />
-            </div>
-            <div class="col-4">
-              <label for="inputCVV" class="form-label fw-bold">
-                CVV
-              </label>
-              <input type="Number" class="form-control" id="inputCVV" />
-            </div> */}
           </form>
         </div>
       </div>

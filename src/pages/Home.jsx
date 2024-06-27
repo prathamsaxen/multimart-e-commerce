@@ -5,6 +5,7 @@ import axios from "axios";
 import SliderHome from "../components/Slider";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import Loader from "../components/Loader/Loader";
+import "../styles/Home.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
