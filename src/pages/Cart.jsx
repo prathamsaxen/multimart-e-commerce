@@ -8,7 +8,7 @@ import Loader from "../components/Loader/Loader";
 import "../styles/Cart.css";
 
 const Cart = () => {
-  const { login,fetchUserByToken } = useContext(AuthenticationContext);
+  const { login, fetchUserByToken } = useContext(AuthenticationContext);
   const [cartProducts, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
   const [price, setPrice] = useState({
@@ -44,6 +44,7 @@ const Cart = () => {
   useEffect(() => {
     getCartProducts();
   }, []);
+  // console.log(login);
 
   return (
     <>
@@ -87,13 +88,12 @@ const Cart = () => {
                     <h4>Total Price :</h4>
                     <h3>₹{price?.total}.00</h3>
                   </div>
-                  <NavLink
-                    to={login ? "/me/checkout" : "/login?callbackurl=cart"}
-                    className="checkout-btn"
-                    disable={true}
-                  >
-                    Checkout
-                  </NavLink>
+                  {login.cartItems === 0 ? null : (
+                    <NavLink
+                      to={login ? "/me/checkout" : "/login?callbackurl=cart"} className="checkout-btn">
+                      Checkout
+                    </NavLink>
+                  )}
                 </div>
               </Col>
             </Row>
