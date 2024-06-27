@@ -11,6 +11,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const getProducts = async () => {
+    setLoading(true);
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
       if (status.status === 200) {
@@ -19,6 +20,7 @@ const Home = () => {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
   useEffect(() => {
     getProducts();

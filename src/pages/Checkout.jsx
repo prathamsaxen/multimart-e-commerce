@@ -6,31 +6,31 @@ import AuthenticationContext from "../context/AuthenticationContext";
 
 function Checkout() {
   const [data, setData] = useState(undefined);
-  const today = new Date();
-  const dayOfWeek = today.getDay();
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  function formatDate(date) {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-      date
-    );
-    return formattedDate.replace("at", " |");
-  }
+  // const today = new Date();
+  // const dayOfWeek = today.getDay();
+  // const days = [
+  //   "Sunday",
+  //   "Monday",
+  //   "Tuesday",
+  //   "Wednesday",
+  //   "Thursday",
+  //   "Friday",
+  //   "Saturday",
+  // ];
+  // function formatDate(date) {
+  //   const options = {
+  //     year: "numeric",
+  //     month: "long",
+  //     day: "numeric",
+  //     hour: "numeric",
+  //     minute: "numeric",
+  //     hour12: true,
+  //   };
+  //   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+  //     date
+  //   );
+  //   return formattedDate.replace("at", " |");
+  // }
 
   const { login } = useContext(AuthenticationContext);
 

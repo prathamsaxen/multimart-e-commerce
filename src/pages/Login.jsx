@@ -15,7 +15,7 @@ function Login() {
   const [disable, setDisable] = useState(false);
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { login, setLogin } = useContext(AuthenticationContext);
+  const { setLogin } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);

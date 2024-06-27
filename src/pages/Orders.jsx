@@ -39,7 +39,7 @@ function Orders() {
               <p>Arriving Saturday</p>
               <p>On the way</p>
               <div className="orderImage">
-                <img src="https://kraftvision.com/cdn/shop/files/0be9d5e102a9c3c43b238433014d6700.jpg?v=1696145148"></img>
+                <img src="https://kraftvision.com/cdn/shop/files/0be9d5e102a9c3c43b238433014d6700.jpg?v=1696145148" alt="Error in loading!"></img>
                 <p>name of the parcel</p>
               </div>
             </div>
