@@ -123,23 +123,6 @@ button {
 
 
 
-.privacy{
-  .heading{
-    font-weight: 700;
-    font-size: 40px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  ul li{
-    list-style-type: circle;
-  }
-  .yellow{
-    color: #008000;
-    background-color: #fff2a8;
-    font-weight: bold;
-  }
-}
 
 .refund{
   .heading{
