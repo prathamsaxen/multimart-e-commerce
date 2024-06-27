@@ -7,7 +7,7 @@ import CartItemCard from "../components/CartItemCard/CartItemCard";
 import Loader from "../components/Loader/Loader";
 
 const Cart = () => {
-  const { login } = useContext(AuthenticationContext);
+  const { login,fetchUserByToken } = useContext(AuthenticationContext);
   const [cartProducts, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
   const [price, setPrice] = useState({
