@@ -42,25 +42,25 @@ export const SliderData = [
   {
     id: 1,
     title: "50% Off For Your First Shopping",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
+    desc: "Experience ultimate comfort and sophistication with Metallo's exquisite range of sofas. Transform your living space with our beautifully designed, high-quality seating options.",
     cover: sofa,
   },
   {
     id: 2,
     title: "50% Off For Your First Shopping",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
+    desc: "Indulge in relaxation with Metallo's luxurious collection of couches. Elevate your living room with our stylish and comfortable seating solutions, perfect for any home.",
     cover: couch,
   },
   {
     id: 3,
     title: "50% Off For Your First Shopping",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
+    desc: "Discover the timeless elegance of traditional craftsmanship with Metallo's stunning collection of clocks. Enhance your space with our amazing and meticulously designed timepieces.",
     cover: clock,
   },
   {
     id: 4,
     title: "50% Off For Your First Shopping",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
+    desc: "Start your day with a touch of luxury using Metallo's beautifully crafted breakfast trays. Perfect for enjoying a delightful morning meal in style and comfort.",
     cover: tray,
   },
 ];
