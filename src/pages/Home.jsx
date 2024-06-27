@@ -34,17 +34,17 @@ const Home = () => {
           <Section
             title="Big Discount"
             bgColor="#f6f9fc"
-            productItems={products}
+            productItems={products.filter(product => product.field === "Big Discounts")}
           />
           <Section
             title="New Arrivals"
             bgColor="white"
-            productItems={products}
+            productItems={products.filter(product => product.field === "New Arrivals")}
           />
           <Section
             title="Best Sales"
             bgColor="#f6f9fc"
-            productItems={products}
+            productItems={products.filter(product => product.field === "Best Sales")}
           />
         </Fragment>
       )}
