@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Checkout.css";
-
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 function Checkout() {
@@ -15,19 +15,21 @@ function Checkout() {
     "Thursday",
     "Friday",
     "Saturday",
-  ]; 
+  ];
   function formatDate(date) {
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        hour: 'numeric', 
-        minute: 'numeric',
-        hour12: true 
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
     };
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-    return formattedDate.replace('at', ' |');
-}
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+      date
+    );
+    return formattedDate.replace("at", " |");
+  }
 
   const getCheckoutData = async () => {
     try {
@@ -73,22 +75,25 @@ function Checkout() {
           <form class="row g-3">
             <div class="col-12">
               <label for="inputName" class="form-label fw-bold">
-                NAME ON CARD
+                Full Name
               </label>
               <input type="text" class="form-control" id="inputName" />
             </div>
             <div class="col-12">
               <label for="inputCard" class="form-label fw-bold">
-                CARD NUMBER
+                Mobile Number
               </label>
               <input
-                type="text"
+                type="number"
                 class="form-control card-input"
                 id="inputCard"
                 placeholder="Enter your card number"
               />
             </div>
-            <div class="col-4">
+            <NavLink to={"/me/addresses/?callbackurl=me/checkout"}>
+              Change Your Default Address?
+            </NavLink>
+            {/* <div class="col-4">
               <label for="inputMonth" class="form-label fw-bold">
                 Month
               </label>
@@ -105,7 +110,7 @@ function Checkout() {
                 CVV
               </label>
               <input type="Number" class="form-control" id="inputCVV" />
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

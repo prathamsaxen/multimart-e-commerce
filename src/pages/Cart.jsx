@@ -90,6 +90,7 @@ const Cart = () => {
                   <NavLink
                     to={login ? "/me/checkout" : "/login?callbackurl=cart"}
                     className="checkout-btn"
+                    disable={true}
                   >
                     Checkout
                   </NavLink>

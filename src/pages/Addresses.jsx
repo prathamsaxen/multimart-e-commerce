@@ -5,6 +5,7 @@ import AddressCard from "../components/AddressCard/AddressCard";
 import { AddAddressCard } from "../components/AddressCard/AddressCard";
 import AddressForm from "../components/AddressForm/AddressForm"; // Assuming it's a named export and a component
 import { EditAddressForm } from "../components/AddressForm/AddressForm";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Addresses.css";
 
 function Addresses() {
@@ -12,6 +13,12 @@ function Addresses() {
   const [show, setShow] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const navigate = useNavigate();
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  const query = useQuery();
+  const paramValue = query.get("callbackurl");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -66,6 +73,9 @@ function Addresses() {
       if (status.status === 200) {
         toast.success("Changed Default Address!");
         getAllAddresses();
+        if (paramValue) {
+          navigate(`/${paramValue}`);
+        }
       }
     } catch (error) {
       console.error(error);
