@@ -5,6 +5,8 @@ import AddressCard from "../components/AddressCard/AddressCard";
 import { AddAddressCard } from "../components/AddressCard/AddressCard";
 import AddressForm from "../components/AddressForm/AddressForm"; // Assuming it's a named export and a component
 import { EditAddressForm } from "../components/AddressForm/AddressForm";
+import "../styles/Addresses.css";
+
 function Addresses() {
   const [address, setAddress] = useState([]);
   const [show, setShow] = useState(false);

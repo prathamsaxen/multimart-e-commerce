@@ -1,0 +1,20 @@
+.Addresses{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    background-color: rgb(246, 249, 252);
+    min-height: 500px;
+  }
+  .background-color-whole-app{
+    background-color: rgb(246, 249, 252);
+  }
+  .address-cards-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
