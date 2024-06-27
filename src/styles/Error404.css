@@ -1,0 +1,11 @@
+.Error404{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+  }
+  .Error404 h2{
+    font-size: 7rem;
+    text-align: center;
+  }

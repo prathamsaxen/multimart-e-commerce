@@ -316,17 +316,7 @@ button.delete ion-icon {
   color: white;
 }
 
-.Error404{
-  /* border: 2px solid red; */
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  align-items: center;
-}
-.Error404 h2{
-  font-size: 7rem;
-  text-align: center;
-}
+
 .content404 p{
   /* border: 2px solid  red; */
   width: 80%;
