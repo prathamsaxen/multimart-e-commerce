@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
-import "../index.css";
+import "../styles/Login.css";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CenteredModalExample from "../components/ForgetPassword/ForgetPasswordModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -82,39 +82,38 @@ function Login() {
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
-          <div style={{ position: 'relative' }}>
-
-          <Form.Group className="mb-1" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              value={user.password}
-              disabled={disable}
-              onChange={(e) => {
-                setUser({ ...user, password: e.target.value });
-              }}
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "53%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-              }}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
-            <Form.Text
-              className="text-muted forget-password-text"
-              onClick={handleOpen}
-            >
-              Forget your password?
-            </Form.Text>
-          </Form.Group>
-            </div>
+          <div style={{ position: "relative" }}>
+            <Form.Group className="mb-1" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={user.password}
+                disabled={disable}
+                onChange={(e) => {
+                  setUser({ ...user, password: e.target.value });
+                }}
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "53%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              <Form.Text
+                className="text-muted forget-password-text"
+                onClick={handleOpen}
+              >
+                Forget your password?
+              </Form.Text>
+            </Form.Group>
+          </div>
           <Button
             variant="primary"
             type="submit"

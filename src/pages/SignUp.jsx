@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../index.css";
+import "../styles/SignUp.css";
 import axios from "axios";
 
 function SignUp() {
