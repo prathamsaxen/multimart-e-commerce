@@ -17,7 +17,6 @@ const Shop = () => {
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
       if (status.status === 200) {
-        // console.log(status);
         setProducts(status.data);
         setFilteredProducts(status.data);
       }

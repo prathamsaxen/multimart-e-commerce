@@ -12,6 +12,7 @@
   .checkout-details{
     width: 35%;
   }
+  
   .payment-modes{
     display: flex;
     /* justify-content: space-around; */

@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import AuthenticationContext from "../context/AuthenticationContext";
 import CartItemCard from "../components/CartItemCard/CartItemCard";
 import Loader from "../components/Loader/Loader";
+import "../styles/cart.css";
 
 const Cart = () => {
   const { login,fetchUserByToken } = useContext(AuthenticationContext);
