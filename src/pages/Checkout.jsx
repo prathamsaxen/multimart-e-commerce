@@ -69,8 +69,8 @@ function Checkout() {
           </div>
           {/* <div className="mode-of-payment">Bank Transfer</div> */}
           <div className="mode-of-payment">
-            <ion-icon name="logo-paypal"></ion-icon>
-            <div>Cash On Delivery</div>
+          <ion-icon name="home-outline"></ion-icon>
+          <div>Cash On Delivery</div>
           </div>
         </div>
         <div className="checkout-form">
