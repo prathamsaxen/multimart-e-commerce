@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     getProducts();
   }, []);
-  useWindowScrollToTop();
+  // useWindowScrollToTop();
   return (
     <Fragment>
       {loading ? (

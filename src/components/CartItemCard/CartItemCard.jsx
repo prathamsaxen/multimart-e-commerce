@@ -73,8 +73,11 @@ function CartItemCard({ item, getCartProducts }) {
       </div>
       <div className="action-cart">
         <div className="display-quantity">
-          <button onClick={() => AddCartItem(item.items)}>
+          <button onClick={() => AddCartItem(item.items)} className="symbol-based-buttons">
             <i className="fa-solid fa-plus"></i>
+          </button>
+          <button onClick={() => AddCartItem(item.items)} className="content-based-buttons">
+            Increase Qty
           </button>
           <input
             type="number"
@@ -86,8 +89,11 @@ function CartItemCard({ item, getCartProducts }) {
             inputMode="numeric"
             className="no-arrows"
           />
-          <button onClick={() => RemoveCartItem(item._id)}>
+          <button onClick={() => RemoveCartItem(item._id)} className="symbol-based-buttons">
             <i className="fa-solid fa-minus"></i>
+          </button>
+          <button onClick={() => RemoveCartItem(item._id)} className="content-based-buttons">
+            Decrease Qty
           </button>
         </div>
       </div>
