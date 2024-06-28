@@ -86,7 +86,12 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
   };
   return (
     <>
-      <Modal show={show} onHide={handleClose} centered style={{paddingRight:"0"}}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        style={{ paddingRight: "0" }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Address</Modal.Title>
         </Modal.Header>
@@ -241,7 +246,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   Zip
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   id="validationCustom05"
                   required
@@ -262,7 +267,15 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={addAddressFunction} disabled={disabled}>
+          <Button
+            variant="primary"
+            onClick={addAddressFunction}
+            disabled={disabled}
+            style={{
+              backgroundColor: "#0f3460",
+              border: "none",
+            }}
+          >
             Add Address
           </Button>
         </Modal.Footer>
