@@ -48,7 +48,7 @@ function App() {
         setLogin(response.data);
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     setLoading(false);
   };
