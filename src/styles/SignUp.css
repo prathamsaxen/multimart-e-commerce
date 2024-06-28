@@ -16,14 +16,16 @@
 
   @media screen and (max-width:480px){
     .SignUp{
-      padding: 20px;
+      padding: 15px;
+      padding-top: 50px;
+      padding-bottom: 50px;
     }
     .form-signup{
       /* border: 2px solid red !important; */
       width: 100% !important;
     }
   }
-  @media screen and (max-width:768px){
+  @media screen and (min-width:481px) and (max-width:768px){
     .SignUp{
       padding: 40px;
     }
