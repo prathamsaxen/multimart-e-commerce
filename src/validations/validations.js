@@ -10,6 +10,7 @@ const areaRegex = /^[A-Za-z0-9\s\-,]+$/;
 const landmarkRegex = /^[A-Za-z0-9\s\-,]+$/;
 const stateRegex = /^[A-Za-z\s]+$/;
 const cityRegex = /^[A-Za-z\s]+$/;
+const emailRegex = /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 const addressValidation = (inputAddress) => {
   if (!inputAddress.name) {
@@ -78,4 +79,24 @@ const addressValidation = (inputAddress) => {
   return true;
 };
 
-export { addressValidation };
+const loginandSecurityValidation = (data) => {
+  if (!data.name) {
+    toast.error("Please enter your name!");
+    return false;
+  } else if (!data.phoneNumber) {
+    toast.error("Please enter your phone number!");
+    return false;
+  } else if (!mobileNumberRegex.test(data.phoneNumber)) {
+    toast.error("Phone number is invalid!");
+    return false;
+  } else if (!data.email) {
+    toast.error("Please enter your email!");
+    return false;
+  } else if (!emailRegex.test(data.email)) {
+    toast.error("Email is invalid!");
+    return false;
+  }
+  return true;
+};
+
+export { addressValidation, loginandSecurityValidation };

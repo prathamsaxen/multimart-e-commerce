@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import { toast } from "react-toastify";
+import { loginandSecurityValidation } from "../validations/validations";
 import axios from "axios";
 import "../styles/Account.css";
 
@@ -37,52 +38,34 @@ function Account() {
       setEdit(false);
     } else {
       setEdit(true);
-      const phonePattern = /^[0-9]{10}$/;
-      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-      if (!data.name) {
-        toast.error("Please enter your name!");
+      if (!loginandSecurityValidation(data)) {
         setEdit(false);
         return;
-      } else if (!data.phoneNumber) {
-        toast.error("Please enter your phone number!");
-        setEdit(false);
-        return;
-      } else if (!phonePattern.test(data.phoneNumber)) {
-        toast.error("Phone number is invalid!");
-        setEdit(false);
-        return;
-      } else if (!data.email) {
-        toast.error("Please enter your email!");
-        setEdit(false);
-        return;
-      } else if (!emailPattern.test(data.email)) {
-        toast.error("Email is invalid!");
-        setEdit(false);
-        return;
-      }
-      const submissionData = findUpdatedFields(login, data);
-      try {
-        const token = localStorage.getItem("token");
-        const options = {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        };
-        const status = await axios.put(
-          `${process.env.REACT_APP_API}api/user/`,
-          submissionData,
-          options
-        );
-        if (status.status === 200) {
-          toast.success("Account Details Updated Successfully!");
-          console.log(status);
+      } else {
+        const submissionData = findUpdatedFields(login, data);
+        try {
+          const token = localStorage.getItem("token");
+          const options = {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          };
+          const status = await axios.put(
+            `${process.env.REACT_APP_API}api/user/`,
+            submissionData,
+            options
+          );
+          if (status.status === 200) {
+            toast.success("Account Details Updated Successfully!");
+            console.log(status);
+          }
+        } catch (error) {
+          toast.error(error.response.data.message);
+          console.log(error);
         }
-      } catch (error) {
-        toast.error(error.response.data.message);
-        console.log(error);
+        setEdit(true);
       }
-      setEdit(true);
     }
   };
   return (
