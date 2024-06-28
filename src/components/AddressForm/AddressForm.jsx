@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { addressValidation } from "../../validations/validations";
 import axios from "axios";
 
-const validationCheckFunction = (inputAddress) => {
-  if (!inputAddress.name) {
-    toast.error("Full Name is required");
-    return false;
-  } else if (
-    !inputAddress.mobileNumber ||
-    !/^\d{10}$/.test(inputAddress.mobileNumber)
-  ) {
-    console.log(inputAddress.mobileNumber);
-    toast.error("Valid 10-digit mobile number is required");
-    return false;
-  } else if (!inputAddress.country) {
-    toast.error("Country is required");
-    return false;
-  } else if (!inputAddress.flat) {
-    toast.error("Flat/House No. is required");
-    return false;
-  } else if (!inputAddress.area) {
-    toast.error("Area is required");
-    return false;
-  } else if (!inputAddress.landmark) {
-    toast.error("Landmark is required");
-    return false;
-  } else if (!inputAddress.city) {
-    toast.error("City is required");
-    return false;
-  } else if (!inputAddress.state) {
-    toast.error("State is required");
-    return false;
-  } else if (!inputAddress.pincode || !/^\d{6}$/.test(inputAddress.pincode)) {
-    toast.error("Valid 6-digit pincode is required");
-    return false;
-  }
-  return true;
-};
+// const validationCheckFunction = (inputAddress) => {
+//   if (!inputAddress.name) {
+//     toast.error("Full Name is required");
+//     return false;
+//   } else if (
+//     !inputAddress.mobileNumber ||
+//     !/^\d{10}$/.test(inputAddress.mobileNumber)
+//   ) {
+//     console.log(inputAddress.mobileNumber);
+//     toast.error("Valid 10-digit mobile number is required");
+//     return false;
+//   } else if (!inputAddress.country) {
+//     toast.error("Country is required");
+//     return false;
+//   } else if (!inputAddress.flat) {
+//     toast.error("Flat/House No. is required");
+//     return false;
+//   } else if (!inputAddress.area) {
+//     toast.error("Area is required");
+//     return false;
+//   } else if (!inputAddress.landmark) {
+//     toast.error("Landmark is required");
+//     return false;
+//   } else if (!inputAddress.city) {
+//     toast.error("City is required");
+//     return false;
+//   } else if (!inputAddress.state) {
+//     toast.error("State is required");
+//     return false;
+//   } else if (!inputAddress.pincode || !/^\d{6}$/.test(inputAddress.pincode)) {
+//     toast.error("Valid 6-digit pincode is required");
+//     return false;
+//   }
+//   return true;
+// };
 
 function AddressForm({ show, handleClose, getAllAddresses }) {
   const [addaddress, setaddaddress] = useState({
@@ -56,7 +57,7 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
 
   const addAddressFunction = async (event) => {
     event.preventDefault();
-    if (validationCheckFunction(addaddress)) {
+    if (addressValidation(addaddress)) {
       setDisabled(true);
       try {
         const token = localStorage.getItem("token");
@@ -312,7 +313,7 @@ function EditAddressForm({
 
   const UpdateAddress = async (event) => {
     event.preventDefault();
-    if (validationCheckFunction(editAddress)) {
+    if (addressValidation(editAddress)) {
       setDisabled(true);
       try {
         const token = localStorage.getItem("token");
