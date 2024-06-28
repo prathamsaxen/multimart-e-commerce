@@ -14,6 +14,23 @@ function Account() {
     phoneNumber: login.phoneNumber,
   });
 
+  const findUpdatedFields = (oldData, newData) => {
+    const updatedFields = {};
+
+    // Check each field
+    if (oldData.name !== newData.name) {
+      updatedFields.name = newData.name;
+    }
+    if (oldData.email !== newData.email) {
+      updatedFields.email = newData.email;
+    }
+    if (oldData.phoneNumber !== newData.phoneNumber) {
+      updatedFields.phoneNumber = newData.phoneNumber;
+    }
+
+    return updatedFields;
+  };
+
   const EditUserData = async (event) => {
     event.preventDefault();
     if (edit) {
@@ -44,7 +61,7 @@ function Account() {
         setEdit(false);
         return;
       }
-
+      const submissionData = findUpdatedFields(login, data);
       try {
         const token = localStorage.getItem("token");
         const options = {
@@ -53,8 +70,9 @@ function Account() {
           },
         };
         const status = await axios.put(
-          `${process.env.REACT_APP_API}api/user/${login._id}`,
-          data,options
+          `${process.env.REACT_APP_API}api/user/`,
+          submissionData,
+          options
         );
         if (status.status === 200) {
           toast.success("Account Details Updated Successfully!");
