@@ -20,6 +20,16 @@
   display: flex;
   justify-content: space-between !important;
 }
+.link-logo{
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  ion-icon{
+    /* border: 2px soslid red; */
+    font-size: 1.5rem;
+  }
+}
 
 .navbar-toggler {
   position: relative !important;

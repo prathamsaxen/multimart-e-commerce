@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, NavLink, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import AuthenticationContext from "../../context/AuthenticationContext";
@@ -31,10 +31,10 @@ const NavBar = () => {
       className={isFixed ? "navbar fixed" : "navbar"}
     >
       <Container className="navbar-container">
-        <Navbar.Brand to="/">
+        <Link to={"/"} className="link-logo">
           <ion-icon name="bag"></ion-icon>
           <h1 className="logo">Metallo</h1>
-        </Navbar.Brand>
+        </Link>
         {/* Media cart and toggle */}
         <div className="d-flex">
           <div className="media-cart">
@@ -54,7 +54,7 @@ const NavBar = () => {
               aria-label="Go to Cart Page"
               to={login ? "/cart" : "/login?callbackurl=cart"}
               className="cart"
-              data-num={login.cartItems}
+              data-num={login.cartItems || 0}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
