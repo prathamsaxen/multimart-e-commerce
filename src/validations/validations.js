@@ -83,7 +83,12 @@ const loginandSecurityValidation = (data) => {
   if (!data.name) {
     toast.error("Please enter your name!");
     return false;
-  } else if (!data.phoneNumber) {
+  }
+  else if (!nameRegex.test(data.name)) {
+    toast.error("Please enter valid name!");
+    return false;
+  } 
+  else if (!data.phoneNumber) {
     toast.error("Please enter your phone number!");
     return false;
   } else if (!mobileNumberRegex.test(data.phoneNumber)) {
