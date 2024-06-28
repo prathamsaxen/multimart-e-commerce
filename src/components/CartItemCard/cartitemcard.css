@@ -142,6 +142,7 @@
     }
     .content-based-buttons{
         /* border: 2px solid red; */
+        display: block;
         border-radius: 0;
         background-color: rgb(246, 249, 252);
         padding: 5px;
