@@ -120,3 +120,37 @@
     }
   }
   
+  @media screen and (max-width: 768px) {
+    .contact-us-page-section{
+      /* border: 2px solid red; */
+      flex-direction: column-reverse;
+      
+    }
+    .contact-us-form,.contact-us-map{
+      /* border: 2px solid green; */
+      width: 100%;
+    }
+    .contact-us-map{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .contact-us-page-section{
+      width: 90%;
+    }
+    .contact-page{
+      padding: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    .contact-us-page-section h2{
+      /* border: 2px solid red; */
+      text-align: center;
+      
+    }
+    .contact-us-page-section input[type="submit"]
+    {
+      /* border: 2px solid red; */
+      width: 100%;
+    }
+  }
