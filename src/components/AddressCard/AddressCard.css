@@ -31,6 +31,9 @@
     border-right: 2px solid black;
 
 }
+.addaddressCard button:last-child{
+    border: 2px solid red;
+}
 .addressCard p{
     margin: 0;
 }
