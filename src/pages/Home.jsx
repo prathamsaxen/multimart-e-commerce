@@ -3,7 +3,7 @@ import Wrapper from "../components/wrapper/Wrapper";
 import Section from "../components/Section";
 import axios from "axios";
 import SliderHome from "../components/Slider";
-import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+// import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import Loader from "../components/Loader/Loader";
 import "../styles/Home.css";
 
