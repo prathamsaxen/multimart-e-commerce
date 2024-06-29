@@ -1,15 +1,12 @@
-import { Col } from "react-bootstrap";
-import "./product-card.css";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-// import { useDispatch } from "react-redux";
-// import { addToCart } from "../../app/features/cart/cartSlice";
-import AuthenticationContext from "../../context/AuthenticationContext";
 import { useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Col } from "react-bootstrap";
+import { toast } from "react-toastify";
+import AuthenticationContext from "../../context/AuthenticationContext";
+import "./product-card.css";
 
 const ProductCard = ({ title, productItem }) => {
-  // const dispatch = useDispatch();
   const router = useNavigate();
   const handelClick = () => {
     router(`/shop/${productItem.name.replace(/\s+/g, "-")}/${productItem._id}`);
@@ -61,7 +58,7 @@ const ProductCard = ({ title, productItem }) => {
           </div>
         </div>
         <div className="price">
-          <h4>${productItem.price}</h4>
+          <h4>₹ {productItem.price}</h4>
           {login ? (
             <button
               aria-label="Add"

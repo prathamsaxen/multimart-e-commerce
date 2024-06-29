@@ -97,14 +97,14 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
         </Modal.Header>
         <Modal.Body>
           <div className="container formCard">
-            <form class="row g-3 needs-validation">
-              <div class="col-md-12">
-                <label for="validationCustom01" class="form-label">
+            <form className="row g-3 needs-validation">
+              <div className="col-md-12">
+                <label htmlFor="validationCustom01" className="form-label">
                   Full Name (First and Last name)
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom01"
                   required
                   value={addaddress.name}
@@ -114,17 +114,20 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-12">
-                <label for="validationCustomUsername" class="form-label">
+              <div className="col-md-12">
+                <label
+                  htmlFor="validationCustomUsername"
+                  className="form-label"
+                >
                   Phone Number
                 </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
+                <div className="input-group has-validation">
+                  <span className="input-group-text" id="inputGroupPrepend">
                     +91
                   </span>
                   <input
                     type="number"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -139,13 +142,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   />
                 </div>
               </div>
-              <div class="col-md-12">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-12">
+                <label htmlFor="validationCustom05" className="form-label">
                   Country
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={addaddress.country}
@@ -158,13 +161,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom03" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom03" className="form-label">
                   Flat/House No.
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom03"
                   required
                   value={addaddress.flat}
@@ -174,13 +177,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-6">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-6">
+                <label htmlFor="validationCustom05" className="form-label">
                   Area
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={addaddress.area}
@@ -190,13 +193,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   Landmark
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={addaddress.landmark}
@@ -209,13 +212,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">
+              <div className="col-md-6">
+                <label htmlFor="validationCustom03" className="form-label">
                   City
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom03"
                   required
                   value={addaddress.city}
@@ -225,13 +228,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   State
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={addaddress.state}
@@ -241,13 +244,13 @@ function AddressForm({ show, handleClose, getAllAddresses }) {
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   Zip
                 </label>
                 <input
                   type="number"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={addaddress.pincode}
@@ -359,15 +362,15 @@ function EditAddressForm({
           <Modal.Title>Edit Address</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="container formCard">
-            <form class="row g-3 needs-validation">
-              <div class="col-md-12">
-                <label for="validationCustom01" class="form-label">
+          <div classNameName="container formCard">
+            <form className="row g-3 needs-validation">
+              <div className="col-md-12">
+                <label htmlFor="validationCustom01" className="form-label">
                   Full Name (First and Last name)
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom01"
                   required
                   value={editAddress.name}
@@ -377,17 +380,20 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-12">
-                <label for="validationCustomUsername" class="form-label">
+              <div className="col-md-12">
+                <label
+                  htmlFor="validationCustomUsername"
+                  className="form-label"
+                >
                   Phone Number
                 </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
+                <div className="input-group has-validation">
+                  <span className="input-group-text" id="inputGroupPrepend">
                     +91
                   </span>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -402,13 +408,13 @@ function EditAddressForm({
                   />
                 </div>
               </div>
-              <div class="col-md-12">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-12">
+                <label htmlFor="validationCustom05" className="form-label">
                   Country
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={editAddress.country}
@@ -421,13 +427,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom03" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom03" className="form-label">
                   Flat/House No.
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom03"
                   required
                   value={editAddress.flat}
@@ -440,13 +446,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-6">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-6">
+                <label htmlFor="validationCustom05" className="form-label">
                   Area
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={editAddress.area}
@@ -459,13 +465,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   Landmark
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={editAddress.landmark}
@@ -478,13 +484,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">
+              <div className="col-md-6">
+                <label htmlFor="validationCustom03" className="form-label">
                   City
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom03"
                   required
                   value={editAddress.city}
@@ -497,13 +503,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   State
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={editAddress.state}
@@ -516,13 +522,13 @@ function EditAddressForm({
                   disabled={disabled}
                 />
               </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
+              <div className="col-md-3">
+                <label htmlFor="validationCustom05" className="form-label">
                   Zip
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="validationCustom05"
                   required
                   value={editAddress.pincode}
