@@ -79,9 +79,9 @@ input[type='number']  ::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0 !important;
 }
-input[type='number']  {
+/* input[type='number']  { */
     /* caret-color: transparent !important; */
-}
+/* }   */
 .homeSlide {
   display: flex;
   justify-content: center;
