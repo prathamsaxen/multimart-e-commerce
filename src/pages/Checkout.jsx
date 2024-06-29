@@ -97,7 +97,7 @@ function Checkout() {
         <div className="checkout-form">
           <form className="row g-3">
             <div className="col-12">
-              <label for="inputName" className="form-label fw-bold">
+              <label htmlFor="inputName" className="form-label fw-bold">
                 Full Name
               </label>
               <input
@@ -105,10 +105,12 @@ function Checkout() {
                 className="form-control"
                 id="inputName"
                 value={login.name}
+                readOnly
+
               />
             </div>
             <div className="col-12">
-              <label for="inputCard" className="form-label fw-bold">
+              <label htmlFor="inputCard" className="form-label fw-bold">
                 Mobile Number
               </label>
               <input
@@ -117,6 +119,7 @@ function Checkout() {
                 id="inputCard"
                 placeholder="Enter your card number"
                 value={login.phoneNumber}
+                readOnly
               />
             </div>
             <NavLink to={"/me/addresses/?callbackurl=me/checkout"}>
