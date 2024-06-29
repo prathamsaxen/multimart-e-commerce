@@ -16,7 +16,7 @@ const NavBar = () => {
       setIsFixed(false);
     }
   }
-  const { login } = useContext(AuthenticationContext);
+  const { login, cartLength } = useContext(AuthenticationContext);
   window.addEventListener("scroll", scrollHandler);
   // useEffect(()=> {
   //   if(CartItem.length ===0) {
@@ -54,7 +54,7 @@ const NavBar = () => {
               aria-label="Go to Cart Page"
               to={login ? "/cart" : "/login?callbackurl=cart"}
               className="cart"
-              data-num={login.cartItems || 0}
+              data-num={cartLength}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const NavBar = () => {
                 aria-label="Go to Cart Page"
                 to={login ? "/cart" : "/login?callbackurl=cart"}
                 className="cart"
-                data-num={login.cartItems || 0}
+                data-num={cartLength}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

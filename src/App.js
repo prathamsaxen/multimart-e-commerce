@@ -32,6 +32,7 @@ const Error404 = lazy(() => import("./pages/Error404"));
 function App() {
   const [login, setLogin] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cartLength, setCartLength] = useState(0);
   const fetchUserByToken = async () => {
     setLoading(true);
     try {
@@ -56,13 +57,43 @@ function App() {
   useEffect(() => {
     fetchUserByToken();
   }, []);
+
+  const fetchCartLength = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}api/cartLength`,
+        options
+      );
+      if (response.status === 200) {
+        setCartLength(response.data.cartLength);
+      }
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchCartLength();
+  }, []);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <AuthenticationContext.Provider
-          value={{ login, setLogin, fetchUserByToken }}
+          value={{
+            login,
+            setLogin,
+            fetchUserByToken,
+            cartLength,
+            setCartLength,
+            fetchCartLength,
+          }}
         >
           <LoaderContext.Provider value={{ setLoading }}>
             <Suspense fallback={<Loader />}>
