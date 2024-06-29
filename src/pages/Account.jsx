@@ -73,36 +73,36 @@ function Account() {
       <h2 className="py-4">Login & Security</h2>
       <div className="detailsForm">
         <form
-          class="row g-3 needs-validation"
-          novalidate
+          className="row g-3 needs-validation"
+          // novalidate
           onSubmit={EditUserData}
         >
-          <div class="col-md-12">
-            <label for="validationCustom01" class="form-label">
+          <div className="col-md-12">
+            <label htmlFor="validationCustom01" className="form-label">
               Full Name (First and Last name)
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="validationCustom01"
               required
               disabled={edit}
               value={data.name}
               onChange={(e) => setData({ ...data, name: e.target.value })}
             />
-            <div class="valid-feedback">Looks good!</div>
+            <div className="valid-feedback">Looks good!</div>
           </div>
-          <div class="col-md-12">
-            <label for="validationCustomUsername" class="form-label">
+          <div className="col-md-12">
+            <label htmlFor="validationCustomUsername" className="form-label">
               Phone Number
             </label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">
+            <div className="input-group has-validation">
+              <span className="input-group-text" id="inputGroupPrepend">
                 +91
               </span>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="validationCustomUsername"
                 aria-describedby="inputGroupPrepend"
                 required
@@ -112,16 +112,16 @@ function Account() {
                   setData({ ...data, phoneNumber: e.target.value })
                 }
               />
-              <div class="invalid-feedback">Please choose a mobile Number</div>
+              <div className="invalid-feedback">Please choose a mobile Number</div>
             </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleFormControlInput1" className="form-label">
               Email address
             </label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder="name@gmail.com"
               disabled={edit}
@@ -129,8 +129,8 @@ function Account() {
               onChange={(e) => setData({ ...data, email: e.target.value })}
             />
           </div>
-          <div class="col-12">
-            <button class="detailsFormButton" type="submit">
+          <div className="col-12">
+            <button className="detailsFormButton" type="submit">
               {edit ? "Edit" : "Update"}
             </button>
           </div>
