@@ -4,7 +4,7 @@ function ShippingPolicy() {
   return (
     <div className="container">
       <h2 className="heading">Shipping Policy</h2>
-      <div class="rte">
+      <div className="rte">
         <p>
           <strong>Do you ship internationally?</strong>
         </p>
