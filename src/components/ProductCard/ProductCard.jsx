@@ -11,7 +11,9 @@ const ProductCard = ({ title, productItem }) => {
   const handelClick = () => {
     router(`/shop/${productItem.name.replace(/\s+/g, "-")}/${productItem._id}`);
   };
-  const { login, fetchUserByToken } = useContext(AuthenticationContext);
+  const { login, fetchUserByToken, fetchCartLength } = useContext(
+    AuthenticationContext
+  );
   const handelAdd = async (productItem) => {
     try {
       const token = localStorage.getItem("token");
@@ -27,7 +29,7 @@ const ProductCard = ({ title, productItem }) => {
       );
       if (response.status === 200) {
         toast.success("Product has been added to cart!");
-        fetchUserByToken();
+        fetchCartLength();
       }
     } catch (err) {
       console.log(err);

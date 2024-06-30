@@ -1,9 +1,12 @@
+import React, { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "./product-details.css";
 import axios from "axios";
+import AuthenticationContext from "../../context/AuthenticationContext";
 
 const ProductDetails = ({ data }) => {
+  const { fetchCartLength } = useContext(AuthenticationContext);
   const handelAdd = async (productItem) => {
     try {
       const token = localStorage.getItem("token");
@@ -19,6 +22,7 @@ const ProductDetails = ({ data }) => {
       );
       if (response.status === 200) {
         toast.success("Product has been added to cart!");
+        fetchCartLength();
       }
     } catch (err) {
       console.log(err);
