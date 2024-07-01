@@ -7,27 +7,31 @@ import "../styles/User.css";
 // import { serviceData } from "../Configuration/Home";
 import { useNavigate } from "react-router-dom";
 function User() {
-  const { setLogin } = useContext(AuthenticationContext);
+  const { setLogin, setCartLength } = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
   const logoutUser = () => {
     localStorage.removeItem("token");
     setLogin(false);
+    setCartLength(0);
     navigate("/");
   };
 
   return (
     <div className="background-color-whole-app User">
-      <section className="wrapper background" style={{backgroundColor:"rgb(246, 249, 252)"}}>
+      <section
+        className="wrapper background"
+        style={{ backgroundColor: "rgb(246, 249, 252)" }}
+      >
         <Container>
           <Row>
             <Col
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#fdefe6",cursor: "pointer" }}
+              style={{ backgroundColor: "#fdefe6", cursor: "pointer" }}
               className="feature"
-              onClick={()=>navigate("/me/orders")}
+              onClick={() => navigate("/me/orders")}
             >
               <div className="icon">
                 <ion-icon name="cart"></ion-icon>
@@ -43,10 +47,9 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#ceebe9" , cursor: "pointer" }}
+              style={{ backgroundColor: "#ceebe9", cursor: "pointer" }}
               className="feature"
-              onClick={()=>navigate("/me/account")}
-
+              onClick={() => navigate("/me/account")}
             >
               <div className="icon">
                 <ion-icon name="log-in"></ion-icon>
@@ -64,10 +67,9 @@ function User() {
               md={3}
               sm={5}
               xs={9}
-              style={{ backgroundColor: "#e2f2b2" , cursor: "pointer" }}
+              style={{ backgroundColor: "#e2f2b2", cursor: "pointer" }}
               className="feature"
-              onClick={()=>navigate("/me/addresses")}
-
+              onClick={() => navigate("/me/addresses")}
             >
               <div className="icon">
                 <ion-icon name="location-outline"></ion-icon>
@@ -85,7 +87,7 @@ function User() {
               xs={9}
               style={{ backgroundColor: "#d6e5fb", cursor: "pointer" }}
               className="feature"
-              onClick={()=>navigate("/contact-us")}
+              onClick={() => navigate("/contact-us")}
             >
               <div className="icon">
                 <ion-icon name="call-outline"></ion-icon>

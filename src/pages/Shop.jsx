@@ -1,19 +1,20 @@
 import axios from "axios";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import SearchBar from "../components/SeachBar/SearchBar";
 import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
-import Loader from "../components/Loader/Loader";
+import LoaderContext from "../context/LoaderContext";
 import "../styles/Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const { setLoading } = useContext(LoaderContext);
   const getProducts = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const status = await axios.get(`${process.env.REACT_APP_API}api/getItem`);
       if (status.status === 200) {
@@ -23,7 +24,7 @@ const Shop = () => {
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
+    // setLoading(false);
   };
   useEffect(() => {
     getProducts();
@@ -33,28 +34,24 @@ const Shop = () => {
   return (
     <Fragment>
       <Banner title="Product" />
-      {loading ? (
-        <Loader />
-      ) : (
-        <section className="filter-bar">
-          <Container className="filter-bar-contianer">
-            <Row className="justify-content-center">
-              {/* <Col md={4}>
+      <section className="filter-bar">
+        <Container className="filter-bar-contianer">
+          <Row className="justify-content-center">
+            {/* <Col md={4}>
                 <FilterSelect setFilterList={products} />
               </Col> */}
-              <Col md={8}>
-                <SearchBar
-                  setProducts={setFilteredProducts}
-                  products={products}
-                />
-              </Col>
-            </Row>
-          </Container>
-          <Container>
-            <ShopList productItems={filteredProducts} />
-          </Container>
-        </section>
-      )}
+            <Col md={8}>
+              <SearchBar
+                setProducts={setFilteredProducts}
+                products={products}
+              />
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <ShopList productItems={filteredProducts} />
+        </Container>
+      </section>
     </Fragment>
   );
 };

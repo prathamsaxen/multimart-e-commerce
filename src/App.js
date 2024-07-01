@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import AuthenticationContext from "./context/AuthenticationContext";
+import LoaderContext from "./context/LoaderContext";
 // import Checkout from "./pages/Checkout";
 // import RefundPolicy from "./pages/RefundPolicy";
 const Home = lazy(() => import("./pages/Home"));
@@ -30,7 +31,8 @@ const Error404 = lazy(() => import("./pages/Error404"));
 
 function App() {
   const [login, setLogin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [cartLength, setCartLength] = useState(0);
   const fetchUserByToken = async () => {
     setLoading(true);
     try {
@@ -55,83 +57,121 @@ function App() {
   useEffect(() => {
     fetchUserByToken();
   }, []);
+
+  const fetchCartLength = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}api/cartLength`,
+        options
+      );
+      if (response.status === 200) {
+        setCartLength(response.data.cartLength);
+      }
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchCartLength();
+  }, []);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <AuthenticationContext.Provider
-          value={{ login, setLogin, fetchUserByToken }}
+          value={{
+            login,
+            setLogin,
+            fetchUserByToken,
+            cartLength,
+            setCartLength,
+            fetchCartLength,
+          }}
         >
-          <Suspense fallback={<Loader />}>
-            <Router>
-              <ToastContainer
-                position="top-right"
-                autoClose={1000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-              <NavBar />
-              <Routes>
-                {login ? (
-                  <Fragment>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/shop/:name/:id" element={<Product />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/me" element={<User />} />
-                    <Route path="/me/orders" element={<Orders />} />
-                    <Route path="/me/checkout" element={<Checkout />} />
-                    <Route path="/me/account" element={<Account />} />
-                    <Route path="/me/addresses" element={<Addresses />} />
-                    <Route path="/contact-us" element={<Contact />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/refund-policy" element={<RefundPolicy />} />
-                    <Route
-                      path="/shipping-policy"
-                      element={<ShippingPolicy />}
-                    />
-                    <Route
-                      path="/terms-of-services"
-                      element={<TermsOfServices />}
-                    />
-                    <Route path="*" element={<Error404 />} />
-                  </Fragment>
-                ) : (
-                  <Fragment>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/shop/:name/:id" element={<Product />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route
-                      path="/forget-password/reset-password/:token"
-                      element={<ResetPassword />}
-                    />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/contact-us" element={<Contact />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/refund-policy" element={<RefundPolicy />} />
-                    <Route
-                      path="/shipping-policy"
-                      element={<ShippingPolicy />}
-                    />
-                    <Route
-                      path="/terms-of-services"
-                      element={<TermsOfServices />}
-                    />
-                    <Route path="*" element={<Error404 />} />
-                  </Fragment>
-                )}
-              </Routes>
-              <Footer />
-            </Router>
-          </Suspense>
+          <LoaderContext.Provider value={{ setLoading }}>
+            <Suspense fallback={<Loader />}>
+              <Router>
+                <ToastContainer
+                  position="top-right"
+                  autoClose={1000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
+                <NavBar />
+                <Routes>
+                  {login ? (
+                    <Fragment>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/shop" element={<Shop />} />
+                      <Route path="/shop/:name/:id" element={<Product />} />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route path="/me" element={<User />} />
+                      <Route path="/me/orders" element={<Orders />} />
+                      <Route path="/me/checkout" element={<Checkout />} />
+                      <Route path="/me/account" element={<Account />} />
+                      <Route path="/me/addresses" element={<Addresses />} />
+                      <Route path="/contact-us" element={<Contact />} />
+                      <Route
+                        path="/privacy-policy"
+                        element={<PrivacyPolicy />}
+                      />
+                      <Route path="/refund-policy" element={<RefundPolicy />} />
+                      <Route
+                        path="/shipping-policy"
+                        element={<ShippingPolicy />}
+                      />
+                      <Route
+                        path="/terms-of-services"
+                        element={<TermsOfServices />}
+                      />
+                      <Route path="*" element={<Error404 />} />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/shop" element={<Shop />} />
+                      <Route path="/shop/:name/:id" element={<Product />} />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route
+                        path="/forget-password/reset-password/:token"
+                        element={<ResetPassword />}
+                      />
+                      <Route path="/signup" element={<SignUp />} />
+                      <Route path="/contact-us" element={<Contact />} />
+                      <Route
+                        path="/privacy-policy"
+                        element={<PrivacyPolicy />}
+                      />
+                      <Route path="/refund-policy" element={<RefundPolicy />} />
+                      <Route
+                        path="/shipping-policy"
+                        element={<ShippingPolicy />}
+                      />
+                      <Route
+                        path="/terms-of-services"
+                        element={<TermsOfServices />}
+                      />
+                      <Route path="*" element={<Error404 />} />
+                    </Fragment>
+                  )}
+                </Routes>
+                <Footer />
+              </Router>
+            </Suspense>
+          </LoaderContext.Provider>
         </AuthenticationContext.Provider>
       )}
     </Fragment>

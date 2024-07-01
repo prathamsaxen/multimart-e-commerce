@@ -24,13 +24,20 @@
     text-decoration: underline;
 }
 .addressCard button:first-of-type{
-    border-right: 2px solid black;
+    /* border-right: 2px solid black; */
     padding-left: 0;
 }
 .addressCard button:nth-child(2){
-    border-right: 2px solid black;
+    border-left: 2px solid black;
 
 }
+.addressCard button:nth-child(3){
+    border-left: 2px solid black;
+
+}
+/* .addaddressCard button:last-child{
+    border: 2px solid red;
+} */
 .addressCard p{
     margin: 0;
 }

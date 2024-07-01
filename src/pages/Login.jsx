@@ -15,7 +15,7 @@ function Login() {
   const [disable, setDisable] = useState(false);
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { setLogin } = useContext(AuthenticationContext);
+  const { setLogin,fetchCartLength } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -43,6 +43,7 @@ function Login() {
         toast.success("Logged In Successfully!");
         localStorage.setItem("token", status.data.token);
         setLogin(status.data);
+        fetchCartLength();
         if (paramValue) {
           navigate(`/${paramValue}`);
         } else {

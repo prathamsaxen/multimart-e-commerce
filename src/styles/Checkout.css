@@ -29,11 +29,12 @@
     width: 33%;
     font-size: small;
   }
-  .mode-of-payment:hover{
+  .mode-of-payment:hover,.active-mode-of-payment{
     background-color: #0f3460;
     cursor: pointer;
     color: white;
   }
+  
   .checkout-form{
     padding-top: 30px;
   }

@@ -63,7 +63,7 @@ button {
 }
 
 .images-container {
-  display: f lex;
+  display: flex;
 }
 
 .heading{
@@ -76,15 +76,20 @@ button {
 
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']  ::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
-input[type='number']  {
-    caret-color: transparent;
-}
+/* input[type='number']  { */
+    /* caret-color: transparent !important; */
+/* }   */
 .homeSlide {
   display: flex;
   justify-content: center;
   background-color: #f6f9fc;
   padding-bottom: 0 !important;
+}
+#inputGroupPrepend{
+  /* border: 2px solid red !important  ; */
+  border-top-right-radius: 0 !important; 
+  border-bottom-right-radius: 0 !important;
 }
