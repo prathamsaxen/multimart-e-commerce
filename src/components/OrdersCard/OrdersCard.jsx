@@ -24,7 +24,7 @@ function OrdersCard() {
             <div className="orderCard-product-name">
               <div>MacBook Air</div>
               <div className="orderCard-product-quantity">
-                <p className="py-2">150000 x 3</p>
+                <p>150000 x 3</p>
                 <p>150000</p>
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </div>
